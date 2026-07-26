@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "policy": "Preserve ruby tag structure while localizing its visible reading.",
+  "changes": [
+    {
+      "uid": "ch01-00:59:207f192",
+      "file": "ch01\\ch01-00.part01.jsonl",
+      "from": "せがれ",
+      "to": "아들"
+    },
+    {
+      "uid": "ch01-00:199:60ee8e3a",
+      "file": "ch01\\ch01-00.part01.jsonl",
+      "from": "しゅうぼうせい",
+      "to": "취망생"
+    },
+    {
+      "uid": "ch01-01:283:1564853",
+      "file": "ch01\\ch01-01.part02.jsonl",
+      "from": "止り木",
+      "to": "횃대"
+    },
+    {
+      "uid": "ch01-01:344:7695bc83",
+      "file": "ch01\\ch01-01.part02.jsonl",
+      "from": "あんたん",
+      "to": "암담"
+    },
+    {
+      "uid": "ch01-03:341:fdf9c6d1",
+      "file": "ch01\\ch01-03.part02.jsonl",
+      "from": "魂",
+      "to": "영혼"
+    },
+    {
+      "uid": "ch01-03:348:884b8c71",
+      "file": "ch01\\ch01-03.part02.jsonl",
+      "from": "キャンバス",
+      "to": "캔버스"
+    },
+    {
+      "uid": "ch01-03:365:6db24022",
+      "file": "ch01\\ch01-03.part02.jsonl",
+      "from": "はらわた",
+      "to": "내장"
+    },
+    {
+      "uid": "ch01-04:120:4778c26",
+      "file": "ch01\\ch01-04.part01.jsonl",
+      "from": "かしま",
+      "to": "떠들썩"
+    },
+    {
+      "uid": "ch01-06:469:f39d31d9",
+      "file": "ch01\\ch01-06.part03.jsonl",
+      "from": "止り木の",
+      "to": "횃대의"
+    },
+    {
+      "uid": "ch01-07:162:ed7aa334",
+      "file": "ch01\\ch01-07.part01.jsonl",
+      "from": "おっちゃん",
+      "to": "아저씨"
+    },
+    {
+      "uid": "ch01-07:560:e41944a6",
+      "file": "ch01\\ch01-07.part02.jsonl",
+      "from": "お父さん",
+      "to": "아버지"
+    },
+    {
+      "uid": "ch01-07:1307:4ee1154a",
+      "file": "ch01\\ch01-07.part06.jsonl",
+      "from": "悪魔",
+      "to": "악마"
+    },
+    {
+      "uid": "ch01-09:258:7fc181a3",
+      "file": "ch01\\ch01-09.part02.jsonl",
+      "from": "光学迷彩",
+      "to": "광학 위장"
+    },
+    {
+      "uid": "ch01-11:158:87c48e23",
+      "file": "ch01\\ch01-11.part01.jsonl",
+      "from": "グラスクラフター",
+      "to": "글라스크래프터"
+    },
+    {
+      "uid": "ch01-11:206:c344ed6f",
+      "file": "ch01\\ch01-11.part01.jsonl",
+      "from": "トシ",
+      "to": "나이"
+    },
+    {
+      "uid": "ch01-11:484:14a34c32",
+      "file": "ch01\\ch01-11.part03.jsonl",
+      "from": "黒朝病",
+      "to": "흑조병"
+    },
+    {
+      "uid": "ch02-02:25:6881afa2",
+      "file": "ch02\\ch02-02.part01.jsonl",
+      "from": "ソネッタ",
+      "to": "소네타"
+    },
+    {
+      "uid": "ch02-02:30:1fd187a3",
+      "file": "ch02\\ch02-02.part01.jsonl",
+      "from": "リトナ",
+      "to": "리토나"
+    },
+    {
+      "uid": "ch02-02:43:52d6dc03",
+      "file": "ch02\\ch02-02.part01.jsonl",
+      "from": "エセ",
+      "to": "엉터리"
+    },
+    {
+      "uid": "ch02-02:88:14e0912f",
+      "file": "ch02\\ch02-02.part01.jsonl",
+      "from": "けな",
+      "to": "헐뜯"
+    },
+    {
+      "uid": "ch02-04:212:5ec393a7",
+      "file": "ch02\\ch02-04.part01.jsonl",
+      "from": "ラインヴァスタ",
+      "to": "라인바스타"
+    },
+    {
+      "uid": "ch02-12:613:8517a892",
+      "file": "ch02\\ch02-12.part04.jsonl",
+      "from": "かすがい",
+      "to": "연결고리"
+    },
+    {
+      "uid": "ch02-12:633:3b4ca1b1",
+      "file": "ch02\\ch02-12.part04.jsonl",
+      "from": "たお",
+      "to": "타도할"
+    },
+    {
+      "uid": "ch02-12:880:d66c0fd9",
+      "file": "ch02\\ch02-12.part05.jsonl",
+      "from": "そんな施錠が！？",
+      "to": "그런 잠금장치가?!"
+    },
+    {
+      "uid": "ch02-12:962:4487eef",
+      "file": "ch02\\ch02-12.part05.jsonl",
+      "from": "ヴィビリア",
+      "to": "비빌리아"
+    },
+    {
+      "uid": "ch02-12:1408:c72c78f8",
+      "file": "ch02\\ch02-12.part08.jsonl",
+      "from": "かけて",
+      "to": "걸어"
+    },
+    {
+      "uid": "ch02-13:59:46c2cfd",
+      "file": "ch02\\ch02-13.part01.jsonl",
+      "from": "はばか",
+      "to": "꺼려질"
+    },
+    {
+      "uid": "ch02-18:59:753a68e",
+      "file": "ch02\\ch02-18.part01.jsonl",
+      "from": "注目",
+      "to": "주목"
+    },
+    {
+      "uid": "ch02-18:149:3bfd6053",
+      "file": "ch02\\ch02-18.part01.jsonl",
+      "from": "パスダウン",
+      "to": "패스다운"
+    },
+    {
+      "uid": "ch02-20:125:86d8bba3",
+      "file": "ch02\\ch02-20.part01.jsonl",
+      "from": "いち",
+      "to": "제일"
+    },
+    {
+      "uid": "ch02-20:188:49e3d90d",
+      "file": "ch02\\ch02-20.part01.jsonl",
+      "from": "いち",
+      "to": "제일"
+    },
+    {
+      "uid": "ch02-20:213:35020f6",
+      "file": "ch02\\ch02-20.part02.jsonl",
+      "from": "レギュラー",
+      "to": "레귤러"
+    },
+    {
+      "uid": "ch03-00:47:33eab712",
+      "file": "ch03\\ch03-00.part01.jsonl",
+      "from": "からか",
+      "to": "놀릴"
+    },
+    {
+      "uid": "ch03-01:301:cc1f2573",
+      "file": "ch03\\ch03-01.part02.jsonl",
+      "from": "バネ",
+      "to": "용수철"
+    },
+    {
+      "uid": "ch03-02:91:8d23aecc",
+      "file": "ch03\\ch03-02.part01.jsonl",
+      "from": "出汁",
+      "to": "육수"
+    },
+    {
+      "uid": "ch03-03:159:ff088198",
+      "file": "ch03\\ch03-03.part01.jsonl",
+      "from": "使う",
+      "to": "사용"
+    },
+    {
+      "uid": "ch03-04:425:1030c9f4",
+      "file": "ch03\\ch03-04.part02.jsonl",
+      "from": "警察",
+      "to": "경찰"
+    },
+    {
+      "uid": "ch03-04:642:25cc68aa",
+      "file": "ch03\\ch03-04.part03.jsonl",
+      "from": "もたら",
+      "to": "불러올"
+    },
+    {
+      "uid": "ch03-05:41:4f9a0ef5",
+      "file": "ch03\\ch03-05.part01.jsonl",
+      "from": "ヴァストアルカブルー",
+      "to": "바스토알카 블루"
+    },
+    {
+      "uid": "ch03-08:101:f1405ffd",
+      "file": "ch03\\ch03-08.part01.jsonl",
+      "from": "くゆ",
+      "to": "피어오를"
+    }
+  ],
+  "changed_entries": 40,
+  "complete": true
+}

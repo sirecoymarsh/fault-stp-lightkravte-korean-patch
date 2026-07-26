@@ -1,0 +1,85 @@
+{"category":"DefaultUI","key":"Backlog.Banner","ko":"백로그"}
+{"category":"DefaultUI","key":"CGGallery.Title","ko":"CG 갤러리"}
+{"category":"DefaultUI","key":"Confirmation.No","ko":"아니요"}
+{"category":"DefaultUI","key":"Confirmation.Yes","ko":"예"}
+{"category":"DefaultUI","key":"ControlPanel.Auto","ko":"자동"}
+{"category":"DefaultUI","key":"ControlPanel.Banner","ko":"메뉴"}
+{"category":"DefaultUI","key":"ControlPanel.Hide","ko":"숨기기"}
+{"category":"DefaultUI","key":"ControlPanel.Load","ko":"불러오기"}
+{"category":"DefaultUI","key":"ControlPanel.Log","ko":"백로그"}
+{"category":"DefaultUI","key":"ControlPanel.QuickLoad","ko":"퀵 로드"}
+{"category":"DefaultUI","key":"ControlPanel.QuickSave","ko":"퀵 세이브"}
+{"category":"DefaultUI","key":"ControlPanel.Save","ko":"저장하기"}
+{"category":"DefaultUI","key":"ControlPanel.Settings","ko":"설정"}
+{"category":"DefaultUI","key":"ControlPanel.Skip","ko":"스킵"}
+{"category":"DefaultUI","key":"ControlPanel.Tips","ko":"용어집"}
+{"category":"DefaultUI","key":"ControlPanel.Title","ko":"타이틀"}
+{"category":"DefaultUI","key":"ExternalScriptsBrowser.Info","ko":"재생할 스크립트를 선택하세요"}
+{"category":"DefaultUI","key":"ExternalScriptsBrowser.Title","ko":"외부 스크립트"}
+{"category":"DefaultUI","key":"General.Close","ko":"닫기"}
+{"category":"DefaultUI","key":"General.Return","ko":"돌아가기"}
+{"category":"DefaultUI","key":"Naninovel.UI.ControlPanelTitleButton.ConfirmationMessage","ko":"타이틀 화면으로 돌아가시겠습니까?"}
+{"category":"DefaultUI","key":"Naninovel.UI.ControlPanelTitleButtonCustom.ConfirmationMessage","ko":"타이틀 화면으로 돌아가시겠습니까?"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsFontDropdown.DefaultFontName","ko":"기본"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsFontSizeDropdown.Default","ko":"기본"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsFontSizeDropdown.ExtraLarge","ko":"매우 크게"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsFontSizeDropdown.Large","ko":"크게"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsFontSizeDropdown.Small","ko":"작게"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption1","ko":"최저"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption2","ko":"낮음"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption3","ko":"보통"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption4","ko":"높음"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption5","ko":"매우 높음"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsGraphicsDropdown.GraphicOption6","ko":"울트라"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsScreenModeDropdown.ExclusiveFullScreen","ko":"전체 화면"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsScreenModeDropdown.FullScreenWindow","ko":"전체 화면 창"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsScreenModeDropdown.MaximizedWindow","ko":"최대화 창"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsScreenModeDropdown.Windowed","ko":"창 모드"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsSkipModeDropdown.Everything","ko":"모든 메시지"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameSettingsSkipModeDropdown.ReadOnly","ko":"읽은 메시지만"}
+{"category":"DefaultUI","key":"Naninovel.UI.GameStateSlot.EmptySlotLabel","ko":"빈 슬롯"}
+{"category":"DefaultUI","key":"Naninovel.UI.SaveLoadMenu.DeleteSaveSlotMessage","ko":"이 저장 데이터를 삭제하시겠습니까?"}
+{"category":"DefaultUI","key":"Naninovel.UI.SaveLoadMenu.OverwriteSaveSlotMessage","ko":"이 저장 데이터를 덮어쓰시겠습니까?"}
+{"category":"DefaultUI","key":"SaveLoad.LoadBanner","ko":"불러오기"}
+{"category":"DefaultUI","key":"SaveLoad.SaveBanner","ko":"저장하기"}
+{"category":"DefaultUI","key":"SaveLoadMenu.Tab.Load","ko":"불러오기"}
+{"category":"DefaultUI","key":"SaveLoadMenu.Tab.QuickLoad","ko":"퀵 로드"}
+{"category":"DefaultUI","key":"SaveLoadMenu.Tab.Save","ko":"저장하기"}
+{"category":"DefaultUI","key":"Settings.Banner","ko":"설정"}
+{"category":"DefaultUI","key":"SettingsMenu.AutoDelay","ko":"자동 재생 대기 시간"}
+{"category":"DefaultUI","key":"SettingsMenu.Font","ko":"글꼴:"}
+{"category":"DefaultUI","key":"SettingsMenu.FontSize","ko":"글자 크기:"}
+{"category":"DefaultUI","key":"SettingsMenu.Fullscreen","ko":"전체 화면"}
+{"category":"DefaultUI","key":"SettingsMenu.Graphics","ko":"그래픽:"}
+{"category":"DefaultUI","key":"SettingsMenu.Language","ko":"언어"}
+{"category":"DefaultUI","key":"SettingsMenu.LanguageButton","ko":"한국어"}
+{"category":"DefaultUI","key":"SettingsMenu.MessageSpeed","ko":"글자 표시 속도"}
+{"category":"DefaultUI","key":"SettingsMenu.Preview","ko":"미리 보기"}
+{"category":"DefaultUI","key":"SettingsMenu.PreviewText","ko":"이 문장은 글꼴과 글자 표시 속도를 미리 확인하기 위한 예시입니다."}
+{"category":"DefaultUI","key":"SettingsMenu.Resolution","ko":"해상도:"}
+{"category":"DefaultUI","key":"SettingsMenu.ScreenMode","ko":"화면 모드"}
+{"category":"DefaultUI","key":"SettingsMenu.SkipAll","ko":"모든 메시지"}
+{"category":"DefaultUI","key":"SettingsMenu.SkipMode","ko":"메시지 스킵"}
+{"category":"DefaultUI","key":"SettingsMenu.SkipReadOnly","ko":"읽은 메시지만"}
+{"category":"DefaultUI","key":"SettingsMenu.Tab.Basic","ko":"기본"}
+{"category":"DefaultUI","key":"SettingsMenu.Tab.Sound","ko":"사운드"}
+{"category":"DefaultUI","key":"SettingsMenu.Tab.Text","ko":"텍스트"}
+{"category":"DefaultUI","key":"SettingsMenu.VoiceLanguage","ko":"음성 언어:"}
+{"category":"DefaultUI","key":"SettingsMenu.VolumeEffects","ko":"효과음 음량"}
+{"category":"DefaultUI","key":"SettingsMenu.VolumeMaster","ko":"전체 음량"}
+{"category":"DefaultUI","key":"SettingsMenu.VolumeMusic","ko":"BGM 음량"}
+{"category":"DefaultUI","key":"SettingsMenu.VolumeVoice","ko":"음성 음량"}
+{"category":"DefaultUI","key":"SettingsMenu.Window","ko":"창 모드"}
+{"category":"DefaultUI","key":"Tips.Banner","ko":"용어집"}
+{"category":"DefaultUI","key":"Tips.CategoryLabel","ko":"분류"}
+{"category":"DefaultUI","key":"Tips.DescriptionText","ko":"설명"}
+{"category":"DefaultUI","key":"Tips.TitleLabel","ko":"용어"}
+{"category":"DefaultUI","key":"TitleMenu.CGGallery","ko":"갤러리"}
+{"category":"DefaultUI","key":"TitleMenu.Continue","ko":"이어하기"}
+{"category":"DefaultUI","key":"TitleMenu.Exit","ko":"종료"}
+{"category":"DefaultUI","key":"TitleMenu.ExternalScripts","ko":"외부 스크립트"}
+{"category":"DefaultUI","key":"TitleMenu.Load","ko":"불러오기"}
+{"category":"DefaultUI","key":"TitleMenu.NewGame","ko":"처음부터"}
+{"category":"DefaultUI","key":"TitleMenu.Settings","ko":"설정"}
+{"category":"DefaultUI","key":"TitleMenu.Tips","ko":"용어집"}
+{"category":"DefaultUI","key":"VariableInput.Submit","ko":"확인"}

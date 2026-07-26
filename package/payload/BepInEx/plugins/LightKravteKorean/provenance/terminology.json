@@ -1,0 +1,1473 @@
+{
+  "schema_version": 1,
+  "project": "Fault StP LIGHTKRAVTE",
+  "source_locale": "ja",
+  "target_locale": "ko",
+  "reference_locales": [
+    "en",
+    "zh-CN"
+  ],
+  "translation_model_policy": "Codex internal model only",
+  "entries": [
+    {
+      "category": "character",
+      "ja": "カージ",
+      "ko": "카지",
+      "en_reference": "Khaji",
+      "note": "주인공. 풀네임은 카지 오버그."
+    },
+    {
+      "category": "character",
+      "ja": "カージ＝オバーグ",
+      "ko": "카지 오버그",
+      "en_reference": "Khaji Oberg",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "アディア",
+      "ko": "아디아",
+      "en_reference": "Adia",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "セラロ",
+      "ko": "세라로",
+      "en_reference": "Ceraro",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ディータ",
+      "ko": "디타",
+      "en_reference": "Deeta",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "フローラ",
+      "ko": "플로라",
+      "en_reference": "Flora",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ジルム",
+      "ko": "질름",
+      "en_reference": "Jilm",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ケンドリッド",
+      "ko": "켄드리드",
+      "en_reference": "Kendrid",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "メルポット",
+      "ko": "멜포트",
+      "en_reference": "Melpot",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "メルリッサ",
+      "ko": "메를리사",
+      "en_reference": "Merrelisa",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ミィネ",
+      "ko": "미네",
+      "en_reference": "Mhinei",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ミリ",
+      "ko": "밀리",
+      "en_reference": "Millie",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ミィシャ",
+      "ko": "미샤",
+      "en_reference": "Misha",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "オグズ",
+      "ko": "오그즈",
+      "en_reference": "Oughes",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "クラウ",
+      "ko": "크라우",
+      "en_reference": "Khrau",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "クアラ",
+      "ko": "쿠알라",
+      "en_reference": "Qualla",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "リッグズ",
+      "ko": "리그스",
+      "en_reference": "Riggs",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "リトナ",
+      "ko": "리토나",
+      "en_reference": "Ritona",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ルキ",
+      "ko": "루키",
+      "en_reference": "Ruki",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "セルフィーネ",
+      "ko": "셀피네",
+      "en_reference": "Selphine",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ソネッタ",
+      "ko": "소네타",
+      "en_reference": "Sonetta",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "トスカ",
+      "ko": "토스카",
+      "en_reference": "Tosca",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ワイトン",
+      "ko": "와이튼",
+      "en_reference": "Wyton",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ラモラ",
+      "ko": "라모라",
+      "en_reference": "Lamora",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "ガワン",
+      "ko": "가완",
+      "en_reference": "Gawon",
+      "note": ""
+    },
+    {
+      "category": "character",
+      "ja": "セラ",
+      "ko": "세라",
+      "en_reference": "Sela",
+      "note": "여왕."
+    },
+    {
+      "category": "character",
+      "ja": "ヴァラ",
+      "ko": "바라",
+      "en_reference": "Vhala",
+      "note": "루젠하이드 국왕."
+    },
+    {
+      "category": "display_role",
+      "ja": "バンダナの硝子職人",
+      "ko": "두건 쓴 유리 장인",
+      "en_reference": "Bandana Glass Craftsman",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "コック",
+      "ko": "요리사",
+      "en_reference": "Cook",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "広場の知らない子",
+      "ko": "광장의 낯선 아이",
+      "en_reference": "Girl in Town Square",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "硝子職人",
+      "ko": "유리 장인",
+      "en_reference": "Glass Craftsman",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "護衛",
+      "ko": "호위",
+      "en_reference": "Guard",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "衛兵",
+      "ko": "위병",
+      "en_reference": "Guard",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "図書館の一同",
+      "ko": "도서관 사람들",
+      "en_reference": "People in Library",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "医療班",
+      "ko": "의료반",
+      "en_reference": "Medic",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "受付嬢",
+      "ko": "접수원",
+      "en_reference": "Receptionist",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "初老の硝子職人",
+      "ko": "초로의 유리 장인",
+      "en_reference": "Older Glass Craftsman",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "赤髪の女",
+      "ko": "붉은 머리 여자",
+      "en_reference": "Red-Haired Woman",
+      "note": ""
+    },
+    {
+      "category": "display_role",
+      "ja": "ルーン",
+      "ko": "룬",
+      "en_reference": "Rune",
+      "note": "일본어 관리 문서의 값은 내부 문자열 `run`; 실제 표시가 확인될 때만 적용."
+    },
+    {
+      "category": "family",
+      "ja": "オバーグ",
+      "ko": "오버그",
+      "en_reference": "Oberg",
+      "note": ""
+    },
+    {
+      "category": "family",
+      "ja": "セレンハイド",
+      "ko": "세렌하이드",
+      "en_reference": "Serenhaide",
+      "note": ""
+    },
+    {
+      "category": "family",
+      "ja": "ラインヴァスタ",
+      "ko": "라인바스타",
+      "en_reference": "Reighnvhasta",
+      "note": ""
+    },
+    {
+      "category": "family",
+      "ja": "ランヴァイズ",
+      "ko": "란바이즈",
+      "en_reference": "Lanvhaize",
+      "note": ""
+    },
+    {
+      "category": "family",
+      "ja": "ミューズ",
+      "ko": "뮤즈",
+      "en_reference": "Muuse",
+      "note": ""
+    },
+    {
+      "category": "family",
+      "ja": "ヴァヴァーズバー",
+      "ko": "바바즈바",
+      "en_reference": "Vhaversbar",
+      "note": "",
+      "ja_aliases": [
+        "ヴァーヴァーズバー"
+      ]
+    },
+    {
+      "category": "character_full",
+      "ja": "リトナ＝ラインヴァスタ",
+      "ko": "리토나 라인바스타",
+      "en_reference": "Ritona Reighnvhasta",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "ミィネ＝セレンハイド",
+      "ko": "미네 세렌하이드",
+      "en_reference": "Mhinei Serenhaide",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "クラウ＝ルゼンハイド＝ランヴァイズ",
+      "ko": "크라우 루젠하이드 란바이즈",
+      "en_reference": "Khrau Rughzenhaide Lanvhaize",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "ワイトン＝ミューズ",
+      "ko": "와이튼 뮤즈",
+      "en_reference": "Wyton Muuse",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "トスカ＝ミューズ",
+      "ko": "토스카 뮤즈",
+      "en_reference": "Tosca Muuse",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "ケンドリッド＝ヴァヴァーズバー",
+      "ko": "켄드리드 바바즈바",
+      "en_reference": "Kendrid Vhaversbar",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "ヴェラグ＝ルゼンハイド",
+      "ko": "베라그 루젠하이드",
+      "en_reference": "Vhelag Rughzenhaide",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "コロド＝マクスウェル",
+      "ko": "코로드 맥스웰",
+      "en_reference": "Kherode Makswehl",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "アリスン＝リーヴェ",
+      "ko": "앨리슨 리베",
+      "en_reference": "Alissyn Rievegh",
+      "note": ""
+    },
+    {
+      "category": "character_full",
+      "ja": "ロア＝リッドサイド",
+      "ko": "로아 리드사이드",
+      "en_reference": "Rhoa Ridside",
+      "note": ""
+    },
+    {
+      "category": "geography",
+      "ja": "サンアリズタ大陸",
+      "ko": "산아리즈타 대륙",
+      "en_reference": "Sanne’Ajrizda",
+      "note": "",
+      "tip_key": "sanne_ajrizda"
+    },
+    {
+      "category": "geography",
+      "ja": "ルゼンハイド",
+      "ko": "루젠하이드",
+      "en_reference": "Rughzenhaide",
+      "note": "",
+      "tip_key": "rughzenhaide"
+    },
+    {
+      "category": "geography",
+      "ja": "ヴァストアルカ",
+      "ko": "바스토알카",
+      "en_reference": "Vhastoralkat",
+      "note": "",
+      "tip_key": "vhastoralkat"
+    },
+    {
+      "category": "geography",
+      "ja": "シェストカーリン",
+      "ko": "셰스토카린",
+      "en_reference": "Schestkarlin",
+      "note": ""
+    },
+    {
+      "category": "geography",
+      "ja": "アウターポール",
+      "ko": "아우터 폴",
+      "en_reference": "Outer Pole",
+      "note": "",
+      "tip_key": "outer_pole"
+    },
+    {
+      "category": "geography",
+      "ja": "インナーポール",
+      "ko": "이너 폴",
+      "en_reference": "Inner Pole",
+      "note": ""
+    },
+    {
+      "category": "geography",
+      "ja": "サードポール",
+      "ko": "서드 폴",
+      "en_reference": "Third-Pole",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "レンデル森林",
+      "ko": "렌델 숲",
+      "en_reference": "Rendel Forest",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "ウォール街",
+      "ko": "성벽 지구",
+      "en_reference": "Wall District",
+      "note": "일반적인 ‘월가’가 아니라 성벽 바깥쪽 집락.",
+      "tip_key": "wall_district"
+    },
+    {
+      "category": "publication",
+      "ja": "ウォール街に住む若奥様達の日記シリーズ",
+      "ko": "『성벽 지구 새댁들의 일기』 시리즈",
+      "en_reference": "Diaries of Young Wives Living in the Wall District",
+      "note": ""
+    },
+    {
+      "category": "publication",
+      "ja": "若奥様達シリーズ",
+      "ko": "『새댁들의 일기』 시리즈",
+      "en_reference": "Young Wives Series",
+      "note": ""
+    },
+    {
+      "category": "publication",
+      "ja": "幻想病",
+      "ko": "『환상병』",
+      "en_reference": "A Series of Fantastic Maladies",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "ファームリング",
+      "ko": "팜 링",
+      "en_reference": "Farm Ring",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "止り木",
+      "ko": "횃대",
+      "en_reference": "Perchwood",
+      "note": "등장인물들이 모이는 거점의 고유명."
+    },
+    {
+      "category": "place",
+      "ja": "セレンハイド邸",
+      "ko": "세렌하이드 저택",
+      "en_reference": "Serenhaide Manor",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "オバーグ果樹園",
+      "ko": "오버그 과수원",
+      "en_reference": "Oberg Fruit Farm",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "アトリエ・ルゼンハイド",
+      "ko": "아틀리에 루젠하이드",
+      "en_reference": "Atelier Rughzenhaide",
+      "note": ""
+    },
+    {
+      "category": "place",
+      "ja": "季節棟",
+      "ko": "계절동",
+      "en_reference": "Season Tower",
+      "note": "",
+      "tip_key": "season_tower"
+    },
+    {
+      "category": "organization",
+      "ja": "アライアンス",
+      "ko": "얼라이언스",
+      "en_reference": "Alliance",
+      "note": "정식명은 마나크래프터 얼라이언스."
+    },
+    {
+      "category": "organization",
+      "ja": "マナクラフターズ・アライアンス",
+      "ko": "마나크래프터 얼라이언스",
+      "en_reference": "Manakravters Alliance",
+      "note": ""
+    },
+    {
+      "category": "organization",
+      "ja": "グラスクラフターズギルド",
+      "ko": "글라스크래프터 길드",
+      "en_reference": "Glasskravters Guild",
+      "note": ""
+    },
+    {
+      "category": "organization",
+      "ja": "ファーマーズギルド",
+      "ko": "농부 길드",
+      "en_reference": "Farmers Guild",
+      "note": ""
+    },
+    {
+      "category": "organization",
+      "ja": "ギルド",
+      "ko": "길드",
+      "en_reference": "Guild",
+      "note": ""
+    },
+    {
+      "category": "organization",
+      "ja": "CLOQKS（クロックス）",
+      "ko": "CLOQKS(클록스)",
+      "en_reference": "CLOQKS",
+      "note": "",
+      "tip_key": "cloqks"
+    },
+    {
+      "category": "organization",
+      "ja": "MADEC",
+      "ko": "MADEC",
+      "en_reference": "MADEC",
+      "note": "단계명과 영문 코드명은 원문 그대로 유지.",
+      "tip_key": "madec"
+    },
+    {
+      "category": "rank",
+      "ja": "ガーディアン",
+      "ko": "가디언",
+      "en_reference": "Guardian",
+      "note": ""
+    },
+    {
+      "category": "rank",
+      "ja": "騎士団",
+      "ko": "기사단",
+      "en_reference": "Knight’s Order",
+      "note": ""
+    },
+    {
+      "category": "rank",
+      "ja": "ホワイトコート",
+      "ko": "화이트코트",
+      "en_reference": "Whitecoat",
+      "note": "세렌하이드 경찰 부대.",
+      "tip_key": "whitecoat"
+    },
+    {
+      "category": "rank",
+      "ja": "ファリナー",
+      "ko": "파리너",
+      "en_reference": "Fhariner",
+      "note": "수로 운항과 정화를 맡는 직업인. 탈것/운항편을 가리키는 문맥에서는 ‘파린’."
+    },
+    {
+      "category": "vehicle",
+      "ja": "ファリン",
+      "ko": "파린",
+      "en_reference": "Fharin",
+      "note": "파리너가 운항하는 수상 운송 수단."
+    },
+    {
+      "category": "rank",
+      "ja": "サードフリート",
+      "ko": "서드 플리트",
+      "en_reference": "Third Fleet",
+      "note": "파리너 후보생의 최하위 예비군.",
+      "tip_key": "third_fleet"
+    },
+    {
+      "category": "rank",
+      "ja": "ファーストフリート",
+      "ko": "퍼스트 플리트",
+      "en_reference": "First Fleet",
+      "note": ""
+    },
+    {
+      "category": "social",
+      "ja": "就望",
+      "ko": "취망",
+      "en_reference": "Vocasp",
+      "note": "‘취업 희망’을 줄인 세계관 용어. 就望生은 ‘취망생’.",
+      "tip_key": "vocasp"
+    },
+    {
+      "category": "social",
+      "ja": "ベーシックステータス",
+      "ko": "베이직 스테이터스",
+      "en_reference": "Basic Status",
+      "note": "",
+      "tip_key": "basic_status"
+    },
+    {
+      "category": "social",
+      "ja": "本職",
+      "ko": "본직",
+      "en_reference": "Primary Profession",
+      "note": ""
+    },
+    {
+      "category": "social",
+      "ja": "本職登録",
+      "ko": "본직 등록",
+      "en_reference": "Primary Profession Registration",
+      "note": ""
+    },
+    {
+      "category": "social",
+      "ja": "就職システム",
+      "ko": "취업 제도",
+      "en_reference": "Employment System",
+      "note": ""
+    },
+    {
+      "category": "mana",
+      "ja": "マナ",
+      "ko": "마나",
+      "en_reference": "Mana",
+      "note": "",
+      "tip_key": "mana"
+    },
+    {
+      "category": "mana",
+      "ja": "カラードマナ",
+      "ko": "컬러드 마나",
+      "en_reference": "Colored Mana",
+      "note": "",
+      "tip_key": "colored_mana"
+    },
+    {
+      "category": "mana",
+      "ja": "ピュリファイドマナ",
+      "ko": "정제 마나",
+      "en_reference": "Purified Mana",
+      "note": "‘비빌리아’와 동의 관계이나 문맥상 명칭은 구별."
+    },
+    {
+      "category": "mana",
+      "ja": "ピュリファイドマナ／ヴィビリア",
+      "ko": "정제 마나/비빌리아",
+      "en_reference": "Purified Mana/Vibaelia",
+      "note": "용어집 표제.",
+      "tip_key": "purified_mana"
+    },
+    {
+      "category": "mana",
+      "ja": "ヴィビリア",
+      "ko": "비빌리아",
+      "en_reference": "Vibaelia",
+      "note": "생명체 내부의 정제 마나를 가리키는 종교·지역적 명칭."
+    },
+    {
+      "category": "mana",
+      "ja": "ファイア",
+      "ko": "파이로",
+      "en_reference": "Pyro",
+      "note": ""
+    },
+    {
+      "category": "mana",
+      "ja": "アクア",
+      "ko": "아쿠아",
+      "en_reference": "Aqua",
+      "note": ""
+    },
+    {
+      "category": "mana",
+      "ja": "テラ",
+      "ko": "테라",
+      "en_reference": "Terra",
+      "note": ""
+    },
+    {
+      "category": "mana",
+      "ja": "エアロ",
+      "ko": "에어로",
+      "en_reference": "Aero",
+      "note": ""
+    },
+    {
+      "category": "mana",
+      "ja": "ポール",
+      "ko": "폴",
+      "en_reference": "Pole",
+      "note": "",
+      "tip_key": "pole"
+    },
+    {
+      "category": "mana",
+      "ja": "マナストリーム",
+      "ko": "마나 스트림",
+      "en_reference": "Manastream",
+      "note": "",
+      "tip_key": "mana_stream"
+    },
+    {
+      "category": "kravte",
+      "ja": "マナクラフト",
+      "ko": "마나크래프트",
+      "en_reference": "Manakravte",
+      "note": "",
+      "tip_key": "manakravte"
+    },
+    {
+      "category": "kravte",
+      "ja": "クラフト",
+      "ko": "크래프트",
+      "en_reference": "Kravte",
+      "note": "マナクラフト의 일상적 준말."
+    },
+    {
+      "category": "kravte",
+      "ja": "マナクラフター",
+      "ko": "마나크래프터",
+      "en_reference": "Manakravter",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "バトルクラフト",
+      "ko": "배틀크래프트",
+      "en_reference": "Battlekravte",
+      "note": "",
+      "tip_key": "battlekravte"
+    },
+    {
+      "category": "kravte",
+      "ja": "パッシブクラフト",
+      "ko": "패시브 크래프트",
+      "en_reference": "Passive Kravte",
+      "note": "",
+      "tip_key": "passive_kravte"
+    },
+    {
+      "category": "kravte",
+      "ja": "ペンクラフト",
+      "ko": "펜크래프트",
+      "en_reference": "Penkravte",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "ライトクラフト",
+      "ko": "라이트크래프트",
+      "en_reference": "Writekravte / Lightkravte",
+      "note": "쓰기(write)와 빛(light)의 중의성을 보존하고 음역으로 통일."
+    },
+    {
+      "category": "kravte",
+      "ja": "リードクラフト",
+      "ko": "리드크래프트",
+      "en_reference": "Readkravte",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "グラスクラフト",
+      "ko": "글라스크래프트",
+      "en_reference": "Glasskravte",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "グラスクラフター",
+      "ko": "글라스크래프터",
+      "en_reference": "Glasskravter",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "オフィア",
+      "ko": "오피아",
+      "en_reference": "Ophia",
+      "note": "즉시 블레스하는 계통이자 전투용 신체 변질 의식.",
+      "ja_aliases": [
+        "オフィア系"
+      ]
+    },
+    {
+      "category": "kravte",
+      "ja": "ディヴィオ",
+      "ko": "디비오",
+      "en_reference": "Divio",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "エグザルテーション",
+      "ko": "엑절테이션",
+      "en_reference": "Exaltation",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "シフト",
+      "ko": "시프트",
+      "en_reference": "Shift",
+      "note": "",
+      "tip_key": "shift"
+    },
+    {
+      "category": "kravte",
+      "ja": "コミット",
+      "ko": "커밋",
+      "en_reference": "Commit",
+      "note": "",
+      "tip_key": "commit"
+    },
+    {
+      "category": "kravte",
+      "ja": "ブレス",
+      "ko": "블레스",
+      "en_reference": "Bless",
+      "note": "크래프트 발동 행위. 일반적인 축복도 문맥으로 구분.",
+      "tip_key": "bless"
+    },
+    {
+      "category": "kravte",
+      "ja": "シナジー",
+      "ko": "시너지",
+      "en_reference": "Synergy",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "シグニチャー",
+      "ko": "시그니처",
+      "en_reference": "Signature",
+      "note": "개인별 마나 특성.",
+      "tip_key": "signature"
+    },
+    {
+      "category": "kravte",
+      "ja": "通信ライン",
+      "ko": "통신 라인",
+      "en_reference": "Comms Line",
+      "note": "",
+      "tip_key": "comms_line"
+    },
+    {
+      "category": "kravte",
+      "ja": "パスダウン",
+      "ko": "패스다운",
+      "en_reference": "Pathdown",
+      "note": "",
+      "tip_key": "pathdown"
+    },
+    {
+      "category": "kravte",
+      "ja": "風言語",
+      "ko": "풍언어",
+      "en_reference": "Aerolinguistics",
+      "note": "",
+      "tip_key": "aerolinguistics"
+    },
+    {
+      "category": "kravte",
+      "ja": "マインドダイブ",
+      "ko": "마인드 다이브",
+      "en_reference": "Mind Dive",
+      "note": "",
+      "tip_key": "mind_dive"
+    },
+    {
+      "category": "kravte",
+      "ja": "へヴィーレイン",
+      "ko": "헤비 레인",
+      "en_reference": "Heavy Rain",
+      "note": "기밀 크래프트명.",
+      "tip_key": "heavy_rain"
+    },
+    {
+      "category": "kravte",
+      "ja": "マナロック症候群",
+      "ko": "마나 록 증후군",
+      "en_reference": "Manalock Syndrome",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "光学迷彩",
+      "ko": "광학 위장",
+      "en_reference": "Optical Camouflage",
+      "note": ""
+    },
+    {
+      "category": "kravte",
+      "ja": "クローク",
+      "ko": "클로크",
+      "en_reference": "Cloak",
+      "note": "광학 위장 기술의 통칭."
+    },
+    {
+      "category": "item",
+      "ja": "ノンクラフトアイテム",
+      "ko": "논크래프트 아이템",
+      "en_reference": "Nonkravte Item",
+      "note": "",
+      "tip_key": "nonkravte"
+    },
+    {
+      "category": "item",
+      "ja": "リーディングストーン",
+      "ko": "리딩 스톤",
+      "en_reference": "Reading Stone",
+      "note": ""
+    },
+    {
+      "category": "item",
+      "ja": "セディメント",
+      "ko": "세디먼트",
+      "en_reference": "Sediment",
+      "note": "",
+      "tip_key": "sediment"
+    },
+    {
+      "category": "item",
+      "ja": "透曜石",
+      "ko": "투요석",
+      "en_reference": "Transidian",
+      "note": "",
+      "tip_key": "transidian"
+    },
+    {
+      "category": "item",
+      "ja": "セイン",
+      "ko": "세인",
+      "en_reference": "Sain",
+      "note": "루젠하이드 화폐.",
+      "tip_key": "sain"
+    },
+    {
+      "category": "item",
+      "ja": "ベルコ",
+      "ko": "벨코",
+      "en_reference": "Belucco",
+      "note": "말린 식물을 말아 피우는 기호품.",
+      "tip_key": "belucco"
+    },
+    {
+      "category": "item",
+      "ja": "センデダール",
+      "ko": "센데다르",
+      "en_reference": "Cendidar",
+      "note": "소형 점화 도구.",
+      "tip_key": "cendidar"
+    },
+    {
+      "category": "item",
+      "ja": "ルルベリー煙幕弾",
+      "ko": "룰루베리 연막탄",
+      "en_reference": "Luluberry Smoker",
+      "note": "",
+      "tip_key": "luluberry_smoker"
+    },
+    {
+      "category": "item",
+      "ja": "ヴァストアルカブルー",
+      "ko": "바스토알카 블루",
+      "en_reference": "Vhastoralkat Blue",
+      "note": "",
+      "ja_aliases": [
+        "バスブル"
+      ],
+      "tip_key": "vhastoralkat_blue"
+    },
+    {
+      "category": "item",
+      "ja": "MRI",
+      "ko": "MRI",
+      "en_reference": "MRI",
+      "note": "Mana Resonance Imaging.",
+      "tip_key": "mri"
+    },
+    {
+      "category": "item",
+      "ja": "意訳印刷",
+      "ko": "의역 인쇄",
+      "en_reference": "Interpretive Printing",
+      "note": ""
+    },
+    {
+      "category": "optics",
+      "ja": "解像力",
+      "ko": "해상력",
+      "en_reference": "Resolving Power",
+      "note": "광학 장치가 세부를 분리해 표현하는 능력."
+    },
+    {
+      "category": "optics",
+      "ja": "ヘリコイド",
+      "ko": "헬리코이드",
+      "en_reference": "Helicoid",
+      "note": ""
+    },
+    {
+      "category": "optics",
+      "ja": "イメージサークル",
+      "ko": "이미지 서클",
+      "en_reference": "Image Circle",
+      "note": ""
+    },
+    {
+      "category": "food",
+      "ja": "セボス",
+      "ko": "세보스",
+      "en_reference": "Cebbos",
+      "note": ""
+    },
+    {
+      "category": "food",
+      "ja": "ボルッポ",
+      "ko": "보르포",
+      "en_reference": "Boorp",
+      "note": ""
+    },
+    {
+      "category": "creature",
+      "ja": "ビーアル",
+      "ko": "비아르",
+      "en_reference": "Beare",
+      "note": "",
+      "tip_key": "beare"
+    },
+    {
+      "category": "creature",
+      "ja": "ラック・ビーアル",
+      "ko": "랙 비아르",
+      "en_reference": "Rackbeare",
+      "note": ""
+    },
+    {
+      "category": "creature",
+      "ja": "吸魂蝶",
+      "ko": "흡혼나비",
+      "en_reference": "Souleater",
+      "note": "",
+      "tip_key": "souleater"
+    },
+    {
+      "category": "culture",
+      "ja": "ビルセリオ／ヴィルセリオ",
+      "ko": "빌세리오/뷜세리오",
+      "en_reference": "Vilserio/Vhilserio",
+      "note": "지역·세대별 발음 차이를 두 표기로 보존.",
+      "tip_key": "vilserio"
+    },
+    {
+      "category": "culture",
+      "ja": "イシュタリアーナ・ヴィルセリオ",
+      "ko": "이슈타리아나 뷜세리오",
+      "en_reference": "Ishtaliana vhilserio",
+      "note": "행운을 기원하는 관용 인사.",
+      "ja_aliases": [
+        "イシュタリアーナ＝ヴィルセリオ"
+      ]
+    },
+    {
+      "category": "culture",
+      "ja": "ヴァクト",
+      "ko": "바크트",
+      "en_reference": "Vhakt",
+      "note": "주목·차렷을 뜻하는 명령어."
+    },
+    {
+      "category": "culture",
+      "ja": "ジャスター",
+      "ko": "자스타",
+      "en_reference": "Justa",
+      "note": "바크트에 대한 응답 구호."
+    },
+    {
+      "category": "institution",
+      "ja": "アカデミア",
+      "ko": "아카데미아",
+      "en_reference": "Academia",
+      "note": ""
+    },
+    {
+      "category": "culture",
+      "ja": "ヴィッス",
+      "ko": "비스",
+      "en_reference": "Viss",
+      "note": "",
+      "tip_key": "viss"
+    },
+    {
+      "category": "culture",
+      "ja": "シュタ・ヴィル発音",
+      "ko": "슈타-빌 발음",
+      "en_reference": "Shta-Vhil Pronunciation",
+      "note": "",
+      "tip_key": "shta_vhil"
+    },
+    {
+      "category": "culture",
+      "ja": "セキュール",
+      "ko": "세큐르",
+      "en_reference": "Secuule",
+      "note": "",
+      "tip_key": "secuule"
+    },
+    {
+      "category": "culture",
+      "ja": "２万コマ",
+      "ko": "초당 2만 프레임",
+      "en_reference": "20,000 FPS",
+      "note": "",
+      "tip_key": "20000_fps"
+    },
+    {
+      "category": "culture",
+      "ja": "タミる",
+      "ko": "타미다",
+      "en_reference": "Terming",
+      "note": "터미네이트에서 나온 거친 속어.",
+      "tip_key": "term"
+    },
+    {
+      "category": "sense",
+      "ja": "流覚",
+      "ko": "유각",
+      "en_reference": "Course",
+      "note": "마나의 흐름을 감지하는 제6감.",
+      "tip_key": "course"
+    },
+    {
+      "category": "sense",
+      "ja": "第七感",
+      "ko": "제7감",
+      "en_reference": "Seventh Sense",
+      "note": "",
+      "tip_key": "seventh_sense"
+    },
+    {
+      "category": "organization",
+      "ja": "グレイヴェール",
+      "ko": "그레이베일",
+      "en_reference": "Ghreyveil",
+      "note": ""
+    }
+  ],
+  "speakers": [
+    {
+      "id": "kaj",
+      "name": "카지",
+      "count": 2614,
+      "voice": "젊은 남성 주인공. 평소에는 소심하고 말더듬이 많으며, 윗사람·여성에게 공손하다. 독백과 친구에게는 편한 말투.",
+      "rules": "僕는 대화 관계에 따라 ‘저/나’, 독백은 자연스러운 1인칭. 더듬음은 ‘저, 저기…’, ‘그, 그게…’처럼 한국어 호흡으로 재구성한다. 플로라·왕족에게는 존댓말."
+    },
+    {
+      "id": "<narration>",
+      "name": "서술/카지 내면",
+      "count": 1289,
+      "voice": "대부분 카지의 1인칭 서술. 장면 도입부는 객관적 문어, 내면은 구어적 감정이 섞인다.",
+      "rules": "회상·사건 서술은 ‘-했다/-였다’, 즉각적인 내면 질문은 ‘-인가?/…지?’를 쓴다. 영어판의 과장이나 추가 설명을 그대로 들여오지 않는다."
+    },
+    {
+      "id": "flo",
+      "name": "플로라",
+      "count": 582,
+      "voice": "밝고 친근한 젊은 귀족 여성. 평소 반말과 부드러운 여성어, 공무·왕족 모드에서는 절제된 존댓말.",
+      "rules": "카지와 동료에게 친근한 반말. 의도적으로 공적인 통보를 할 때만 정중체. 지나치게 공주풍으로 만들지 않는다."
+    },
+    {
+      "id": "rit",
+      "name": "리토나",
+      "count": 413,
+      "voice": "무뚝뚝하고 직설적이며 건조한 농담을 하는 젊은 여성. 거친 중성적 반말.",
+      "rules": "짧은 ‘-다/-냐/-지’ 중심. 욕설은 원문 강도까지만. 셀피네 등 왕족에게 말할 때는 절제된 존댓말로 전환."
+    },
+    {
+      "id": "oug",
+      "name": "오그즈",
+      "count": 308,
+      "voice": "카지의 아버지. 투박하고 장난기 있는 중년 남성, 속정이 깊다.",
+      "rules": "카지에게 편한 반말과 ‘녀석/아들’ 계열. 진지한 장면에서도 지나치게 점잖아지지 않는다."
+    },
+    {
+      "id": "mis",
+      "name": "미샤",
+      "count": 240,
+      "voice": "거리 출신의 거칠고 호방한 남성. 요리에는 진지하고 속내는 섬세하다.",
+      "rules": "俺의 거친 반말을 ‘나/내가’, 어미는 ‘-잖아/-거든/-냐’. 비속어는 자연스럽되 번역에서 더 세게 만들지 않는다."
+    },
+    {
+      "id": "son",
+      "name": "소네타",
+      "count": 231,
+      "voice": "장난스럽고 빠른 말투의 젊은 여성. っす/～やす와 자기 호칭 ミーチ가 특징.",
+      "rules": "‘-슴다/-임다/-죠’ 계열을 섞되 모든 문장에 기계적으로 붙이지 않는다. カージ氏는 ‘카지 씨’, ミーチ는 ‘미치’로 유지."
+    },
+    {
+      "id": "ken",
+      "name": "켄드리드",
+      "count": 145,
+      "voice": "냉소적이고 퉁명스러운 은퇴 기술자. 핵심을 찌르는 연장자.",
+      "rules": "짧고 거친 반말. ‘꼬마/애송이’는 문맥상 사용하되 매번 반복하지 않는다. 기술 설명은 간결하고 정확하게."
+    },
+    {
+      "id": "rig",
+      "name": "리그스",
+      "count": 143,
+      "voice": "침착하고 사려 깊은 남성. 평소에는 무게감 있는 반말, 위기 때는 단호하다.",
+      "rules": "‘-군/-지/-다’의 차분한 어조. 영어판처럼 과도하게 장황하게 보충하지 않는다."
+    },
+    {
+      "id": "sel",
+      "name": "셀피네",
+      "count": 108,
+      "voice": "평소에는 장난기 많고 천진한 공주. 왕권·비상 상황에서는 엄정한 군주 말투로 급변한다.",
+      "rules": "일상은 밝은 반말. 我/貴様/王의 의식적 군주 모드에서는 ‘짐/그대/왕’과 장중한 ‘-노라/-하라’를 제한적으로 사용."
+    },
+    {
+      "id": "wig",
+      "name": "와이튼",
+      "count": 91,
+      "voice": "예의 바르고 눈치 빠른 기사단 지망생. 친구 사이에서는 부드러운 반말.",
+      "rules": "연장자·카지에게 기본 존댓말, 동년배 친구에게 반말. 지나치게 고풍스럽게 하지 않는다."
+    },
+    {
+      "id": "qla",
+      "name": "크라우",
+      "count": 87,
+      "voice": "명랑하고 친근하지만 예술 평가에는 냉정하게 직언하는 거장.",
+      "rules": "카지에게 부드러운 반말과 ‘카지 군’. 진단·미술 용어는 정확히, 잔인할 정도의 솔직함은 완화하지 않는다."
+    },
+    {
+      "id": "adi",
+      "name": "아디아",
+      "count": 83,
+      "voice": "밝고 다정하며 솔직한 젊은 여성. 꿈에 관해서는 진지하다.",
+      "rules": "카지에게 친근한 반말. あたし는 ‘나’. 응원 장면을 교훈조로 과장하지 않는다."
+    },
+    {
+      "id": "ban",
+      "name": "두건 쓴 유리 장인",
+      "count": 61,
+      "voice": "인정 많은 중년 장인. 업계 사정에는 현실적이고 동료에게는 구어적.",
+      "rules": "카지에게 친근한 반말, 장인끼리의 대화는 거친 구어체. 오그즈에 대한 존경은 살린다."
+    },
+    {
+      "id": "dil",
+      "name": "디타",
+      "count": 47,
+      "voice": "성급하고 허세가 있지만 여동생을 아끼는 청소년 남성. 흥분하면 더듬는다.",
+      "rules": "거친 또래 반말. 공격성 아래의 불안과 당황을 더듬음으로 드러낸다."
+    },
+    {
+      "id": "tos",
+      "name": "토스카",
+      "count": 40,
+      "voice": "호쾌하고 붙임성 좋은 중년 기사. 위기 때는 군인다운 명령조.",
+      "rules": "평소 큰 웃음과 반말, 의료·경계 상황에서는 짧은 명령형."
+    },
+    {
+      "id": "gla",
+      "name": "유리 장인",
+      "count": 39,
+      "voice": "바쁘고 냉정한 직업 장인. 의뢰의 공정성과 자격을 중시한다.",
+      "rules": "업무적인 반말/해요체 혼합. 거절 논리를 흐리거나 악인처럼 과장하지 않는다."
+    },
+    {
+      "id": "old",
+      "name": "연배 있는 유리 장인",
+      "count": 32,
+      "voice": "노련하고 현실적인 장인. 편견을 꾸짖고 기술을 정확히 평가한다.",
+      "rules": "중년 이상의 편한 반말, 담백한 업계 어휘."
+    },
+    {
+      "id": "mil",
+      "name": "밀리",
+      "count": 27,
+      "voice": "유능하고 단호한 여성 요리장. 공주에게는 예의를 지키면서도 엄하게 대한다.",
+      "rules": "직원에게 지시형, 셀피네에게 존댓말. 코미디 장면의 속도감을 살린다."
+    },
+    {
+      "id": "jil",
+      "name": "질름",
+      "count": 22,
+      "voice": "소심하고 걱정 많은 청소년. 자주 더듬지만 양심적이다.",
+      "rules": "부드러운 또래 반말과 자연스러운 더듬음."
+    },
+    {
+      "id": "???",
+      "name": "미상 화자",
+      "count": 22,
+      "voice": "여러 인물이 공유하는 미확정 ID라 하나의 말투를 부여하면 안 된다.",
+      "rules": "같은 장면의 앞뒤 화자·영어 참고·등장 연출로 매번 판별한다."
+    },
+    {
+      "id": "mer",
+      "name": "메를리사",
+      "count": 18,
+      "voice": "카지를 다정하게 대하는 어머니 같은 여성. 여유롭고 따뜻하다.",
+      "rules": "카지에게 ‘카지야’와 부드러운 반말. 설명도 포근한 호흡을 유지."
+    },
+    {
+      "id": "qua",
+      "name": "쿠알라",
+      "count": 17,
+      "voice": "예의 바르고 상냥한 소녀. 오빠에게는 가까운 반말.",
+      "rules": "カージお兄さん은 ‘카지 오빠’. 낯선 연장자에게는 존댓말."
+    },
+    {
+      "id": "cer",
+      "name": "세라로",
+      "count": 16,
+      "voice": "정중하고 우아하지만 속내를 알 수 없는 남성. 웃음과 압박감이 공존한다.",
+      "rules": "격식 있는 존댓말. 위협을 노골적인 욕설로 바꾸지 말고 공손함 자체가 불길하게 들리게 한다."
+    },
+    {
+      "id": "mel",
+      "name": "멜포트",
+      "count": 14,
+      "voice": "플로라를 보살피는 연상의 여성 기술자/돌봄 제공자. 온화하고 현실적.",
+      "rules": "플로라에게 다정한 반말, 의학·마나 설명은 정확하게."
+    },
+    {
+      "id": "red",
+      "name": "붉은 머리 여성",
+      "count": 14,
+      "voice": "고통과 폭주로 정상 발화가 무너진 상태.",
+      "rules": "원문의 반복, 탁점, 대문자 효과와 태그를 최대한 보존한다. 판독 가능한 명령만 한국어로 옮긴다."
+    },
+    {
+      "id": "gua2",
+      "name": "위병",
+      "count": 13,
+      "voice": "평상시에는 시민 응대형, 침입 상황에서는 고압적인 경계 말투.",
+      "rules": "장면 상태에 따라 해요체/명령체를 구분."
+    },
+    {
+      "id": "mobf1",
+      "name": "접수원",
+      "count": 11,
+      "voice": "밝고 매끄러운 서비스 존댓말.",
+      "rules": "안내 문구는 짧고 자연스러운 한국어 UI/서비스 표현."
+    },
+    {
+      "id": "gua",
+      "name": "경비",
+      "count": 7,
+      "voice": "비상 상황에서도 침착하게 설명하는 경비원.",
+      "rules": "시민에게 해요체, 지시는 분명하게."
+    },
+    {
+      "id": "coo",
+      "name": "요리사",
+      "count": 5,
+      "voice": "성미 급하고 거친 주방 실무자.",
+      "rules": "짧은 명령형과 핀잔. 원문 이상의 욕설은 금지."
+    },
+    {
+      "id": "fha",
+      "name": "파리너",
+      "count": 3,
+      "voice": "운송 서비스 종사자의 정확하고 격식 있는 존댓말.",
+      "rules": "‘알겠습니다/대기할까요/연락해 주십시오’ 같은 직업적 표현."
+    },
+    {
+      "id": "girl",
+      "name": "광장의 소녀",
+      "count": 1,
+      "voice": "밝은 또래 말투.",
+      "rules": "짧은 반말."
+    },
+    {
+      "id": "mhi",
+      "name": "미네",
+      "count": 1,
+      "voice": "정상 발화가 어려운 상태.",
+      "rules": "의미를 임의로 보충하지 않고 신음과 끊김을 보존."
+    },
+    {
+      "id": "医療班",
+      "name": "의료반",
+      "count": 1,
+      "voice": "명령에 즉시 응답하는 실무자.",
+      "rules": "간결한 격식체."
+    },
+    {
+      "id": "ruk",
+      "name": "루키",
+      "count": 1,
+      "voice": "이 추출 범위에서는 무언.",
+      "rules": "말줄임표의 길이와 정서를 보존."
+    }
+  ],
+  "stats": {
+    "term_count": 161,
+    "speaker_profile_count": 35,
+    "terms_by_category": {
+      "character": 27,
+      "display_role": 12,
+      "family": 6,
+      "character_full": 10,
+      "geography": 7,
+      "place": 8,
+      "publication": 3,
+      "organization": 8,
+      "rank": 6,
+      "vehicle": 1,
+      "social": 5,
+      "mana": 11,
+      "kravte": 26,
+      "item": 11,
+      "optics": 3,
+      "food": 2,
+      "creature": 3,
+      "culture": 9,
+      "institution": 1,
+      "sense": 2
+    }
+  }
+}

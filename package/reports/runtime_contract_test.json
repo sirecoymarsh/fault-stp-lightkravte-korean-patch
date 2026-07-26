@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "packet_records_checked": 6746,
+  "staged_script_records_checked": 6746,
+  "staged_managed_records_checked": 425,
+  "staged_translation_files_checked": 98,
+  "staged_provenance_files_checked": 27,
+  "staged_payload_files_checked": 148,
+  "known_mapping": {
+    "uid": "ch01-00:28:6d375c5c",
+    "runtime_key": "ch01-00:28",
+    "coordinate": "PlaybackSpot.LineIndex"
+  },
+  "trusted_game_hashes_checked": 7,
+  "loader": {
+    "bepinex": "5.4.23.5",
+    "doorstop": "4.5.0",
+    "doorstop_machine": "x64",
+    "managed_entrypoint": "Doorstop.Entrypoint.Start()",
+    "vendor_files_checked": 22,
+    "archive_sha256": "82F9878551030F54657792C0740D9D51A09500EEAE1FBA21106B0C441E6732C4"
+  },
+  "source_game_modified": false
+}

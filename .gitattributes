@@ -1,0 +1,15 @@
+* text=auto
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.ps1 text eol=crlf
+*.cfg text eol=crlf
+*.ini text eol=crlf
+*.sha256 text eol=lf
+*.dll binary
+*.jpg binary
+*.png binary
+*.zip binary
+package/** -text
+dist/** -text

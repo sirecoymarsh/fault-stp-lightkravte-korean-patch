@@ -1,0 +1,42 @@
+{
+  "contract_version": 1,
+  "confirmed_at": "2026-07-25T19:48:00+09:00",
+  "game_root": "Y:\\GAME\\Fault StP LIGHTKRAVTE",
+  "semantic_source_locale": "ja",
+  "target_language": "ko",
+  "runtime_selector_slot": "zh-TW",
+  "selector_label": "한국어",
+  "preserve_locales": [
+    "ja",
+    "en",
+    "zh-CN"
+  ],
+  "translation_engine": {
+    "provider": "Codex internal model",
+    "external_translation_apis": false,
+    "reference_locales": [
+      "en",
+      "zh-CN"
+    ],
+    "reference_policy": "Use only to resolve ambiguity; Japanese remains authoritative."
+  },
+  "scope": {
+    "naninovel_scripts": 48,
+    "print_text_entries": 6746,
+    "managed_text_documents": [
+      "DefaultUI",
+      "CharacterNames",
+      "CustomUI",
+      "Locales",
+      "Tips"
+    ],
+    "hangul_font_support": true,
+    "reversible_install_and_restore": true
+  },
+  "safety": {
+    "hash_bound": true,
+    "preserve_original_files": true,
+    "transactional_install": true,
+    "verify_before_live_write": true
+  }
+}

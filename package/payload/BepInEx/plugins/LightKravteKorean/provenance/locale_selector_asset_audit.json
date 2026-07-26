@@ -1,0 +1,305 @@
+{
+  "status": "PASS",
+  "unity_version": "2020.3.7f1",
+  "sources": {
+    "ui_bundle": {
+      "path": "Y:\\GAME\\Fault StP LIGHTKRAVTE\\LIGHTKRAVTE_Data\\StreamingAssets\\aa\\StandaloneWindows64\\ffdf3229911cca1b5eaeddd6135cfcff.bundle",
+      "size": 154258873,
+      "sha256": "79D2DB790E8D21200C6F464BB4EC43772F1927C340B1A7F3E2D937C958B98D93",
+      "serialized_file": "CAB-dc78c3a571e80650d2d6f6db3e8e519f"
+    },
+    "animation_bundle": {
+      "path": "Y:\\GAME\\Fault StP LIGHTKRAVTE\\LIGHTKRAVTE_Data\\StreamingAssets\\aa\\StandaloneWindows64\\7443a426cc273843ed5743fb31c72054.bundle",
+      "size": 18753811,
+      "sha256": "F36709125B1E605AA8BFB96E9DEAFD87075248F5C5128EEA8D2CF1966C638F56",
+      "serialized_file": "CAB-7f1f9c4a7697d1278e78eacaa06b094a"
+    },
+    "prefab_container": "Assets/00Assets/prefabs/UI/Settings/SettingsUICustom.prefab",
+    "prefab_root_path_id": 5265823753793708014
+  },
+  "buttons": {
+    "JapaneseButton": {
+      "game_object_path_id": -3251949022175706141,
+      "rect_transform_path_id": -8403124307045339771,
+      "hierarchy_path": "SettingsUICustom/LanguageWheelPanel/Wheel/Buttons/JapaneseButton",
+      "active_self": true,
+      "sibling_index": 0,
+      "anchored_position": [
+        0.0,
+        240.0
+      ],
+      "size_delta": [
+        160.0,
+        50.0
+      ],
+      "interactable": true,
+      "components": [
+        "RectTransform",
+        "CanvasRenderer",
+        "UnityEngine.UI.Button",
+        "LanguageWheelButtonController",
+        "UnityEngine.EventSystems.EventTrigger"
+      ],
+      "labels": [
+        {
+          "game_object": "Text",
+          "text": "日本語",
+          "anchored_position": [
+            0.0,
+            0.0
+          ],
+          "size_delta": [
+            0.0,
+            0.0
+          ],
+          "font_size": 35
+        }
+      ],
+      "navigation": {
+        "up": null,
+        "down": null,
+        "left": "EnglishButton",
+        "right": "SimplifiedChineseButton"
+      }
+    },
+    "EnglishButton": {
+      "game_object_path_id": -2601505615196135869,
+      "rect_transform_path_id": 6786894625039339082,
+      "hierarchy_path": "SettingsUICustom/LanguageWheelPanel/Wheel/Buttons/EnglishButton",
+      "active_self": true,
+      "sibling_index": 1,
+      "anchored_position": [
+        -250.0,
+        -165.0
+      ],
+      "size_delta": [
+        160.0,
+        50.0
+      ],
+      "interactable": true,
+      "components": [
+        "RectTransform",
+        "CanvasRenderer",
+        "UnityEngine.UI.Button",
+        "LanguageWheelButtonController",
+        "UnityEngine.EventSystems.EventTrigger"
+      ],
+      "labels": [
+        {
+          "game_object": "Text",
+          "text": "English",
+          "anchored_position": [
+            0.0,
+            0.0
+          ],
+          "size_delta": [
+            0.0,
+            0.0
+          ],
+          "font_size": 35
+        }
+      ],
+      "navigation": {
+        "up": "JapaneseButton",
+        "down": null,
+        "left": null,
+        "right": "SimplifiedChineseButton"
+      }
+    },
+    "SimplifiedChineseButton": {
+      "game_object_path_id": 7958850166464764447,
+      "rect_transform_path_id": 4952984113879537457,
+      "hierarchy_path": "SettingsUICustom/LanguageWheelPanel/Wheel/Buttons/SimplifiedChineseButton",
+      "active_self": true,
+      "sibling_index": 2,
+      "anchored_position": [
+        250.0,
+        -165.0
+      ],
+      "size_delta": [
+        160.0,
+        50.0
+      ],
+      "interactable": true,
+      "components": [
+        "RectTransform",
+        "CanvasRenderer",
+        "UnityEngine.UI.Button",
+        "LanguageWheelButtonController",
+        "UnityEngine.EventSystems.EventTrigger"
+      ],
+      "labels": [
+        {
+          "game_object": "Text",
+          "text": "简体中文",
+          "anchored_position": [
+            0.0,
+            25.0
+          ],
+          "size_delta": [
+            160.0,
+            50.0
+          ],
+          "font_size": 35
+        },
+        {
+          "game_object": "Text (1)",
+          "text": "风语计划",
+          "anchored_position": [
+            0.0,
+            -25.0
+          ],
+          "size_delta": [
+            160.0,
+            50.0
+          ],
+          "font_size": 25
+        }
+      ],
+      "navigation": {
+        "up": "JapaneseButton",
+        "down": null,
+        "left": "EnglishButton",
+        "right": null
+      }
+    },
+    "TraditionalChineseButton": {
+      "game_object_path_id": -2492736328078277348,
+      "rect_transform_path_id": 5213112333011357555,
+      "hierarchy_path": "SettingsUICustom/LanguageWheelPanel/Wheel/Buttons/TraditionalChineseButton",
+      "active_self": false,
+      "sibling_index": 3,
+      "anchored_position": [
+        250.0,
+        -165.0
+      ],
+      "size_delta": [
+        160.0,
+        50.0
+      ],
+      "interactable": true,
+      "components": [
+        "RectTransform",
+        "CanvasRenderer",
+        "UnityEngine.UI.Button",
+        "LanguageWheelButtonController",
+        "UnityEngine.EventSystems.EventTrigger"
+      ],
+      "labels": [
+        {
+          "game_object": "Text",
+          "text": "繁體中文",
+          "anchored_position": [
+            0.0,
+            0.0
+          ],
+          "size_delta": [
+            0.0,
+            0.0
+          ],
+          "font_size": 35
+        }
+      ],
+      "navigation": {
+        "up": "SimplifiedChineseButton",
+        "down": null,
+        "left": "EnglishButton",
+        "right": null
+      }
+    }
+  },
+  "serialized_findings": {
+    "traditional_button_inactive": true,
+    "simplified_button_active": true,
+    "traditional_and_simplified_geometry_identical": true,
+    "traditional_drawn_after_simplified_if_enabled": true,
+    "all_four_buttons_interactable": true
+  },
+  "animation": {
+    "controller_name": "LanguageWheel",
+    "outer_ring_crc32": 3673658243,
+    "clips": {
+      "LanguageWheel_en": {
+        "path_id": -8376750738154076396,
+        "binding_count": 1,
+        "binding_path_hash": 3673658243,
+        "binding_attribute": 4,
+        "constant_data": [
+          0.0,
+          0.0,
+          129.0
+        ],
+        "z_rotation_degrees": 129.0
+      },
+      "LanguageWheel_ja": {
+        "path_id": 316276634905455306,
+        "binding_count": 1,
+        "binding_path_hash": 3673658243,
+        "binding_attribute": 4,
+        "constant_data": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "z_rotation_degrees": 0.5
+      },
+      "LanguageWheel_zh-CN": {
+        "path_id": -4423113600368579003,
+        "binding_count": 1,
+        "binding_path_hash": 3673658243,
+        "binding_attribute": 4,
+        "constant_data": [
+          0.0,
+          0.0,
+          -129.0
+        ],
+        "z_rotation_degrees": -129.0
+      },
+      "LanguageWheel_zh-TW": {
+        "path_id": -7461734974472194273,
+        "binding_count": 1,
+        "binding_path_hash": 3673658243,
+        "binding_attribute": 4,
+        "constant_data": [
+          0.0,
+          0.0,
+          -129.0
+        ],
+        "z_rotation_degrees": -129.0
+      }
+    },
+    "state_mapping_from_assembly_il": {
+      "0": "LanguageWheel_en",
+      "1": "LanguageWheel_zh-TW",
+      "2": "LanguageWheel_zh-CN",
+      "3": "LanguageWheel_ja"
+    },
+    "zh_tw_and_zh_cn_share_rotation": true
+  },
+  "geometry_recommendations": {
+    "top_right": {
+      "anchored_position": [
+        250.0,
+        165.0
+      ],
+      "pointer_z_degrees": -56.5751888173962,
+      "requires_animation_override": true
+    },
+    "bottom_center": {
+      "anchored_position": [
+        0.0,
+        -280.0
+      ],
+      "pointer_z_degrees": -180.0,
+      "requires_animation_override": true
+    },
+    "same_ray_no_animation_override": {
+      "anchored_position": [
+        390.0,
+        -300.0
+      ],
+      "geometric_pointer_z_degrees": -127.56859202882748,
+      "existing_clip_z_degrees": -129.0
+    }
+  }
+}

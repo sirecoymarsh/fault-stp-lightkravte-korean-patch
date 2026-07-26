@@ -1,0 +1,208 @@
+{
+  "audit_version": 1,
+  "created_at": "2026-07-25T19:00:00+09:00",
+  "mode": "read-only discovery",
+  "game_root": "Y:\\GAME\\Fault StP LIGHTKRAVTE",
+  "engine": {
+    "name": "Unity",
+    "version": "2020.3.7f1",
+    "backend": "Mono",
+    "narrative_framework": "Naninovel"
+  },
+  "localization": {
+    "source_locale": "ja",
+    "default_locale": "ja",
+    "selectors": [
+      {
+        "key": "ja",
+        "label_source": "JapaneseButton",
+        "status": "functional",
+        "scripts": 48,
+        "print_text_entries": 6746,
+        "managed_text_docs": 5
+      },
+      {
+        "key": "en",
+        "label_source": "EnglishButton",
+        "status": "functional",
+        "scripts": 48,
+        "print_text_entries": 6746,
+        "managed_text_docs": 5
+      },
+      {
+        "key": "zh-CN",
+        "label_source": "SimplifiedChineseButton",
+        "status": "functional",
+        "scripts": 48,
+        "print_text_entries": 6746,
+        "managed_text_docs": 5
+      },
+      {
+        "key": "zh-TW",
+        "label_source": "TraditionalChineseButton",
+        "status": "unavailable",
+        "scripts": 0,
+        "print_text_entries": 0,
+        "managed_text_docs": 0,
+        "runtime_behavior": "SelectLocaleAsync logs an unavailable-locale warning and keeps the previous locale"
+      }
+    ],
+    "managed_text_docs": {
+      "names": [
+        "DefaultUI",
+        "CharacterNames",
+        "CustomUI",
+        "Locales",
+        "Tips"
+      ],
+      "counts": {
+        "DefaultUI": 85,
+        "CharacterNames": 58,
+        "CustomUI": 1,
+        "Locales": 233,
+        "Tips": 48
+      }
+    },
+    "base_script_nonlocalizable_command_counts": {
+      "StopBgm": 158,
+      "PlayBgm": 118,
+      "ModifyBackground": 735,
+      "ModifyCamera": 722,
+      "HideActors": 725,
+      "Wait": 391,
+      "CameraLook": 127,
+      "ProcessInput": 131,
+      "PrintText": 6746,
+      "SpineAction": 3340,
+      "HideAllCharacters": 154,
+      "ModifyCharacter": 418,
+      "HidePrinter": 289,
+      "MoveCamera": 65,
+      "ModifyBloom": 83,
+      "TargetCamera": 263,
+      "Skip": 67,
+      "HideAllActors": 50,
+      "ResetSpineActors": 32,
+      "SetSteamAchievement": 9,
+      "AutoSave": 42,
+      "Goto": 47,
+      "ModifyTextPrinter": 221,
+      "ModifyGrain": 39,
+      "ModifyVignette": 23,
+      "ModifyDepthOfField": 11,
+      "ModifyColorGrading": 12,
+      "PlaySfx": 79,
+      "ResetText": 64,
+      "ShowUI": 6,
+      "SpineUIMove": 8,
+      "HideUI": 5,
+      "StopSfx": 2,
+      "StartSceneTransition": 36,
+      "ControlVideoBackground": 8,
+      "FinishSceneTransition": 36,
+      "Spawn": 29,
+      "DestroySpawned": 11,
+      "HidePrinters": 15,
+      "HideAllBackgrounds": 7,
+      "ReturnCamera": 1,
+      "ModifyKinoMotionBlur": 2,
+      "BeginIf": 4,
+      "Else": 2,
+      "EndIf": 4,
+      "Stop": 3,
+      "SetAutoPlay": 1,
+      "SetCustomVariable": 3,
+      "SelectInitialLocale": 1,
+      "ExitToTitle": 1,
+      "AnimateActor": 3
+    },
+    "localized_script_command_counts": {
+      "en": {
+        "PrintText": 6746
+      },
+      "zh-CN": {
+        "PrintText": 6746
+      }
+    }
+  },
+  "fonts": {
+    "ugui": [
+      {
+        "path_id": 30,
+        "name": "FOT-SkipStd-B",
+        "hangul_codepoints": 0
+      },
+      {
+        "path_id": 31,
+        "name": "FOT-ModeMinAStd-B",
+        "hangul_codepoints": 0
+      },
+      {
+        "path_id": 32,
+        "name": "Zcool_TsangerYuYangT_W03",
+        "hangul_codepoints": 0
+      }
+    ],
+    "tmp_runtime": [
+      {
+        "path_id": 51,
+        "name": "FOT-ModeMinAStd-B_SDF",
+        "hangul_codepoints": 0
+      },
+      {
+        "path_id": 53,
+        "name": "Zcool_TsangerYuYangT_W03_SDF",
+        "hangul_codepoints": 0
+      }
+    ],
+    "verdict": "No shipped runtime font contains Hangul glyphs; a Korean font path is required."
+  },
+  "loader_state": {
+    "doorstop_enabled": true,
+    "configured_target": "BepInEx\\core\\BepInEx.Unity.IL2CPP.dll",
+    "target_exists": false,
+    "note": "Current Doorstop target is for IL2CPP while the game build is Mono."
+  },
+  "trusted_hashes": [
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\resources.assets",
+      "length": 20848868,
+      "sha256": "5F227545A7BB607383B48253C0987D54146573CEFA3E9094410FC137A883D89A"
+    },
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\sharedassets0.assets",
+      "length": 12444456,
+      "sha256": "7A56013AB2D6AA2A30D81254B4F31B4D65AFCB047B8E5EB4326D27630A663219"
+    },
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\StreamingAssets\\aa\\catalog.json",
+      "length": 312558,
+      "sha256": "0D0F6B874213380890E7A2886BB5E94F6F9227158292135CFA1274E943593013"
+    },
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\StreamingAssets\\aa\\StandaloneWindows64\\79ce891e0c6b40fe61a7d8079b189f0c.bundle",
+      "length": 839511,
+      "sha256": "06A6A4E09CE8098A55CEAB52FF3AE552DEB3B45D3878E5F7DD1F32091942D5C6"
+    },
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\Managed\\Assembly-CSharp.dll",
+      "length": 352768,
+      "sha256": "7B7594F992C6F26CFBC0CD1FA92DC587109290F70F543CA90F306A4C488F7797"
+    },
+    {
+      "relative_path": "LIGHTKRAVTE_Data\\Managed\\Utilities.dll",
+      "length": 12800,
+      "sha256": "EFAAC90B12592609F673DC08D5CC164DB5D6C9E050F10755361AA3B68BF5F7F8"
+    },
+    {
+      "relative_path": "doorstop_config.ini",
+      "length": 1881,
+      "sha256": "996BDA4A6E4A105B2CD48A6E756BAFB32178546394AFD7B47AB5E199120C4052"
+    }
+  ],
+  "artifacts": {
+    "script_catalog_root": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\script_audit\\catalogs",
+    "script_summary": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\script_audit\\summary.json",
+    "managed_text_root": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\managed_text_assets"
+  }
+}

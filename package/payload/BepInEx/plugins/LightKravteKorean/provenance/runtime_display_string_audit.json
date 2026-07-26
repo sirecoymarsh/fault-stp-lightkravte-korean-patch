@@ -1,0 +1,452 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "root_cause": {
+    "selected_runtime_locale": "ja",
+    "behavior": "CharacterManager.GetDisplayName bypasses ITextManager.GetRecordValue(CharacterNames) when the source locale is selected, then returns Japanese CharacterMetadata.DisplayName.",
+    "affected_display_paths": [
+      "UITextPrinter.SetAuthorId",
+      "BacklogPanel.AddMessage",
+      "ChatPrinterPanel.AddMessage",
+      "PrintText.ApplyAuthoredTemplate",
+      "ExpressionFunctions.GetName"
+    ],
+    "fix": "Harmony-prefix CharacterManager.GetDisplayName and return the Korean CharacterNames record only while Korean mode is active."
+  },
+  "counts": {
+    "printtext_entries": 6746,
+    "named_printtext_entries": 5457,
+    "unnamed_printtext_entries": 1289,
+    "unique_named_author_ids": 34,
+    "direct_author_ids": 33,
+    "aliased_author_ids": 1,
+    "script_translations_checked": 6746,
+    "managed_translations_checked": 425,
+    "internal_japanese_command_strings": 54
+  },
+  "author_routes": [
+    {
+      "author_id": "kaj",
+      "occurrences": 2614,
+      "managed_key": "kaj",
+      "ko": "카지",
+      "route": "direct",
+      "example": {
+        "script": "ch01-00",
+        "line": 60
+      }
+    },
+    {
+      "author_id": "flo",
+      "occurrences": 582,
+      "managed_key": "flo",
+      "ko": "플로라",
+      "route": "direct",
+      "example": {
+        "script": "ch01-00",
+        "line": 311
+      }
+    },
+    {
+      "author_id": "rit",
+      "occurrences": 413,
+      "managed_key": "rit",
+      "ko": "리토나",
+      "route": "direct",
+      "example": {
+        "script": "ch01-04",
+        "line": 120
+      }
+    },
+    {
+      "author_id": "oug",
+      "occurrences": 308,
+      "managed_key": "oug",
+      "ko": "오그즈",
+      "route": "direct",
+      "example": {
+        "script": "ch01-01",
+        "line": 66
+      }
+    },
+    {
+      "author_id": "mis",
+      "occurrences": 240,
+      "managed_key": "mis",
+      "ko": "미샤",
+      "route": "direct",
+      "example": {
+        "script": "ch01-04",
+        "line": 27
+      }
+    },
+    {
+      "author_id": "son",
+      "occurrences": 231,
+      "managed_key": "son",
+      "ko": "소네타",
+      "route": "direct",
+      "example": {
+        "script": "ch01-04",
+        "line": 80
+      }
+    },
+    {
+      "author_id": "ken",
+      "occurrences": 145,
+      "managed_key": "ken",
+      "ko": "켄드리드",
+      "route": "direct",
+      "example": {
+        "script": "ch02-02",
+        "line": 24
+      }
+    },
+    {
+      "author_id": "rig",
+      "occurrences": 143,
+      "managed_key": "rig",
+      "ko": "리그스",
+      "route": "direct",
+      "example": {
+        "script": "ch01-04",
+        "line": 40
+      }
+    },
+    {
+      "author_id": "sel",
+      "occurrences": 108,
+      "managed_key": "sel",
+      "ko": "셀피네",
+      "route": "direct",
+      "example": {
+        "script": "ch01-03",
+        "line": 75
+      }
+    },
+    {
+      "author_id": "wig",
+      "occurrences": 91,
+      "managed_key": "wig",
+      "ko": "와이튼",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 158
+      }
+    },
+    {
+      "author_id": "qla",
+      "occurrences": 87,
+      "managed_key": "qla",
+      "ko": "크라우",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 949
+      }
+    },
+    {
+      "author_id": "adi",
+      "occurrences": 83,
+      "managed_key": "adi",
+      "ko": "아디아",
+      "route": "direct",
+      "example": {
+        "script": "ch01-00",
+        "line": 115
+      }
+    },
+    {
+      "author_id": "ban",
+      "occurrences": 61,
+      "managed_key": "ban",
+      "ko": "두건 쓴 유리 장인",
+      "route": "direct",
+      "example": {
+        "script": "ch02-15",
+        "line": 21
+      }
+    },
+    {
+      "author_id": "dil",
+      "occurrences": 47,
+      "managed_key": "dil",
+      "ko": "디타",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 155
+      }
+    },
+    {
+      "author_id": "tos",
+      "occurrences": 40,
+      "managed_key": "tos",
+      "ko": "토스카",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 884
+      }
+    },
+    {
+      "author_id": "gla",
+      "occurrences": 39,
+      "managed_key": "gla",
+      "ko": "유리 장인",
+      "route": "direct",
+      "example": {
+        "script": "ch02-06",
+        "line": 17
+      }
+    },
+    {
+      "author_id": "old",
+      "occurrences": 32,
+      "managed_key": "old",
+      "ko": "초로의 유리 장인",
+      "route": "direct",
+      "example": {
+        "script": "ch03-05",
+        "line": 10
+      }
+    },
+    {
+      "author_id": "mil",
+      "occurrences": 27,
+      "managed_key": "mil",
+      "ko": "밀리",
+      "route": "direct",
+      "example": {
+        "script": "ch01-03",
+        "line": 27
+      }
+    },
+    {
+      "author_id": "???",
+      "occurrences": 22,
+      "managed_key": "???",
+      "ko": "???",
+      "route": "direct",
+      "example": {
+        "script": "ch01-00",
+        "line": 289
+      }
+    },
+    {
+      "author_id": "jil",
+      "occurrences": 22,
+      "managed_key": "jil",
+      "ko": "질름",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 165
+      }
+    },
+    {
+      "author_id": "mer",
+      "occurrences": 18,
+      "managed_key": "mer",
+      "ko": "메를리사",
+      "route": "direct",
+      "example": {
+        "script": "ch02-09",
+        "line": 109
+      }
+    },
+    {
+      "author_id": "qua",
+      "occurrences": 17,
+      "managed_key": "qua",
+      "ko": "쿠알라",
+      "route": "direct",
+      "example": {
+        "script": "ch01-07",
+        "line": 220
+      }
+    },
+    {
+      "author_id": "cer",
+      "occurrences": 16,
+      "managed_key": "cer",
+      "ko": "세라로",
+      "route": "direct",
+      "example": {
+        "script": "ch03-10",
+        "line": 22
+      }
+    },
+    {
+      "author_id": "mel",
+      "occurrences": 14,
+      "managed_key": "mel",
+      "ko": "멜포트",
+      "route": "direct",
+      "example": {
+        "script": "ch02-12",
+        "line": 1198
+      }
+    },
+    {
+      "author_id": "red",
+      "occurrences": 14,
+      "managed_key": "red",
+      "ko": "붉은 머리 여자",
+      "route": "direct",
+      "example": {
+        "script": "ch03-04",
+        "line": 848
+      }
+    },
+    {
+      "author_id": "gua2",
+      "occurrences": 13,
+      "managed_key": "gua2",
+      "ko": "위병",
+      "route": "direct",
+      "example": {
+        "script": "ch01-03",
+        "line": 220
+      }
+    },
+    {
+      "author_id": "mobf1",
+      "occurrences": 11,
+      "managed_key": "mobf1",
+      "ko": "접수원",
+      "route": "direct",
+      "example": {
+        "script": "ch01-00",
+        "line": 191
+      }
+    },
+    {
+      "author_id": "gua",
+      "occurrences": 7,
+      "managed_key": "gua",
+      "ko": "호위",
+      "route": "direct",
+      "example": {
+        "script": "ch03-04",
+        "line": 427
+      }
+    },
+    {
+      "author_id": "coo",
+      "occurrences": 5,
+      "managed_key": "coo",
+      "ko": "요리사",
+      "route": "direct",
+      "example": {
+        "script": "ch01-03",
+        "line": 31
+      }
+    },
+    {
+      "author_id": "fha",
+      "occurrences": 3,
+      "managed_key": "fha",
+      "ko": "파리너",
+      "route": "direct",
+      "example": {
+        "script": "ch02-12",
+        "line": 1154
+      }
+    },
+    {
+      "author_id": "girl",
+      "occurrences": 1,
+      "managed_key": "girl",
+      "ko": "광장의 낯선 아이",
+      "route": "direct",
+      "example": {
+        "script": "ch01-09",
+        "line": 56
+      }
+    },
+    {
+      "author_id": "mhi",
+      "occurrences": 1,
+      "managed_key": "mhi",
+      "ko": "미네",
+      "route": "direct",
+      "example": {
+        "script": "ch03-04",
+        "line": 1143
+      }
+    },
+    {
+      "author_id": "ruk",
+      "occurrences": 1,
+      "managed_key": "ruk",
+      "ko": "루키",
+      "route": "direct",
+      "example": {
+        "script": "ch03-10",
+        "line": 34
+      }
+    },
+    {
+      "author_id": "医療班",
+      "occurrences": 1,
+      "managed_key": "med",
+      "ko": "의료반",
+      "route": "alias",
+      "example": {
+        "script": "ch03-04",
+        "line": 1145
+      }
+    }
+  ],
+  "missing_author_routes": [],
+  "internal_non_display_strings": [
+    {
+      "command": "PlayBgm",
+      "field": "BgmPath.value",
+      "occurrences": 27,
+      "unique_values": [
+        "05 ラインヴァスタ邸〜昼",
+        "06 ラインヴァスタ邸〜夜",
+        "07 小さなルゼンハイド",
+        "08 拠り所",
+        "09 セレンハイド",
+        "10 共存〜たまごといちご",
+        "11 惰性に抱かれて",
+        "12 光源",
+        "15 ババーズバーズバー"
+      ],
+      "classification": "internal audio resource lookup; not displayed"
+    },
+    {
+      "command": "StopBgm",
+      "field": "BgmPath.value",
+      "occurrences": 27,
+      "unique_values": [
+        "05 ラインヴァスタ邸〜昼",
+        "06 ラインヴァスタ邸〜夜",
+        "07 小さなルゼンハイド",
+        "08 拠り所",
+        "09 セレンハイド",
+        "10 共存〜たまごといちご",
+        "11 惰性に抱かれて",
+        "12 光源",
+        "15 ババーズバーズバー"
+      ],
+      "classification": "internal audio resource lookup; not displayed"
+    }
+  ],
+  "unexpected_command_strings": [],
+  "script_translation_residue": [],
+  "managed_translation_residue": [],
+  "checks": {
+    "all_named_printtext_authors_have_korean_route": true,
+    "non_printtext_visible_japanese_residue_free": true,
+    "script_translation_visible_japanese_residue_free": true,
+    "managed_translation_visible_japanese_residue_free": true,
+    "character_manager_get_display_name_patch": true,
+    "managed_character_name_lookup": true,
+    "literal_medic_alias": true
+  }
+}

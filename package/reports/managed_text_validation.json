@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "documents": {
+    "DefaultUI": {
+      "expected": 85,
+      "actual": 85,
+      "complete": true,
+      "missing_keys": [],
+      "extra_keys": [],
+      "empty_values": [],
+      "token_mismatches": [],
+      "parse_errors": [],
+      "japanese_kana_remaining": []
+    },
+    "CharacterNames": {
+      "expected": 58,
+      "actual": 58,
+      "complete": true,
+      "missing_keys": [],
+      "extra_keys": [],
+      "empty_values": [],
+      "token_mismatches": [],
+      "parse_errors": [],
+      "japanese_kana_remaining": []
+    },
+    "CustomUI": {
+      "expected": 1,
+      "actual": 1,
+      "complete": true,
+      "missing_keys": [],
+      "extra_keys": [],
+      "empty_values": [],
+      "token_mismatches": [],
+      "parse_errors": [],
+      "japanese_kana_remaining": []
+    },
+    "Locales": {
+      "expected": 233,
+      "actual": 233,
+      "complete": true,
+      "missing_keys": [],
+      "extra_keys": [],
+      "empty_values": [],
+      "token_mismatches": [],
+      "parse_errors": [],
+      "japanese_kana_remaining": []
+    },
+    "Tips": {
+      "expected": 48,
+      "actual": 48,
+      "complete": true,
+      "missing_keys": [],
+      "extra_keys": [],
+      "empty_values": [],
+      "token_mismatches": [],
+      "parse_errors": [],
+      "japanese_kana_remaining": []
+    }
+  },
+  "issues": [],
+  "warnings": [],
+  "complete": true
+}

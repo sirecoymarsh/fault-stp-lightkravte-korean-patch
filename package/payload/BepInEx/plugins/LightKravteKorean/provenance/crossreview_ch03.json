@@ -1,0 +1,365 @@
+{
+  "version": 1,
+  "generated_at_utc": "2026-07-25T12:36:48.139531+00:00",
+  "review_date": "2026-07-25",
+  "project": "Fault StP LIGHTKRAVTE",
+  "scope": {
+    "chapter": "ch03",
+    "source_authority": "ja",
+    "translation_model": "Codex internal model",
+    "files_reviewed": 23,
+    "entries_reviewed": 1767,
+    "review_method": [
+      "manual_line_by_line_context_review",
+      "automated_schema_uid_token_residue_number_length_term_checks",
+      "manual_adjudication_of_all_heuristic_flags",
+      "post_edit_full_validator"
+    ],
+    "ruby_attribute_policy": "preserved unchanged; localized separately"
+  },
+  "result": {
+    "complete": true,
+    "changes": 25,
+    "files_modified": 14,
+    "changed_files": [
+      "ch03-01.part01.jsonl",
+      "ch03-02.part01.jsonl",
+      "ch03-02.part02.jsonl",
+      "ch03-02.part03.jsonl",
+      "ch03-03.part01.jsonl",
+      "ch03-03.part02.jsonl",
+      "ch03-04.part02.jsonl",
+      "ch03-04.part04.jsonl",
+      "ch03-04.part05.jsonl",
+      "ch03-07.part01.jsonl",
+      "ch03-08.part01.jsonl",
+      "ch03-08.part02.jsonl",
+      "ch03-08.part03.jsonl",
+      "ch03-09.part01.jsonl"
+    ],
+    "category_counts": {
+      "grammar": 4,
+      "meaning": 8,
+      "naturalness": 5,
+      "speaker_tone": 5,
+      "terminology": 3
+    },
+    "changed_values_verified": true,
+    "trailing_whitespace_remaining": 0
+  },
+  "validation": {
+    "command": "P:\\AI\\forge\\venv\\Scripts\\python.exe work\\localization\\validate_and_build.py --chapters ch03 --require-complete",
+    "report": "work/localization/reports/validation_ch03.json",
+    "detailed_report": "work/localization/reports/ch03_translation_report.json",
+    "expected_files": 23,
+    "completed_files": 23,
+    "expected_entries": 1767,
+    "validated_entries": 1767,
+    "complete": true,
+    "issue_count": 0,
+    "detailed_status": "PASS",
+    "detailed_issue_count": 0,
+    "checks": {
+      "file_set_exact": true,
+      "row_counts_exact": true,
+      "jsonl_shape_exact": true,
+      "uid_order_and_uniqueness": true,
+      "nonblank_korean_strings": true,
+      "required_tokens_exact": true,
+      "no_control_characters": true,
+      "no_visible_japanese_kana": true,
+      "no_linguistic_source_copies": true
+    },
+    "warning_counts": {
+      "source_copied": 212,
+      "reference_copied": 211,
+      "japanese_kana_remaining": 6
+    },
+    "detailed_warning_counts": {
+      "kana_inside_preserved_markup": 6,
+      "nonlinguistic_source_copies": 212,
+      "reference_equalities": 211
+    }
+  },
+  "high_risk_triage": {
+    "entries_scanned": 1767,
+    "heuristic_flagged_entries_after_edits": 19,
+    "reason_counts": {
+      "number_mismatch": 18,
+      "term:オフィア->오피아": 1
+    },
+    "different_source_same_ko_groups": 0,
+    "manually_adjudicated_entries": 19,
+    "unresolved_entries": 0,
+    "disposition": "전 행 문맥 검수와 플래그 수동 판정을 완료했다. 확정 오류는 changes에 반영했으며 남은 플래그는 수치 표기 방식, 효과음·문장부호, 문맥상 정상인 길이 차이 또는 고유명사 복합어였다."
+  },
+  "warning_disposition": {
+    "japanese_kana_remaining": {
+      "count": 6,
+      "status": "intentional",
+      "reason": "모두 보존 대상 <ruby=\"...\"> 속성값 안의 원문 읽기이다. 화면 본문에 남은 일본어 가나는 0건이다."
+    },
+    "source_copied": {
+      "count": 212,
+      "status": "adjudicated",
+      "reason": "말줄임표·기호·효과음 등 비언어 항목이며 언어 문장 복사는 0건이다."
+    },
+    "reference_copied": {
+      "count": 211,
+      "status": "adjudicated",
+      "reason": "공통 기호·효과음·비언어 문자열의 일치이며 참조 번역 무비판 복사는 없다."
+    }
+  },
+  "changes": [
+    {
+      "uid": "ch03-01:209:51294370",
+      "file": "ch03-01.part01.jsonl",
+      "line": 88,
+      "category": "grammar",
+      "note": "부정 서술의 주어·서술어 호응을 바로잡았다.",
+      "ja": "わざわざマナクラフトを学ぶために学校へ通うなんて<br>相当な理由がないとやらない",
+      "before": "일부러 마나크래프트를 배우러 학교에 다니는 사람은<br>상당한 이유가 없으면 없다.",
+      "after": "일부러 마나크래프트를 배우러 학교에 다니는 건<br>상당한 이유가 없으면 하지 않는다."
+    },
+    {
+      "uid": "ch03-02:151:63bd8f91",
+      "file": "ch03-02.part01.jsonl",
+      "line": 53,
+      "category": "meaning",
+      "note": "사전에 향신료 자루를 알려 준 주체를 분명히 했다.",
+      "ja": "事前に言われていたスパイスが詰まった袋を手に取る",
+      "before": "미리 말해 둔 향신료가 가득 든 자루를 집어 든다.",
+      "after": "미샤 씨가 미리 말해 둔 향신료가 가득 든 자루를 집어 든다."
+    },
+    {
+      "uid": "ch03-02:366:80ba1602",
+      "file": "ch03-02.part02.jsonl",
+      "line": 63,
+      "category": "meaning",
+      "note": "「ちょっと前まで」를 바로 직전이 아닌 최근까지의 의미로 옮겼다.",
+      "ja": "まあ 殴るのもちょっと前までの話さ",
+      "before": "뭐, 얻어맞은 것도 조금 전까지의 이야기야.",
+      "after": "뭐, 얻어맞은 것도 얼마 전까지의 일이야."
+    },
+    {
+      "uid": "ch03-02:559:8bcbbaaa",
+      "file": "ch03-02.part03.jsonl",
+      "line": 77,
+      "category": "naturalness",
+      "note": "의도 부정 표현을 자연스러운 한국어 대사로 다듬었다.",
+      "ja": "え え え！？ 話の文脈が…<br>躊躇なんてしているつもりは全くないのですが…",
+      "before": "네, 네, 네!? 이야기의 맥락이…<br>망설일 생각은 전혀 없는데요…",
+      "after": "네, 네, 네!? 이야기의 맥락이…<br>망설이는 건 전혀 아닌데요…"
+    },
+    {
+      "uid": "ch03-03:18:6d84953b",
+      "file": "ch03-03.part01.jsonl",
+      "line": 4,
+      "category": "naturalness",
+      "note": "「形にする」의 문맥상 의미를 자연스럽게 표현했다.",
+      "ja": "それを意訳印刷で形にすること…",
+      "before": "그걸 의역 인쇄로 형태 있게 남기는 것…",
+      "after": "그걸 의역 인쇄로 구현하는 것…"
+    },
+    {
+      "uid": "ch03-03:116:dd0bf294",
+      "file": "ch03-03.part01.jsonl",
+      "line": 55,
+      "category": "grammar",
+      "note": "말을 더듬는 흐름을 유지하면서 연결 어미 호응을 바로잡았다.",
+      "ja": "とにかく僕にはそういった技術力が<br>まだちょっとだけ足りなくて…けど",
+      "before": "아무튼 그런 기술력이<br>아직 조금 부족해서… 하지만.",
+      "after": "아무튼 그런 기술력이<br>아직 조금 부족하긴… 하지만."
+    },
+    {
+      "uid": "ch03-03:156:cf36d859",
+      "file": "ch03-03.part01.jsonl",
+      "line": 81,
+      "category": "speaker_tone",
+      "note": "카지가 플로라를 부르는 고정 존칭을 적용했다.",
+      "ja": "フローラさんは最初の半年くらいは<br>眠れなくなるって言ってたし…",
+      "before": "플로라 씨도 처음 반년쯤은<br>잠을 못 자게 된다고 했고…",
+      "after": "플로라 님도 처음 반년쯤은<br>잠을 못 자게 된다고 했고…"
+    },
+    {
+      "uid": "ch03-03:208:f1b959d8",
+      "file": "ch03-03.part02.jsonl",
+      "line": 17,
+      "category": "naturalness",
+      "note": "연령 조건과 수치 표현을 자연스럽게 다듬었다.",
+      "ja": "16歳を過ぎて受けると平均寿命が<br>50くらいに下がるから ほとんどの人がしないだけだ",
+      "before": "16살이 지나서 받으면 평균 수명이<br>50살 정도로 떨어지니까 대부분 안 할 뿐이야.",
+      "after": "16세가 넘어서 받으면 평균 수명이<br>50세 정도로 떨어지니까 대부분 안 할 뿐이야."
+    },
+    {
+      "uid": "ch03-03:351:d5c44080",
+      "file": "ch03-03.part02.jsonl",
+      "line": 95,
+      "category": "meaning",
+      "note": "「やり直しが効かない」를 재시작 가능성 대신 돌이킬 수 없음으로 바로잡았다.",
+      "ja": "あまりにもやり直しが効かない人生",
+      "before": "다시 시작할 수 있는 여지가 너무나 없는 인생.",
+      "after": "너무나도 되돌릴 수 없는 인생."
+    },
+    {
+      "uid": "ch03-04:436:c2f48853",
+      "file": "ch03-04.part02.jsonl",
+      "line": 65,
+      "category": "terminology",
+      "note": "ファリナー의 고정 표기를 파리너로 통일했다.",
+      "ja": "そうなったらフリーのファリナーはたぶん捕まらなくなる",
+      "before": "그렇게 되면 이용 가능한 파린은 아마 잡을 수 없을 겁니다",
+      "after": "그렇게 되면 이용 가능한 파리너는 아마 잡을 수 없을 겁니다"
+    },
+    {
+      "uid": "ch03-04:438:2ad81cce",
+      "file": "ch03-04.part02.jsonl",
+      "line": 67,
+      "category": "terminology",
+      "note": "ファリナー의 고정 표기를 파리너로 통일했다.",
+      "ja": "話が長引くようなら<br>専用のファリナーを呼んでもらいなさい",
+      "before": "이야기가 길어질 것 같으면<br>전용 파린을 불러 달라고 하세요",
+      "after": "이야기가 길어질 것 같으면<br>전용 파리너를 불러 달라고 하세요"
+    },
+    {
+      "uid": "ch03-04:999:1f4e02dc",
+      "file": "ch03-04.part04.jsonl",
+      "line": 80,
+      "category": "naturalness",
+      "note": "통치자 말투를 유지하면서 중복 소유격을 제거했다.",
+      "ja": "我に何用だ――我がルゼンハイド国の娘よ",
+      "before": "짐에게 무슨 용무냐――짐의 루젠하이드 왕국의 딸이여",
+      "after": "짐에게 무슨 용무냐――짐의 나라 루젠하이드의 딸이여"
+    },
+    {
+      "uid": "ch03-04:1192:56c80de3",
+      "file": "ch03-04.part05.jsonl",
+      "line": 72,
+      "category": "meaning",
+      "note": "심리 서술의 「どこか」를 장소가 아닌 내면의 의미로 바로잡았다.",
+      "ja": "どこか…少しだけ期待していた",
+      "before": "어딘가에서… 조금은 기대하고 있었다",
+      "after": "마음 한편으로… 조금은 기대하고 있었다"
+    },
+    {
+      "uid": "ch03-07:133:9f7cc77f",
+      "file": "ch03-07.part01.jsonl",
+      "line": 39,
+      "category": "naturalness",
+      "note": "마지막 작품의 대상으로 그리려 했다는 의미를 자연스럽게 다듬었다.",
+      "ja": "そして 最後の絵は君を描きたかったんだよ リトナ",
+      "before": "그리고 마지막 그림에는 너를 그리고 싶었어, 리토나.",
+      "after": "그리고 마지막 그림으로는 너를 그리고 싶었어, 리토나."
+    },
+    {
+      "uid": "ch03-08:22:3f565648",
+      "file": "ch03-08.part01.jsonl",
+      "line": 2,
+      "category": "meaning",
+      "note": "누락된 렌즈를 복원하고 직역투인 강도 표현을 바로잡았다.",
+      "ja": "レンズ手垢などと呼ぶには生ぬるいほどあちこち焦げて<br>硝子の部分まで変色していた",
+      "before": "손때라고 하기에는 미적지근할 만큼 곳곳이 타 있었고<br>유리 부분까지 변색되어 있었다.",
+      "after": "렌즈는 손때라고 부르기엔 턱없이 심할 만큼 곳곳이 타 있었고<br>유리 부분까지 변색되어 있었다."
+    },
+    {
+      "uid": "ch03-08:37:1c3cb67c",
+      "file": "ch03-08.part01.jsonl",
+      "line": 8,
+      "category": "grammar",
+      "note": "끊긴 소유격을 주제어로 고쳐 대사 호응을 복원했다.",
+      "ja": "はは…君の―――<br>素のままでいてくれればいいんだよ",
+      "before": "하하… 너의――<br>있는 그대로 있어 주면 돼.",
+      "after": "하하… 너는――<br>있는 그대로 있어 주면 돼."
+    },
+    {
+      "uid": "ch03-08:280:81885e56",
+      "file": "ch03-08.part01.jsonl",
+      "line": 46,
+      "category": "meaning",
+      "note": "상상하는 주체가 리토나로 바뀐 오역을 바로잡았다.",
+      "ja": "そ 想像をする…私のイメージ？",
+      "before": "내가 상상하는… 나의 이미지?",
+      "after": "사, 상상 속의… 내 이미지?"
+    },
+    {
+      "uid": "ch03-08:662:cdc48ae0",
+      "file": "ch03-08.part02.jsonl",
+      "line": 34,
+      "category": "speaker_tone",
+      "note": "카지의 가족 호칭을 앞뒤 문맥과 일치시켰다.",
+      "ja": "金髪の母――<br>僕はいつしか 混同していたんだ…<br>セラ様の肖像画に圧倒されて…",
+      "before": "금발의 어머니――<br>어느새 나는 둘을 혼동하고 있었어…<br>세라 님의 초상화에 압도된 나머지…",
+      "after": "금발의 엄마――<br>어느새 나는 둘을 혼동하고 있었어…<br>세라 님의 초상화에 압도된 나머지…"
+    },
+    {
+      "uid": "ch03-08:796:2e82b2e3",
+      "file": "ch03-08.part02.jsonl",
+      "line": 70,
+      "category": "speaker_tone",
+      "note": "카지가 플로라를 부르는 고정 존칭을 적용했다.",
+      "ja": "…僕は確かにフローラさんが好きだ",
+      "before": "…난 분명 플로라 씨를 좋아해.",
+      "after": "…난 분명 플로라 님을 좋아해."
+    },
+    {
+      "uid": "ch03-08:799:33d22ffb",
+      "file": "ch03-08.part02.jsonl",
+      "line": 72,
+      "category": "meaning",
+      "note": "원문의 단수 대상을 복원하고 문장 흐름을 다듬었다.",
+      "ja": "とにかく…残したい<br>一時でも多く 大事に想う人の日常を",
+      "before": "아무튼… 남기고 싶어.<br>소중하게 여기는 사람들의 일상을 한순간이라도 더 많이.",
+      "after": "아무튼… 남기고 싶어.<br>소중히 여기는 사람의 일상을 한순간이라도 더 많이."
+    },
+    {
+      "uid": "ch03-08:927:f34d76e1",
+      "file": "ch03-08.part03.jsonl",
+      "line": 19,
+      "category": "terminology",
+      "note": "루젠하이드 성의 띄어쓰기를 고정 표기와 맞췄다.",
+      "ja": "る ルゼンハイド城の！？<br>しかも姫の部屋に飾られるものを…ぼ 僕が！？",
+      "before": "루, 루젠하이드성에!?<br>게다가 공주님의 방에 걸릴 걸… 제, 제가요!?",
+      "after": "루, 루젠하이드 성에!?<br>게다가 공주님의 방에 걸릴 걸… 제, 제가요!?"
+    },
+    {
+      "uid": "ch03-08:975:af066223",
+      "file": "ch03-08.part03.jsonl",
+      "line": 35,
+      "category": "speaker_tone",
+      "note": "카지가 셀피네를 부르는 고정 존칭을 적용했다.",
+      "ja": "せ セルフィーネ様の ぽ ポートレートなんて…<br>あ ああ…ああ！",
+      "before": "세, 셀피네 님의 초, 초상화라니…<br>아, 아아… 아아!",
+      "after": "세, 셀피네 공주님의 초, 초상화라니…<br>아, 아아… 아아!"
+    },
+    {
+      "uid": "ch03-08:1006:ba914d43",
+      "file": "ch03-08.part03.jsonl",
+      "line": 48,
+      "category": "speaker_tone",
+      "note": "카지가 셀피네를 부르는 고정 존칭을 적용했다.",
+      "ja": "よ よし落ち着きました…<br>ま 参りますね…セルフィーネ様！！",
+      "before": "조, 좋아. 진정했습니다…<br>시, 시작하겠습니다… 셀피네 님!!",
+      "after": "조, 좋아. 진정했습니다…<br>시, 시작하겠습니다… 셀피네 공주님!!"
+    },
+    {
+      "uid": "ch03-08:1050:ea0250d4",
+      "file": "ch03-08.part03.jsonl",
+      "line": 60,
+      "category": "grammar",
+      "note": "말더듬을 복원하고 비교 대상의 소유 관계를 자연스럽게 다듬었다.",
+      "ja": "な…なんて使いやすいんだ…<br>ケンドリッドさんのものとは…大違いだ",
+      "before": "뭐… 이렇게 쓰기 편하다니…<br>켄드리드 씨 것이랑은… 완전히 달라.",
+      "after": "이… 이렇게 쓰기 편하다니…<br>켄드리드 씨의 것과는… 완전히 달라."
+    },
+    {
+      "uid": "ch03-09:44:e12c749c",
+      "file": "ch03-09.part01.jsonl",
+      "line": 8,
+      "category": "meaning",
+      "note": "「暫く前」를 바로 직전이 아닌 얼마 전으로 바로잡았다.",
+      "ja": "ああ<br>暫く前にね",
+      "before": "그래.<br>조금 전의 일이지만.",
+      "after": "그래.<br>얼마 전 일이지만."
+    }
+  ]
+}

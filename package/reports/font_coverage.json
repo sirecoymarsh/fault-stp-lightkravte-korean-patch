@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "runtime_strategy": "Keep the shipped Japanese/Chinese primary TMP font and append Malgun Gothic as the Korean fallback; UGUI Hangul text uses Malgun Gothic directly.",
+  "font_path": "C:\\Windows\\Fonts\\malgun.ttf",
+  "font_bytes": 13459196,
+  "korean_fallback_font": {
+    "path": "C:\\Windows\\Fonts\\malgun.ttf",
+    "bytes": 13459196,
+    "required_codepoints_supported": 1172
+  },
+  "shipped_primary_fonts": [
+    {
+      "path": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\fonts\\30_FOT-SkipStd-B.otf",
+      "bytes": 6986188,
+      "required_codepoints_supported": 101
+    },
+    {
+      "path": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\fonts\\31_FOT-ModeMinAStd-B.otf",
+      "bytes": 2768664,
+      "required_codepoints_supported": 101
+    },
+    {
+      "path": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\fonts\\32_Zcool_TsangerYuYangT_W03.otf",
+      "bytes": 1562900,
+      "required_codepoints_supported": 93
+    }
+  ],
+  "required_codepoints": 1174,
+  "required_hangul_codepoints": 1073,
+  "missing_hangul_from_korean_fallback": [],
+  "missing_codepoints": [],
+  "complete": true
+}

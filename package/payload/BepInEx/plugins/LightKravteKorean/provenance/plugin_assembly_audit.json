@@ -1,0 +1,110 @@
+﻿{
+    "status":  "pass",
+    "assembly":  "LightKravteKorean, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "sha256":  "361764BB8B1A1F637E83217C5D8358DBB4C24DEF7D608F4FEF17020DB2AC770E",
+    "module_kind":  "Dll",
+    "architecture":  "I386",
+    "runtime_coordinate":  "Naninovel.PlaybackSpot.LineIndex",
+    "forbidden_line_number_reference":  false,
+    "managed_collection_postfix_signature":  "System.Collections.Generic.IReadOnlyCollection`1\u003cNaninovel.ManagedTextRecord\u003e\u0026",
+    "forced_managed_text_reapply":  true,
+    "managed_text_provider_refresh":  true,
+    "locale_change_race_guard":  "ILocalizationManager.OnLocaleChanged plus same-locale postfix",
+    "immediate_prefix_apply_forbidden":  true,
+    "character_display_name_override":  true,
+    "literal_medic_author_alias":  "医療班 -\u003e CharacterNames:med",
+    "inactive_zh_tw_selector_activation":  true,
+    "selector_scene_instance_filter":  true,
+    "persistent_selector_font":  true,
+    "selector_keyboard_navigation":  true,
+    "selector_nonoverlap_positioning":  true,
+    "selector_interactable_enforcement":  true,
+    "selector_controller_enabled_enforcement":  true,
+    "selector_reentry_guard":  true,
+    "selector_refresh_after_font_restore":  true,
+    "selector_pointer_override":  true,
+    "selector_original_animator_restore":  true,
+    "loader_managed_entrypoint":  "System.Void Doorstop.Entrypoint::Start()",
+    "file_backed_korean_font_loading":  true,
+    "os_font_path_enumeration":  true,
+    "tmp_font_asset_creation":  true,
+    "legacy_dynamic_font_loading":  false,
+    "ugui_dynamic_os_font_loading":  true,
+    "inactive_managed_provider_filter":  true,
+    "loader_versions":  {
+                            "BepInEx":  "5.4.23.5",
+                            "Harmony":  "2.9.0.0",
+                            "Doorstop":  "4.5.0"
+                        },
+    "harmony_patch_types":  [
+                                "CharacterDisplayNamePatch",
+                                "LanguageWheelInitializationPatch",
+                                "LanguageWheelPointerPatch",
+                                "LanguageWheelSelectionPatch",
+                                "ManagedTextApplicationPatch",
+                                "ManagedTextCollectionPatch",
+                                "ManagedTextLookupPatch"
+                            ],
+    "references":  [
+                       {
+                           "name":  "BepInEx",
+                           "version":  "5.4.23.5"
+                       },
+                       {
+                           "name":  "mscorlib",
+                           "version":  "4.0.0.0"
+                       },
+                       {
+                           "name":  "0Harmony",
+                           "version":  "2.9.0.0"
+                       },
+                       {
+                           "name":  "Elringus.Naninovel.Runtime",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "System.Core",
+                           "version":  "4.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.CoreModule",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.UI",
+                           "version":  "1.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.TextRenderingModule",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "Unity.TextMeshPro",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "Assembly-CSharp",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "Utilities",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "mscorlib",
+                           "version":  "2.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.JSONSerializeModule",
+                           "version":  "0.0.0.0"
+                       },
+                       {
+                           "name":  "System",
+                           "version":  "4.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.AnimationModule",
+                           "version":  "0.0.0.0"
+                       }
+                   ]
+}

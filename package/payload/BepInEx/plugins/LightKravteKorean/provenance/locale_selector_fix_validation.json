@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "source": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\runtime_patch\\src\\LightKravteKorean.cs",
+  "asset_audit": "C:\\Users\\CadriacLord\\Documents\\Codex\\2026-07-25\\new-chat\\work\\runtime_patch\\diagnostics\\locale_selector_asset_audit.json",
+  "position": [
+    0.0,
+    -280.0
+  ],
+  "button_size": [
+    160.0,
+    50.0
+  ],
+  "pointer_rotation_degrees": 180.0,
+  "geometric_rotation_degrees": -180.0,
+  "nonoverlap": {
+    "JapaneseButton": true,
+    "EnglishButton": true,
+    "SimplifiedChineseButton": true
+  },
+  "simplified_credit_nonoverlap": true,
+  "navigation_graph": {
+    "JapaneseButton": [
+      "EnglishButton",
+      "SimplifiedChineseButton",
+      "TraditionalChineseButton"
+    ],
+    "EnglishButton": [
+      "JapaneseButton",
+      "TraditionalChineseButton"
+    ],
+    "SimplifiedChineseButton": [
+      "JapaneseButton",
+      "TraditionalChineseButton"
+    ],
+    "TraditionalChineseButton": [
+      "EnglishButton",
+      "JapaneseButton",
+      "SimplifiedChineseButton"
+    ]
+  },
+  "checks": {
+    "asset_audit_passed": true,
+    "live_scene_filter": true,
+    "reentry_guard": true,
+    "position_before_activation": true,
+    "all_original_button_rectangles_nonoverlap": true,
+    "simplified_credit_nonoverlap": true,
+    "pointer_angle_matches_position": true,
+    "animator_disabled_for_korean": true,
+    "animator_restored_for_originals": true,
+    "original_method_skipped_for_korean": true,
+    "explicit_navigation_strongly_connected": true,
+    "persistent_korean_label_font": true
+  },
+  "failed": []
+}

@@ -1,0 +1,345 @@
+{
+  "version": 1,
+  "review_date": "2026-07-25",
+  "scope": {
+    "chapter": "ch02",
+    "source_authority": "ja",
+    "files_reviewed": 36,
+    "entries_reviewed": 2522,
+    "review_method": [
+      "manual_line_by_line_context_review",
+      "automated_schema_token_number_term_heuristics",
+      "post_edit_full_validator"
+    ]
+  },
+  "result": {
+    "complete": true,
+    "changes": 30,
+    "files_modified": 12,
+    "changed_files": [
+      "ch02-01.part01.jsonl",
+      "ch02-07.part01.jsonl",
+      "ch02-11.part01.jsonl",
+      "ch02-12.part02.jsonl",
+      "ch02-12.part03.jsonl",
+      "ch02-12.part05.jsonl",
+      "ch02-12.part06.jsonl",
+      "ch02-12.part08.jsonl",
+      "ch02-17.part01.jsonl",
+      "ch02-18.part01.jsonl",
+      "ch02-20.part01.jsonl",
+      "ch02-20.part02.jsonl"
+    ],
+    "category_counts": {
+      "format": 1,
+      "grammar": 2,
+      "grammar_flow": 1,
+      "grammar_naturalness": 2,
+      "idiom": 1,
+      "meaning": 1,
+      "meaning_naturalness": 3,
+      "meaning_tone": 3,
+      "meaning_voice": 1,
+      "naturalness": 4,
+      "naturalness_emphasis": 1,
+      "naturalness_terminology": 1,
+      "naturalness_tone": 2,
+      "naturalness_voice": 2,
+      "onomatopoeia": 1,
+      "technical_naturalness": 1,
+      "terminology": 1,
+      "tone": 2
+    },
+    "changed_values_verified": true,
+    "trailing_whitespace_remaining": 0
+  },
+  "validation": {
+    "command": "P:\\AI\\forge\\venv\\Scripts\\python.exe work\\localization\\validate_and_build.py --chapters ch02 --require-complete",
+    "report": "work/localization/reports/validation_ch02.json",
+    "expected_files": 36,
+    "completed_files": 36,
+    "expected_entries": 2522,
+    "validated_entries": 2522,
+    "complete": true,
+    "issue_count": 0,
+    "warning_counts": {
+      "source_copied": 255,
+      "reference_copied": 127,
+      "japanese_kana_remaining": 15
+    }
+  },
+  "triage": {
+    "report": "work/localization/reports/crossreview_ch02_triage.json",
+    "entries_scanned": 2522,
+    "heuristic_flags_after_edits": 166,
+    "different_source_same_ko_groups": 1,
+    "disposition": "모든 플래그를 일본어 원문과 문맥으로 수동 판정했으며, 추가 수정이 필요한 미해결 항목은 없음."
+  },
+  "warning_disposition": {
+    "japanese_kana_remaining": {
+      "count": 15,
+      "status": "intentional",
+      "reason": "전부 <ruby=\"...\"> 속성값에 있는 원문 읽기/연출 문자열이며 런타임 토큰 보존 정책에 따라 유지. 표시 본문에 미번역 일본어 없음."
+    },
+    "source_copied": {
+      "count": 255,
+      "status": "adjudicated",
+      "reason": "말줄임표·문장부호·태그·잠금 ASCII·의도된 효과음/표기 위주. 수동 검수 결과 미번역 대사·서술 없음."
+    },
+    "reference_copied": {
+      "count": 127,
+      "status": "adjudicated",
+      "reason": "언어 공통 문장부호·효과음·기호 문자열 위주. 수동 검수 결과 참조 번역의 무비판적 복사나 미번역 산문 없음."
+    }
+  },
+  "intentional_retention": [
+    "소네타의 「슴다/임다/검까」 계열 개성 말투",
+    "음식을 문 채 말하는 장면과 공황 장면의 의도적 발음 붕괴",
+    "ch02-17의 연출용 다중 공백과 줄바꿈",
+    "숫자의 자연스러운 한국어 풀어쓰기 및 1〜2割→10〜20% 같은 등가 표기",
+    "문맥별 파리너(직업)/파린(운송 수단), 오피아(의식)/오피안(시술자) 구분",
+    "CLOQKS(클록스), MAX 및 런타임 태그·속성값"
+  ],
+  "changes": [
+    {
+      "uid": "ch02-01:19:66af6886",
+      "file": "ch02-01.part01.jsonl",
+      "old": "문득 손에 놓인 책으로 시선을 빼앗겼다",
+      "new": "문득 곁에 놓인 책에 시선을 빼앗겼다.",
+      "category": "naturalness",
+      "reason": "「手元に置かれている」의 공간 관계와 조사 오류를 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-01:177:21d5259a",
+      "file": "ch02-01.part01.jsonl",
+      "old": "어, 그 전에 잠깐 이야기를 되돌리겠는데요… ",
+      "new": "어, 그 전에 잠깐 이야기를 되돌리겠는데요…",
+      "category": "format",
+      "reason": "불필요한 문장 끝 공백 제거."
+    },
+    {
+      "uid": "ch02-07:80:aff3c7c8",
+      "file": "ch02-07.part01.jsonl",
+      "old": "음음, 그 마음을 모르는 건 아니에요―<br>그 기개도 높이 삼다.",
+      "new": "음음, 그 마음을 모르는 건 아니에요―<br>그 의욕도 높이 사겠슴다.",
+      "category": "meaning_voice",
+      "reason": "「意気込みも買う」의 관용 의미를 복원하고 소네타의 말투를 유지."
+    },
+    {
+      "uid": "ch02-07:144:ffa7fb07",
+      "file": "ch02-07.part01.jsonl",
+      "old": "모르는 사람이라면 딱히…?<br>‘새댁들의 일기’ 시리즈에 영향을 받아서<br>후세에 남길 수 있으면 좋겠다고 생각했거든요.",
+      "new": "모르는 사람이라면 딱히…?<br>『새댁들의 일기』 시리즈에 영향을 받아서<br>후세에 남길 수 있으면 좋겠다고 생각했거든요.",
+      "category": "terminology",
+      "reason": "용어집의 출판물 고정 표기와 괄호를 적용."
+    },
+    {
+      "uid": "ch02-11:96:1ca12008",
+      "file": "ch02-11.part01.jsonl",
+      "old": "리딩 스톤을 설치한 쪽면에<br>작은 다이얼 같은 것이 있다.",
+      "new": "리딩 스톤을 설치한 측면에<br>작은 다이얼 같은 것이 있다.",
+      "category": "grammar",
+      "reason": "비표준·부자연스러운 명사 「쪽면」을 「측면」으로 교정."
+    },
+    {
+      "uid": "ch02-11:102:fbbff721",
+      "file": "ch02-11.part01.jsonl",
+      "old": "촉촉하고 매끄러운 움직임으로<br>거치대가 조금씩 위아래로 움직인다.",
+      "new": "부드럽고 매끄럽게<br>거치대가 미세하게 위아래로 움직인다.",
+      "category": "technical_naturalness",
+      "reason": "기계 동작 문맥에서 「しっとり」「細かく」의 의미를 자연스럽고 정확하게 반영."
+    },
+    {
+      "uid": "ch02-12:303:7f0f62b",
+      "file": "ch02-12.part02.jsonl",
+      "old": "헉… 헉… 고, 고홉…! 으… 으억…",
+      "new": "헉… 헉… 코, 콜록…! 으… 으억…",
+      "category": "onomatopoeia",
+      "reason": "일본어 기침 소리 「ごほっ」의 잘못된 음역을 한국어 의성어로 교정."
+    },
+    {
+      "uid": "ch02-12:339:e089556b",
+      "file": "ch02-12.part02.jsonl",
+      "old": "순식간에 대량의 마나를 조작해야 하는 크래프트를 사용하는… 주로 전투를 생업으로 삼는 이들――배틀크래프터――이 받는 의식이다.",
+      "new": "순식간에 대량의 마나를 조작해야 하는 크래프트를 사용하는… 주로 전투를 생업으로 삼는 이들――배틀크래프터――가 받는 의식이다.",
+      "category": "grammar",
+      "reason": "받침 없는 명사 뒤 주격 조사 오류를 교정."
+    },
+    {
+      "uid": "ch02-12:408:161d2173",
+      "file": "ch02-12.part02.jsonl",
+      "old": "음― 조금 다른 것 같아.",
+      "new": "음― 조금 다른 것 같은데?",
+      "category": "tone",
+      "reason": "원문의 완곡한 의문형 「かな？」를 복원."
+    },
+    {
+      "uid": "ch02-12:453:4d67a24a",
+      "file": "ch02-12.part03.jsonl",
+      "old": "리토나는… 좀 그렇지.<br>평범하게 생각해도 체력이 너무 없는 편 같아.",
+      "new": "리토나는… 좀 그렇지.<br>일반적인 기준으로 봐도 체력이 너무 없는 편이야.",
+      "category": "naturalness",
+      "reason": "「普通に考えても」의 직역투를 자연스럽게 교정하면서 강도를 유지."
+    },
+    {
+      "uid": "ch02-12:505:311f6145",
+      "file": "ch02-12.part03.jsonl",
+      "old": "아니, 왜냐하면<br>리토나 이야기만 나오면 늘 가시가 돋치니까.",
+      "new": "아니, 왜냐하면<br>리토나 이야기만 나오면 늘 말에 가시가 돋치니까.",
+      "category": "idiom",
+      "reason": "한국어 관용구에 필요한 대상 「말에」를 보완."
+    },
+    {
+      "uid": "ch02-12:860:b18a92e7",
+      "file": "ch02-12.part05.jsonl",
+      "old": "자, 잠깐! 천천히 먹어!<br>그렇게 허겁지겁 먹으면 토한다?",
+      "new": "자, 잠깐! 천천히 먹어!<br>그렇게 허겁지겁 먹으면 토할 거야!",
+      "category": "meaning_tone",
+      "reason": "경고형 「吐くわよ」가 의문형으로 변한 오류를 교정."
+    },
+    {
+      "uid": "ch02-12:1130:2e56eb3b",
+      "file": "ch02-12.part06.jsonl",
+      "old": "시, 싫지 않으시다면……… 말입니다!!",
+      "new": "폐, 폐가 되지 않는다면요………!!",
+      "category": "meaning",
+      "reason": "「ご迷惑じゃなければ」를 호의 여부가 아니라 폐를 끼치는지의 의미로 정확히 번역."
+    },
+    {
+      "uid": "ch02-12:1137:9a840964",
+      "file": "ch02-12.part06.jsonl",
+      "old": "자, 우선――― 열쇠부터 돌려줄게.<br>이제 잊어버리지 마?",
+      "new": "자, 우선――― 열쇠부터 돌려줄게.<br>다시는 잊어버리지 마, 알았지?",
+      "category": "meaning_naturalness",
+      "reason": "「もう忘れるなよー？」의 재발 방지 의미와 다정한 확인 어조를 복원."
+    },
+    {
+      "uid": "ch02-12:1447:d077a1a",
+      "file": "ch02-12.part08.jsonl",
+      "old": "내 뜻대로 대해 주지 않는다고<br>토라져 있을 뿐이야, 나는?",
+      "new": "내 뜻대로 대해 주지 않는다고<br>나는 그저 토라져 있을 뿐인 걸까?",
+      "category": "naturalness_tone",
+      "reason": "자기반성형 의문의 의미를 유지하며 어순을 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-17:30:8fa5a450",
+      "file": "ch02-17.part01.jsonl",
+      "old": "설계도? 이것을 그렇게 부를 수도 없겠군. 네 낙서가<br>말하려는 렌즈를 만들려면 상당한 시간이 걸려.",
+      "new": "이걸 설계도라 부르기도 어렵군. 네 낙서가<br>나타내려는 렌즈를 만들려면 상당한 시간이 걸려.",
+      "category": "meaning_naturalness",
+      "reason": "「設計図とも呼べない」「言わんとしてる」의 수식 관계와 자연스러운 표현을 복원."
+    },
+    {
+      "uid": "ch02-17:139:5e9054df",
+      "file": "ch02-17.part01.jsonl",
+      "old": "아디아는… 드물긴 해도 자신의 재능 없음을 한탄할 때가 있어.",
+      "new": "아디아는… 드물지만 자신에게 재능이 없다는 걸 한탄할 때가 있어.",
+      "category": "grammar_naturalness",
+      "reason": "명사화와 소유 관계가 어색한 문장을 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-18:150:bae36fd6",
+      "file": "ch02-18.part01.jsonl",
+      "old": "마음대로 되어 가는 모양이니까.<br>의사 전달의 전문가로.",
+      "new": "나도 모르게<br>의사 전달의 전문가가 되어 가는 모양이니까.",
+      "category": "meaning_naturalness",
+      "reason": "「勝手に」를 「마음대로」가 아닌 「저절로/나도 모르게」의 의미로 복원하고 문장 호응을 교정."
+    },
+    {
+      "uid": "ch02-18:226:fd64fe6c",
+      "file": "ch02-18.part01.jsonl",
+      "old": "그래… 굳이 표현하자면<br>인간 같지 않다는 말이 가장 잘 어울려.",
+      "new": "그래… 굳이 표현하자면<br>인간을 초월했다는 말이 가장 잘 어울려.",
+      "category": "meaning_tone",
+      "reason": "아름다움을 찬탄하는 문맥의 「人間離れ」가 부정적으로 들리지 않도록 의미를 정확히 조정."
+    },
+    {
+      "uid": "ch02-20:18:241a2a16",
+      "file": "ch02-20.part01.jsonl",
+      "old": "며, 몇 번이나 계속 약속을 어겨서…… 윽…!!",
+      "new": "며, 몇 번이나 약속을 어겨서…… 윽…!!",
+      "category": "naturalness",
+      "reason": "동일 의미의 중복 부사 제거."
+    },
+    {
+      "uid": "ch02-20:84:262e5a42",
+      "file": "ch02-20.part01.jsonl",
+      "old": "맞아! 난 파리너를 본직으로 삼고 싶으니까<br>그림은 그냥 취미일까.",
+      "new": "맞아! 난 파리너 일을 본직으로 삼고 싶으니까<br>그림은 그냥 취미로 하는 거야.",
+      "category": "naturalness_terminology",
+      "reason": "직업명 목적어와 「かな」의 문맥을 자연스럽게 다듬고 고정 용어 「본직」을 유지."
+    },
+    {
+      "uid": "ch02-20:124:cf64fe81",
+      "file": "ch02-20.part01.jsonl",
+      "old": "연습만 계속하면… 그럭저럭 노력만 계속하면…",
+      "new": "연습만 하면… 나름대로 노력만 하면…",
+      "category": "naturalness",
+      "reason": "「さえしていれば」의 조건과 반복 호흡을 중복 없이 자연스럽게 반영."
+    },
+    {
+      "uid": "ch02-20:131:47a54394",
+      "file": "ch02-20.part01.jsonl",
+      "old": "어, 어떻게 하면 좋을 것 같습니까……………―――!",
+      "new": "어, 어떻게 해야 할까요……………―――!",
+      "category": "naturalness_voice",
+      "reason": "상대에게 조언을 구하는 의문문을 카지의 존댓말로 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-20:168:c677e76c",
+      "file": "ch02-20.part01.jsonl",
+      "old": "하지만 내가 보기엔 카지 군, 아직 포기하지 못한 것 같아.",
+      "new": "하지만 내가 보기엔 카지 군, 아직 포기하지 못한 것 같은데?",
+      "category": "tone",
+      "reason": "원문의 부드러운 확인 어조 「見えるよ？」를 복원."
+    },
+    {
+      "uid": "ch02-20:185:ef63f814",
+      "file": "ch02-20.part01.jsonl",
+      "old": "파리너는 운항과 동시에 수로를 여과한다는 거.",
+      "new": "파리너가 운항과 동시에 수로를 여과한다는 거?",
+      "category": "meaning_tone",
+      "reason": "상대의 지식을 확인하는 질문 「って？」가 평서문으로 바뀐 오류를 교정."
+    },
+    {
+      "uid": "ch02-20:205:9071c037",
+      "file": "ch02-20.part02.jsonl",
+      "old": "어릴 때부터 줄곧 파리너가 되고 싶다고,<br>되고 싶다고 생각했어.",
+      "new": "어릴 때부터 줄곧 파리너가 되고 싶다고,<br>꼭 되고 싶다고 생각해 왔어.",
+      "category": "naturalness_emphasis",
+      "reason": "원문의 반복 강조를 살리면서 한국어 문장 호응을 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-20:221:9df68e41",
+      "file": "ch02-20.part02.jsonl",
+      "old": "그 아이는 운전도 무척 잘해서<br>성적도 자꾸 추월당했고.",
+      "new": "그 아이는 운전도 무척 잘했고<br>성적도 점점 나를 앞질렀어.",
+      "category": "grammar_flow",
+      "reason": "생략된 피동 주체를 명확히 하고 연결어미와 시점을 자연스럽게 교정."
+    },
+    {
+      "uid": "ch02-20:247:6d222e1",
+      "file": "ch02-20.part02.jsonl",
+      "old": "손님을 불안하게 만들 거야.<br>그런 표정을 짓고 있으면.",
+      "new": "그런 표정을 짓고 있으면<br>손님이 불안해하지 않겠나?",
+      "category": "naturalness_tone",
+      "reason": "한국어 조건절 순서와 원문의 경고성 반문을 복원."
+    },
+    {
+      "uid": "ch02-20:283:89b398cd",
+      "file": "ch02-20.part02.jsonl",
+      "old": "그러니까 남에게 추월당하거나 비교당하고,<br>아무리 꼴사나워도…<br>나는 내가 하고 싶은 일을 좇겠다고.",
+      "new": "그러니까 남에게 추월당하거나 비교당해도,<br>아무리 꼴사나워도…<br>나는 내가 하고 싶은 일을 좇기로 했어.",
+      "category": "grammar_naturalness",
+      "reason": "양보 조건의 호응과 생략된 결심 서술을 자연스럽게 복원."
+    },
+    {
+      "uid": "ch02-20:292:67ad8000",
+      "file": "ch02-20.part02.jsonl",
+      "old": "너무 어렵게 생각하는 것 아닐까?",
+      "new": "너무 어렵게 생각하는 거 아닐까?",
+      "category": "naturalness_voice",
+      "reason": "아디아의 구어체에 맞게 의존 명사 표현을 다듬음."
+    }
+  ]
+}

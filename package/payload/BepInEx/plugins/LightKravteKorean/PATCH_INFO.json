@@ -1,0 +1,21 @@
+{
+  "package_id": "kr.cadriaclord.lightkravte.korean",
+  "version": "1.0.0",
+  "source_locale": "ja",
+  "selector_slot": "zh-TW",
+  "preserved_locales": [
+    "ja",
+    "en",
+    "zh-CN"
+  ],
+  "script_entries": 6746,
+  "managed_entries": 425,
+  "translation_model": "Codex internal model only",
+  "loader": {
+    "bepinex": "5.4.23.5",
+    "doorstop": "4.5.0",
+    "architecture": "Windows x64",
+    "managed_entrypoint": "Doorstop.Entrypoint.Start()",
+    "official_archive_sha256": "82F9878551030F54657792C0740D9D51A09500EEAE1FBA21106B0C441E6732C4"
+  }
+}
