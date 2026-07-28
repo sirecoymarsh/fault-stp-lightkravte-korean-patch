@@ -1,6 +1,11 @@
 {
-  "version": 1,
-  "policy": "Preserve ruby tag structure while localizing its visible reading.",
+  "version": 2,
+  "policy": "Classify each Japanese ruby before localizing it. (1) Reading aid (furigana giving the pronunciation of the base kanji): drop the ruby tag and keep the base, because Hangul already spells the reading and a translated ruby would only duplicate the base. (2) Gikun (ruby is a different word from the base): keep both layers. (3) Emphasis dots <ruby=\"・\">: structural marker, leave untouched.",
+  "final_review": {
+    "date": "2026-07-28",
+    "model": "Codex internal model",
+    "scope": "All 40 localized ruby entries, including the three restored two-layer wordplay entries, were independently checked against the Japanese source before freezing v2."
+  },
   "changes": [
     {
       "uid": "ch01-00:59:207f192",
@@ -244,5 +249,135 @@
     }
   ],
   "changed_entries": 40,
-  "complete": true
+  "complete": true,
+  "superseded_policy": "v1: 'Preserve ruby tag structure while localizing its visible reading.' Applied uniformly to all 40 spans, which collapsed every reading-aid ruby onto its own base text.",
+  "corrections": {
+    "dropped_reading_aid_identical": [
+      {
+        "uid": "ch01-00:59:207f192",
+        "japanese": "<ruby=\"せがれ\">倅</ruby>",
+        "was": "<ruby=\"아들\">아들</ruby>",
+        "now": "아들"
+      },
+      {
+        "uid": "ch01-00:199:60ee8e3a",
+        "japanese": "<ruby=\"しゅうぼうせい\">就望生</ruby>",
+        "was": "<ruby=\"취망생\">취망생</ruby>",
+        "now": "취망생"
+      },
+      {
+        "uid": "ch01-01:344:7695bc83",
+        "japanese": "<ruby=\"あんたん\">暗澹</ruby>",
+        "was": "<ruby=\"암담\">암담</ruby>",
+        "now": "암담"
+      },
+      {
+        "uid": "ch02-02:88:14e0912f",
+        "japanese": "<ruby=\"けな\">貶</ruby>",
+        "was": "<ruby=\"헐뜯\">헐뜯</ruby>",
+        "now": "헐뜯"
+      },
+      {
+        "uid": "ch02-13:59:46c2cfd",
+        "japanese": "<ruby=\"はばか\">憚</ruby>",
+        "was": "<ruby=\"꺼려질\">꺼려질</ruby>",
+        "now": "꺼려질"
+      },
+      {
+        "uid": "ch02-20:125:86d8bba3",
+        "japanese": "<ruby=\"いち\">一</ruby>",
+        "was": "<ruby=\"제일\">제일</ruby>",
+        "now": "제일"
+      },
+      {
+        "uid": "ch02-20:188:49e3d90d",
+        "japanese": "<ruby=\"いち\">一</ruby>",
+        "was": "<ruby=\"제일\">제일</ruby>",
+        "now": "제일"
+      },
+      {
+        "uid": "ch03-00:47:33eab712",
+        "japanese": "<ruby=\"からか\">揶揄</ruby>",
+        "was": "<ruby=\"놀릴\">놀릴</ruby>",
+        "now": "놀릴"
+      },
+      {
+        "uid": "ch03-01:301:cc1f2573",
+        "japanese": "<ruby=\"バネ\">発条</ruby>",
+        "was": "<ruby=\"용수철\">용수철</ruby>",
+        "now": "용수철"
+      }
+    ],
+    "dropped_reading_aid_synonym": [
+      {
+        "uid": "ch01-03:365:6db24022",
+        "japanese": "<ruby=\"はらわた\">腸</ruby>",
+        "was": "<ruby=\"내장\"> 속 </ruby>",
+        "now": "속",
+        "note": "태그 제거 뒤 조사까지 포함한 전체 문장을 '이 속이 끓어오르는…'로 다듬어 이중 공백을 제거."
+      },
+      {
+        "uid": "ch01-04:120:4778c26",
+        "japanese": "<ruby=\"かしま\">姦</ruby>",
+        "was": "<ruby=\"떠들썩\">시끄럽군</ruby>",
+        "now": "시끄럽군"
+      },
+      {
+        "uid": "ch02-02:43:52d6dc03",
+        "japanese": "<ruby=\"エセ\">似非</ruby>",
+        "was": "<ruby=\"엉터리\">가짜</ruby>",
+        "now": "가짜"
+      },
+      {
+        "uid": "ch02-12:613:8517a892",
+        "japanese": "<ruby=\"かすがい\">鎹</ruby>",
+        "was": "<ruby=\"연결고리\">결속</ruby>",
+        "now": "결속"
+      },
+      {
+        "uid": "ch02-12:633:3b4ca1b1",
+        "japanese": "<ruby=\"たお\">斃</ruby>",
+        "was": "<ruby=\"타도할\">쓰러뜨릴</ruby>",
+        "now": "쓰러뜨릴"
+      },
+      {
+        "uid": "ch03-04:642:25cc68aa",
+        "japanese": "<ruby=\"もたら\">齎</ruby>",
+        "was": "<ruby=\"불러올\">불러온다</ruby>",
+        "now": "불러온다"
+      },
+      {
+        "uid": "ch03-08:101:f1405ffd",
+        "japanese": "<ruby=\"くゆ\">燻</ruby>",
+        "was": "<ruby=\"피어오를\">연기가 피어오른다</ruby>",
+        "now": "연기가 피어오른다"
+      }
+    ],
+    "restored_two_layers": [
+      {
+        "uid": "ch01-11:206:c344ed6f",
+        "japanese": "<ruby=\"トシ\">年齢</ruby>",
+        "was": "<ruby=\"나이\">나이</ruby>",
+        "now": "<ruby=\"나이\">연령</ruby>",
+        "note": "표기는 문어 年齢, 발화는 구어 トシ. 두 층을 연령/나이로 복원."
+      },
+      {
+        "uid": "ch03-02:91:8d23aecc",
+        "japanese": "<ruby=\"出汁\">ストック</ruby>",
+        "was": "<ruby=\"육수\">육수</ruby>",
+        "now": "<ruby=\"육수\">스톡</ruby>",
+        "note": "아랫말이 외래어 ストック, 윗주가 뜻풀이 出汁. 대비를 복원."
+      },
+      {
+        "uid": "ch02-12:880:d66c0fd9",
+        "japanese": "<ruby=\"そんな施錠が！？\">ふぉんなふぇびょうば！？</ruby>",
+        "was": "<ruby=\"그런 잠금장치가?!\">그런 잠금장치가!?</ruby>",
+        "now": "<ruby=\"그런 잠금장치가?!\">끄헌 잠끔뱡치바?!</ruby>",
+        "note": "아랫말이 뭉개진 발화, 윗주가 해독. 원문 자음 이동(そ→ふぉ, し→ふぇ, じょう→びょう, が→ば)을 장→뱡, 가→바로 옮겨 다음 줄 「잠금을 걸어 둔 거군요…」의 해독 개그가 성립하게 함."
+      }
+    ]
+  },
+  "ruby_spans_before": 46,
+  "ruby_spans_after": 30,
+  "corrected_entries": 19
 }

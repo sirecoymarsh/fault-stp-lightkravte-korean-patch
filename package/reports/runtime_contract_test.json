@@ -4,14 +4,20 @@
   "staged_script_records_checked": 6746,
   "staged_managed_records_checked": 425,
   "staged_translation_files_checked": 98,
-  "staged_provenance_files_checked": 27,
-  "staged_payload_files_checked": 148,
+  "staged_provenance_files_checked": 30,
+  "staged_payload_files_checked": 151,
   "known_mapping": {
     "uid": "ch01-00:28:6d375c5c",
     "runtime_key": "ch01-00:28",
     "coordinate": "PlaybackSpot.LineIndex"
   },
   "trusted_game_hashes_checked": 7,
+  "reversible_bootstrap_state": "vendor_installed",
+  "source_plugin_sha256": "C64AA6FF650A019B209849D310ED3E289574C16402BBD5A6C93D0949E23B8E02",
+  "build_plugin_sha256": "A342B84811271BF3B60392035834772F781858A2D44D92952E1BB6E47E324D2E",
+  "staged_plugin_sha256": "A342B84811271BF3B60392035834772F781858A2D44D92952E1BB6E47E324D2E",
+  "plugin_assembly_audit_sha256": "59D9D71FA1CEBF9B7FF0FF8227181771FD7D16BB41FF41085F1B52900F237B5F",
+  "staging_manifest_sha256": "BE48FB55AF27F0C24D13559323319749C8B1C68396B8822A925AB025277FAB81",
   "loader": {
     "bepinex": "5.4.23.5",
     "doorstop": "4.5.0",

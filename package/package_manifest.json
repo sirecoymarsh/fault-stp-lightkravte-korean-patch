@@ -1,8 +1,8 @@
 {
   "format": 1,
   "package_id": "kr.cadriaclord.lightkravte.korean",
-  "version": "1.0.0",
-  "created_utc": "2026-07-25T14:49:24.725989+00:00",
+  "version": "1.0.1",
+  "created_utc": "2026-07-28T01:26:44.557365+00:00",
   "target": "Fault StP LIGHTKRAVTE / Unity 2020.3.7f1 / Mono / Windows x64",
   "source_locale": "ja",
   "target_locale": "ko",
@@ -109,17 +109,17 @@
   "runtime_mutable_payload": [
     {
       "path": "BepInEx\\config\\kr.cadriaclord.lightkravte.korean.cfg",
-      "allowed_states": [
-        {
-          "name": "korean_active_true",
-          "length": 1008,
-          "sha256": "3BC53603713CC4B60D408259843440C9B117084B9831BE9A60CBEE61DC41C347"
-        },
-        {
-          "name": "korean_active_false",
-          "length": 1009,
-          "sha256": "AC5F21E0EE5A442B8D9FAF808E3EE7B61A5D3F11C8448650196F9A4E6FBF95F5"
-        }
+      "policy": "ini_schema_v1",
+      "schema_version": 1,
+      "canonical_state": {
+        "length": 1579,
+        "sha256": "D3E8E42ED41C36A9C065219C873BCCC0D90896F98A2FAFE55733D1910AD03704"
+      },
+      "mutable_keys": [
+        "General/KoreanActive",
+        "Layout/FitLongDialogue",
+        "Layout/MinFontScale",
+        "Diagnostics/LogTextRendering"
       ]
     }
   ],
@@ -131,8 +131,8 @@
     },
     {
       "path": "BepInEx\\config\\kr.cadriaclord.lightkravte.korean.cfg",
-      "length": 1008,
-      "sha256": "3BC53603713CC4B60D408259843440C9B117084B9831BE9A60CBEE61DC41C347"
+      "length": 1579,
+      "sha256": "D3E8E42ED41C36A9C065219C873BCCC0D90896F98A2FAFE55733D1910AD03704"
     },
     {
       "path": "BepInEx\\core\\0Harmony.dll",
@@ -226,13 +226,13 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\LightKravteKorean.dll",
-      "length": 35840,
-      "sha256": "361764BB8B1A1F637E83217C5D8358DBB4C24DEF7D608F4FEF17020DB2AC770E"
+      "length": 50688,
+      "sha256": "A342B84811271BF3B60392035834772F781858A2D44D92952E1BB6E47E324D2E"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\PATCH_INFO.json",
       "length": 579,
-      "sha256": "9B101B6A793FE174FD89C32543957D8908CE80D4F6C0EE78F3655C3CFF990BBC"
+      "sha256": "94BD783A55E9280D589C7C60E38A7D1AE0F666C46A8C3F80850CFAED5EF2B6BC"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\audit.json",
@@ -272,7 +272,7 @@
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\font_coverage.json",
       "length": 1236,
-      "sha256": "8E188BD91365692ED9F51D4B391BC94DF0FBA053AF4C81641D98BE1DAC7296AF"
+      "sha256": "1B1B4ADF3FAF16C4EEF639FE2A5D43E0651E825830D3E7EF5B3AC6B97013D41F"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\glossary.md",
@@ -311,23 +311,33 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\plugin_assembly_audit.json",
-      "length": 4893,
-      "sha256": "A047306A1BB5D6E657C43AE1F0606F207138E809E053A8FA37C47B4429863BAE"
+      "length": 5658,
+      "sha256": "59D9D71FA1CEBF9B7FF0FF8227181771FD7D16BB41FF41085F1B52900F237B5F"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\quality_audit.json",
-      "length": 29152,
-      "sha256": "4D133FEA4471E2DC1DF6AB94F45989BD468C146C54B7FFFBB7D55846DDB6C4F9"
+      "length": 16216,
+      "sha256": "D08AEF0B72ACF4DFFD73D3A943799475D83343B1570386E718577964FE479B4F"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\quality_audit.md",
       "length": 588,
-      "sha256": "A189DA5EF8388C33DDC9443914371F9CAC55540134719B30E2D93CBC07AA5A6B"
+      "sha256": "1B5348F92AF29E5151EB0070BED21B0EE0DF4227CB60DE78AB6F6AA967C90B10"
+    },
+    {
+      "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\quality_manual_review_v2.json",
+      "length": 31978,
+      "sha256": "2657A76AD5AEEC585523E51A3E19F0B0034884E137C81D9795582409D885371C"
+    },
+    {
+      "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\quality_manual_review_v2.md",
+      "length": 4961,
+      "sha256": "37FE9B6273517B6E9B570DEC994F173959E20DE3409F6A0D70CB58FF2AB3D108"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\ruby_localization.json",
-      "length": 6292,
-      "sha256": "A0CF5D57FF8F3E4C54687CB83B50940993CBCCB018FFDF4832171DE281AB72D8"
+      "length": 11866,
+      "sha256": "7EF672D139037951106B18820053795810E6D5AFD7B03932A7BF71EF5DFC1E2D"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\runtime_display_string_audit.json",
@@ -341,8 +351,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\runtime_technical_report.md",
-      "length": 14996,
-      "sha256": "C3F2638A28C73407D57C8A8C6DC09BC801BAFA2105CE65287E0B63674292E52A"
+      "length": 21752,
+      "sha256": "E7E2E2B79BEABA01A329DE8FEBE93A0FC8F1BF9DF79028B028F2704FDBADD5E2"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\style_guide.md",
@@ -357,7 +367,7 @@
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\translation_build_manifest.json",
       "length": 7869,
-      "sha256": "8DE7EBE403C717D68EF76531C3EEAB772B2C7538CDD9DCA954D10AEDAB3D1FB3"
+      "sha256": "E2CDEA82CD7B93C34CD5DB04DC706C4D116879AF5EF821342D0FF3E97DECA9C0"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\validate_language_selector_fix.py",
@@ -366,13 +376,18 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\validation_all.json",
-      "length": 34624,
-      "sha256": "646B41D625126C700E03F43F6AD44E51DEFB586DCEB67503388B5D27EC14030E"
+      "length": 35271,
+      "sha256": "0D81EB20AD1D677D087E6372B501A8BC7626723FF27F0AC55EFE487528AB41D7"
+    },
+    {
+      "path": "BepInEx\\plugins\\LightKravteKorean\\provenance\\validation_packet_subset_all.json",
+      "length": 2347,
+      "sha256": "8CE69E737B43198201C86E04D86356472F18CFDDF14650A1F3F14D81ACCC9DB0"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-00.part01.jsonl",
-      "length": 10376,
-      "sha256": "5AA5BFE8E88334D8D97DC3010693223E0128C0CEC854943A9099D5AA70269B24"
+      "length": 10325,
+      "sha256": "D01009B1807C883C0A88C4978DFE40D418327F5FE51506EDA3954FDCDE115B36"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-00.part02.jsonl",
@@ -391,8 +406,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-01.part02.jsonl",
-      "length": 10264,
-      "sha256": "C399B07FEC215FB69FD9A159A43D22CA136F64F423D2CD10FE8DD3EDFD73A8F1"
+      "length": 10240,
+      "sha256": "4C8DF1935B7CAF656BD2EDC458FA2A3368D363B30567682A59993D7F9BA5CDA4"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-02d.part01.jsonl",
@@ -406,8 +421,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-03.part02.jsonl",
-      "length": 10075,
-      "sha256": "B49EDAF877CD3842801A3CEBABB62EFF88DED60DA8718DAA085972E48D01BC0A"
+      "length": 10048,
+      "sha256": "F2C3B82819573299CB88896AC628214D1B390D6AFEF24219545EDCCA986A3207"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-03.part03.jsonl",
@@ -416,8 +431,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-04.part01.jsonl",
-      "length": 10723,
-      "sha256": "E785AD68CD485225FC7348D778D55D6D49E40B79FCF7EB94016E7660BD0D9953"
+      "length": 10696,
+      "sha256": "EA863963C80352CB4489A39BC955FD005C4806314CA4CC644D1D215889E61B54"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-04.part02.jsonl",
@@ -431,8 +446,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-05d.part01.jsonl",
-      "length": 4735,
-      "sha256": "DCFF6DB18E246C2E3DED110A1B39A0E627548D12A23136512F4D65514E475416"
+      "length": 4731,
+      "sha256": "008A63AEA82F4754CDD4B686094F3B3BCC9D96292AD1CBA10E356C998CA2696A"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-06.part01.jsonl",
@@ -507,7 +522,7 @@
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-11.part01.jsonl",
       "length": 9638,
-      "sha256": "25D466F6FF8F18DFF76743789E01712BBB1FE608ECB02A56933EDBE87CECABA5"
+      "sha256": "2F0FB423F51185FF329A6E6CE39212A0F45C225F4B3F56F9C8395747C9E9E185"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch01\\ch01-11.part02.jsonl",
@@ -561,8 +576,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-02.part01.jsonl",
-      "length": 9978,
-      "sha256": "4178BF37DAA23C3A93DEAE10931C43C50E9788A47E22AF45021B24CE91B49AA3"
+      "length": 9927,
+      "sha256": "743D0A43C1B73212BBF8E0E3858A0EFA6B5C88F6759C6446D34439EA1EE7ADD5"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-02.part02.jsonl",
@@ -636,13 +651,13 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-12.part04.jsonl",
-      "length": 10069,
-      "sha256": "807EB98E6D4F38847745DA8A799FF3FCDB4C0BAD02B38D893C9C424E22817DDC"
+      "length": 10012,
+      "sha256": "AB6556A5B9247376E4EC44D8A5F77B948940F61D272EA4BAF51885C951AA35E2"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-12.part05.jsonl",
       "length": 9841,
-      "sha256": "DFFD1385E00C75656B485879F76C186BFD3D75BB74793EF06EA403780F5E3579"
+      "sha256": "1C3C28CFDA082A76CEBA10F2935216AECD7B052D35F68ABBD17F348F8153B69E"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-12.part06.jsonl",
@@ -661,8 +676,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-13.part01.jsonl",
-      "length": 7303,
-      "sha256": "2E179F3DFA71EC684B443449A0FEFCB1566CED6F7EA3DAE1E61B2171A424B4A6"
+      "length": 7274,
+      "sha256": "0CAC3F38EC2BABB35D1A47104A4A82DC30877B4198502802E90BF9B299ABA4A2"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-14.part01.jsonl",
@@ -672,7 +687,7 @@
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-14.part02.jsonl",
       "length": 4654,
-      "sha256": "5F86A4624AB2DF47FECE7C5AA9C6B8A1FF19320B65A55D95A4E40A1B6BF0DB6A"
+      "sha256": "677CF11D67846FA673AA526F17814D60329F4D214C4280C0D81FFB13F2E6795F"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-15.part01.jsonl",
@@ -706,13 +721,13 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-19.part01.jsonl",
-      "length": 5260,
-      "sha256": "DD8E6A3777DCC3C350088EC8E234B7F4B40E05AFC2B696E20DFC8BDD633909BE"
+      "length": 5259,
+      "sha256": "60320DE28BC0B12270B5F93F01C79DC4565ECABA24C994F802F55086B7959905"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-20.part01.jsonl",
-      "length": 9105,
-      "sha256": "2FE1D546F104D988008E514A90FC749F3FC9A27576CE417DBE8A6B01D8B69ADC"
+      "length": 9057,
+      "sha256": "F1B89BC8F22F302B5F35E7E541964A88CE20636E4C7F4CFA7DC548D3CD0264FC"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch02\\ch02-20.part02.jsonl",
@@ -721,8 +736,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-00.part01.jsonl",
-      "length": 6666,
-      "sha256": "0E88323E3FBDE741417B340D8A469C291ACAAD4E460796285D7E89F09B5ED2A5"
+      "length": 6642,
+      "sha256": "5AC49B5FF95B838BBF178489A97C755A5C4ED28E0B7DF53D25AA7BADCAE4D56C"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-01.part01.jsonl",
@@ -731,13 +746,13 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-01.part02.jsonl",
-      "length": 8904,
-      "sha256": "16F66AF4A8AAFF2A452036711DEA100101138D77DA1C45F55518E5161F0295A7"
+      "length": 8877,
+      "sha256": "3EA0CA21759D3336F49140D9FEA9C1A5D5BE23E18275F81732CFF82BDA004EE0"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-02.part01.jsonl",
       "length": 8419,
-      "sha256": "C3402D4961DC65E20AF8CC616B5098D0A2445FE88578E8A2C24E6848492A19BC"
+      "sha256": "13075C80853B9DCFED9CFA2C1E3A001E06821870D4AE9C2C4265A32D0CF682DC"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-02.part02.jsonl",
@@ -781,8 +796,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-04.part03.jsonl",
-      "length": 9429,
-      "sha256": "306554D1F51C05B6F5980F6FA8D89828D9BF7C4BFBFEC2E91D896B06975CB154"
+      "length": 9402,
+      "sha256": "0FB93DC00D8577E000993C46CE6D0C89E892FE2D10D3499A72F2A87EDB55452F"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-04.part04.jsonl",
@@ -811,8 +826,8 @@
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-08.part01.jsonl",
-      "length": 9112,
-      "sha256": "7D7EF4C99CE95772F10032FE45FF107B11D0CFB827DE5AE784213EA5CBA01688"
+      "length": 9082,
+      "sha256": "A8430342D187C671935AD96969B5CB77FEA85DC6CBB2DA6CB832CC9911E6042E"
     },
     {
       "path": "BepInEx\\plugins\\LightKravteKorean\\translations\\ch03\\ch03-08.part02.jsonl",

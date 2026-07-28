@@ -1,0 +1,87 @@
+{
+  "status": "pass",
+  "files": 93,
+  "entries": 6746,
+  "issues": [],
+  "warnings": [
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch01-00:59:207f192"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch01-00:199:60ee8e3a"
+    },
+    {
+      "type": "japanese_kana",
+      "uid": "ch01-01:322:f548412d",
+      "ko": "<ruby=\"・\">바</ruby><ruby=\"・\">로</ruby> 그 그림에…"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch01-01:344:7695bc83"
+    },
+    {
+      "type": "japanese_kana",
+      "uid": "ch01-03:306:a55cffa4",
+      "ko": "그렇게 생각하는 나와 ‘<ruby=\"・\">그</ruby><ruby=\"・\">것</ruby>’에 이끌리는 나.<br>마치 마법에라도 걸린 듯 의식이 둘로 갈라진다."
+    },
+    {
+      "type": "japanese_kana",
+      "uid": "ch01-03:323:e0d13cda",
+      "ko": "나는 홀 안쪽에서 흘러나오는<br><ruby=\"・\">그</ruby><ruby=\"・\">것</ruby>의 마력에 저항할 수 없었다."
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch01-03:365:6db24022"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch01-04:120:4778c26"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-02:43:52d6dc03"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-02:88:14e0912f"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-12:613:8517a892"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-12:633:3b4ca1b1"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-13:59:46c2cfd"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-20:125:86d8bba3"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch02-20:188:49e3d90d"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch03-00:47:33eab712"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch03-01:301:cc1f2573"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch03-04:642:25cc68aa"
+    },
+    {
+      "type": "intentional_ruby_tag_removal",
+      "uid": "ch03-08:101:f1405ffd"
+    }
+  ]
+}

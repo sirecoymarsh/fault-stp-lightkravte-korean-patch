@@ -1,4 +1,4 @@
-# Fault StP LIGHTKRAVTE 한국어 패치 v1.0.0
+# Fault StP LIGHTKRAVTE 한국어 패치 v1.0.1
 
 ## 범위
 
@@ -24,7 +24,7 @@ powershell -ExecutionPolicy Bypass -File .\Install-KoreanPatch.ps1
 powershell -ExecutionPolicy Bypass -File .\Install-KoreanPatch.ps1 -GameRoot 'D:\Games\Fault StP LIGHTKRAVTE'
 ```
 
-설치기는 패키지 149개 파일, 게임 빌드 11개 핵심 파일의 SHA-256,
+설치기는 패키지 152개 파일, 게임 빌드 11개 핵심 파일의 SHA-256,
 실행 중인 게임 프로세스, 모든 덮어쓰기 충돌을 먼저 검사합니다. 원본 백업은 게임 및
 패키지 바깥의 `%LOCALAPPDATA%\CodexGamePatches\FaultStPLIGHTKRAVTE`에 보관합니다.
 

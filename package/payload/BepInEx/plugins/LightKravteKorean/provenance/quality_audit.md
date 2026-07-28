@@ -3,13 +3,13 @@
 - 스크립트 엔트리: 6746/6746
 - 구조 검증 완료: True
 - 치명적 발견: 0
-- 수동 검토 후보: 83
+- 수동 검토 후보: 42
 - 판정: PASS
 
 ## 범주별 집계
 
 - `introduced_latin_word`: 4
-- `long_display_segment`: 56
-- `repeated_source_divergence`: 23
+- `long_display_segment`: 19
+- `repeated_source_divergence`: 19
 
 치명적 범주는 깨진 문자, 화면에 남은 일본어 가나, 일본어 루비 읽기, 일본어 의미 문장을 번역했는데 한글이 전혀 없는 경우다. 길이·용어·반복문 차이는 문맥에 따라 정당할 수 있으므로 교차 검수 후보로만 기록한다.

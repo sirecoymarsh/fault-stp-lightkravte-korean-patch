@@ -310,6 +310,13 @@ function Get-RuntimeMutableStateMap([object]$Manifest) {
     }
 
     $map = @{}
+    $expectedMutablePath = 'BepInEx\config\kr.cadriaclord.lightkravte.korean.cfg'
+    $expectedMutableKeys = @(
+        'General/KoreanActive',
+        'Layout/FitLongDialogue',
+        'Layout/MinFontScale',
+        'Diagnostics/LogTextRendering'
+    )
     foreach ($entry in @($Manifest.runtime_mutable_payload)) {
         $relative = Assert-AllowedPayloadPath $entry.path
         if ($map.ContainsKey($relative)) {
@@ -322,56 +329,161 @@ function Get-RuntimeMutableStateMap([object]$Manifest) {
             throw "Runtime-mutable payload must be newly added: $relative"
         }
 
-        $states = @($entry.allowed_states)
-        if ($states.Count -lt 1) {
-            throw "Runtime-mutable payload has no allowed states: $relative"
+        # Runtime mutability is deliberately narrow: this one newly-added,
+        # non-executable BepInEx settings file only.  Do not make the policy
+        # data-driven enough for a package manifest to widen the write scope.
+        if (-not $relative.Equals($expectedMutablePath, $PathComparison)) {
+            throw "Runtime-mutable policy is not permitted for this path: $relative"
         }
-        $seenStates = @{}
-        $includesInstalled = $false
-        foreach ($state in $states) {
-            $length = [long]$state.length
-            $hash = ([string]$state.sha256).ToUpperInvariant()
-            if ($length -lt 0 -or $hash -notmatch '^[0-9A-F]{64}$') {
-                throw "Invalid runtime-mutable state metadata: $relative"
-            }
-            $key = "$length`:$hash"
-            if ($seenStates.ContainsKey($key)) {
-                throw "Duplicate runtime-mutable state: $relative ($key)"
-            }
-            $seenStates[$key] = $true
-            if (
-                $length -eq [long]$payload[$relative].length -and
-                $hash -eq ([string]$payload[$relative].sha256).ToUpperInvariant()
-            ) {
-                $includesInstalled = $true
+        $propertyNames = @($entry.PSObject.Properties.Name)
+        $allowedProperties = @(
+            'path', 'policy', 'schema_version', 'canonical_state', 'mutable_keys'
+        )
+        foreach ($propertyName in $propertyNames) {
+            if ($propertyName -notin $allowedProperties) {
+                throw "Unexpected runtime-mutable policy property: $propertyName"
             }
         }
-        if (-not $includesInstalled) {
-            throw "Runtime-mutable states omit the installed payload: $relative"
+        if (
+            $entry.policy -ne 'ini_schema_v1' -or
+            [int]$entry.schema_version -ne 1 -or
+            $null -eq $entry.canonical_state
+        ) {
+            throw "Unsupported runtime-mutable policy: $relative"
         }
-        $map[$relative] = $states
+        $canonicalProperties = @($entry.canonical_state.PSObject.Properties.Name)
+        if (
+            $canonicalProperties.Count -ne 2 -or
+            $canonicalProperties -notcontains 'length' -or
+            $canonicalProperties -notcontains 'sha256'
+        ) {
+            throw "Invalid runtime-mutable canonical state metadata: $relative"
+        }
+        $canonicalLength = [long]$entry.canonical_state.length
+        $canonicalHash = ([string]$entry.canonical_state.sha256).ToUpperInvariant()
+        if ($canonicalLength -lt 0 -or $canonicalHash -notmatch '^[0-9A-F]{64}$') {
+            throw "Invalid runtime-mutable canonical state metadata: $relative"
+        }
+        if (
+            $canonicalLength -ne [long]$payload[$relative].length -or
+            $canonicalHash -ne ([string]$payload[$relative].sha256).ToUpperInvariant()
+        ) {
+            throw "Runtime-mutable canonical state does not match payload: $relative"
+        }
+        $mutableKeys = @($entry.mutable_keys)
+        if ($mutableKeys.Count -ne $expectedMutableKeys.Count) {
+            throw "Runtime-mutable key count is invalid: $relative"
+        }
+        $seenKeys = @{}
+        foreach ($mutableKey in $mutableKeys) {
+            $value = [string]$mutableKey
+            if ($seenKeys.ContainsKey($value) -or $value -notin $expectedMutableKeys) {
+                throw "Invalid runtime-mutable key declaration: $relative ($value)"
+            }
+            $seenKeys[$value] = $true
+        }
+        foreach ($expectedKey in $expectedMutableKeys) {
+            if (-not $seenKeys.ContainsKey($expectedKey)) {
+                throw "Runtime-mutable key declaration is incomplete: $relative"
+            }
+        }
+        $map[$relative] = $entry
+    }
+    if ($map.Count -ne 1 -or -not $map.ContainsKey($expectedMutablePath)) {
+        throw 'Package manifest must declare exactly the approved runtime-mutable config.'
     }
     return $map
 }
 
 function Test-RuntimeMutableFile(
     [string]$Path,
-    [object[]]$AllowedStates
+    [object]$Policy
 ) {
     if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
         return $false
     }
-    $length = (Get-Item -LiteralPath $Path).Length
-    $hash = Get-Sha256 $Path
-    foreach ($state in @($AllowedStates)) {
-        if (
-            $length -eq [long]$state.length -and
-            $hash -eq ([string]$state.sha256).ToUpperInvariant()
-        ) {
-            return $true
+    if ($Policy.policy -ne 'ini_schema_v1' -or [int]$Policy.schema_version -ne 1) {
+        return $false
+    }
+
+    # BepInEx configuration is data, not executable code.  The parser accepts
+    # only the known schema and four user-facing values; it rejects unknown
+    # sections, duplicate keys, malformed settings, and any static setting
+    # drift.  Comments and blank lines are intentionally ignored.
+    try {
+        $utf8 = New-Object System.Text.UTF8Encoding($false, $true)
+        $text = $utf8.GetString([IO.File]::ReadAllBytes($Path))
+    }
+    catch {
+        return $false
+    }
+    if ($text.StartsWith([string][char]0xFEFF)) {
+        $text = $text.Substring(1)
+    }
+    if ($text.Contains([char]0) -or $text -match "`r(?!`n)") {
+        return $false
+    }
+
+    $expected = @(
+        @{ section = 'Compatibility'; key = 'StrictBuildCheck'; kind = 'literal'; value = 'true' },
+        @{ section = 'Data'; key = 'TranslationDirectory'; kind = 'literal'; value = 'translations' },
+        @{ section = 'Font'; key = 'FontPath'; kind = 'literal'; value = 'fonts\Korean.ttf' },
+        @{ section = 'Font'; key = 'ScanIntervalSeconds'; kind = 'literal'; value = '0.35' },
+        @{ section = 'General'; key = 'KoreanActive'; kind = 'bool' },
+        @{ section = 'Layout'; key = 'FitLongDialogue'; kind = 'bool' },
+        @{ section = 'Layout'; key = 'MinFontScale'; kind = 'scale' },
+        @{ section = 'Diagnostics'; key = 'LogTextRendering'; kind = 'bool' }
+    )
+    $sectionNames = @($expected | ForEach-Object { $_.section } | Select-Object -Unique)
+    $currentSection = $null
+    $seenSections = @{}
+    $seenSettings = @{}
+    # BepInEx normally writes CRLF, but accept ordinary LF as a harmless user
+    # formatting change; a bare CR remains invalid above.
+    foreach ($line in ($text -split "`r?`n")) {
+        $trimmed = $line.Trim()
+        if ([string]::IsNullOrWhiteSpace($trimmed) -or $trimmed.StartsWith('#')) {
+            continue
+        }
+        if ($trimmed -match '^\[([A-Za-z][A-Za-z0-9 ]*)\]$') {
+            $section = $Matches[1]
+            if ($section -notin $sectionNames -or $seenSections.ContainsKey($section)) {
+                return $false
+            }
+            $seenSections[$section] = $true
+            $currentSection = $section
+            continue
+        }
+        if ($null -eq $currentSection -or $trimmed -notmatch '^([A-Za-z][A-Za-z0-9]*)\s*=\s*(.*?)\s*$') {
+            return $false
+        }
+        $key = $Matches[1]
+        $value = $Matches[2]
+        $settingKey = "$currentSection`0$key"
+        $definition = @($expected | Where-Object {
+            $_.section -eq $currentSection -and $_.key -eq $key
+        })
+        if ($seenSettings.ContainsKey($settingKey) -or $definition.Count -ne 1) {
+            return $false
+        }
+        $seenSettings[$settingKey] = $true
+        switch ($definition[0].kind) {
+            'literal' {
+                if ($value -ne $definition[0].value) { return $false }
+            }
+            'bool' {
+                if ($value -notmatch '^(?i:true|false)$') { return $false }
+            }
+            'scale' {
+                if ($value -notmatch '^(?:0\.[5-9][0-9]*|1(?:\.0+)?)$') { return $false }
+            }
+            default { return $false }
         }
     }
-    return $false
+    if ($seenSections.Count -ne $sectionNames.Count -or $seenSettings.Count -ne $expected.Count) {
+        return $false
+    }
+    return $true
 }
 
 function Assert-TrustedBaseline([object]$Manifest, [string]$Root) {
@@ -454,6 +566,16 @@ function Assert-Journal(
                 $state.original_sha256 -ne $original.sha256
             ) {
                 throw "Journal original metadata mismatch: $relative"
+            }
+        }
+        elseif ($state.prior_state -eq 'runtime_mutable_preserved') {
+            $mutable = Get-RuntimeMutableStateMap $Manifest
+            if (
+                -not $mutable.ContainsKey($relative) -or
+                [long]$state.original_length -lt 0 -or
+                ([string]$state.original_sha256).ToUpperInvariant() -notmatch '^[0-9A-F]{64}$'
+            ) {
+                throw "Journal has invalid preserved runtime-mutable state: $relative"
             }
         }
         elseif (
@@ -609,6 +731,7 @@ function Install-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
     }
 
     Assert-TrustedBaseline $Manifest $Root
+    $mutable = Get-RuntimeMutableStateMap $Manifest
     $createdDirectories = @(Get-MissingPayloadDirectories $Manifest $Root)
 
     $preflight = @()
@@ -622,16 +745,34 @@ function Install-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
                 $Manifest.preexisting_payload |
                     Where-Object { (Normalize-RelativePath $_.path) -eq $relative }
             )
-            if ($allowed.Count -ne 1 -or $currentHash -ne $allowed[0].sha256) {
-                throw "Unexpected pre-existing collision: $relative ($currentHash)"
+            if ($allowed.Count -eq 1 -and $currentHash -eq $allowed[0].sha256) {
+                $preflight += [ordered]@{
+                    path = $relative
+                    prior_state = 'present'
+                    original_length = (Get-Item -LiteralPath $target).Length
+                    original_sha256 = $currentHash
+                    installed_length = [long]$entry.length
+                    installed_sha256 = $entry.sha256.ToUpperInvariant()
+                }
             }
-            $preflight += [ordered]@{
-                path = $relative
-                prior_state = 'present'
-                original_length = (Get-Item -LiteralPath $target).Length
-                original_sha256 = $currentHash
-                installed_length = [long]$entry.length
-                installed_sha256 = $entry.sha256.ToUpperInvariant()
+            elseif (
+                $mutable.ContainsKey($relative) -and
+                (Test-RuntimeMutableFile $target $mutable[$relative])
+            ) {
+                # A previous restore may have intentionally retained the
+                # user's settings. Back them up, install the canonical file,
+                # and restore the settings on the next uninstall.
+                $preflight += [ordered]@{
+                    path = $relative
+                    prior_state = 'runtime_mutable_preserved'
+                    original_length = (Get-Item -LiteralPath $target).Length
+                    original_sha256 = $currentHash
+                    installed_length = [long]$entry.length
+                    installed_sha256 = $entry.sha256.ToUpperInvariant()
+                }
+            }
+            else {
+                throw "Unexpected pre-existing collision: $relative ($currentHash)"
             }
         }
         else {
@@ -662,7 +803,7 @@ function Install-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
         Copy-Item -LiteralPath $payloadSource -Destination $patchedCopy
         Assert-FileHash $patchedCopy $state.installed_length $state.installed_sha256 'Patched recovery copy'
 
-        if ($state.prior_state -eq 'present') {
+        if ($state.prior_state -in @('present', 'runtime_mutable_preserved')) {
             $live = Join-Path $Root $state.path
             $backup = Join-Path $originalRoot $state.path
             $backupParent = Split-Path -Parent $backup
@@ -714,7 +855,7 @@ function Install-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
             $state = $preflight | Where-Object { $_.path -eq $relative }
             $target = Join-Path $Root $relative
             try {
-                if ($state.prior_state -eq 'present') {
+                if ($state.prior_state -in @('present', 'runtime_mutable_preserved')) {
                     $backup = Join-Path $originalRoot $relative
                     Copy-Atomic $backup $target $state.original_sha256
                 }
@@ -779,7 +920,7 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
         Assert-ChildPath $Root $target 'Restore target'
         Assert-ChildPath $backupDirectory $patched 'Patched recovery copy'
         Assert-FileHash $patched ([long]$state.installed_length) $state.installed_sha256 'Patched recovery copy'
-        if ($state.prior_state -eq 'present') {
+        if ($state.prior_state -in @('present', 'runtime_mutable_preserved')) {
             $original = Join-Path $originalRoot $relative
             Assert-ChildPath $backupDirectory $original 'Original backup'
             Assert-FileHash $original ([long]$state.original_length) $state.original_sha256 'Original backup'
@@ -792,7 +933,7 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
                 $currentLength -eq [long]$state.installed_length -and
                 $current -eq $state.installed_sha256
             )
-            if ($state.prior_state -eq 'present') {
+            if ($state.prior_state -in @('present', 'runtime_mutable_preserved')) {
                 $allowedCurrent = (
                     $allowedCurrent -or (
                         $currentLength -eq [long]$state.original_length -and
@@ -812,11 +953,12 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
                 throw "Refusing restore over drifted file: $relative ($current)"
             }
         }
-        elseif ($state.prior_state -eq 'present') {
+        elseif ($state.prior_state -in @('present', 'runtime_mutable_preserved')) {
             throw "Pre-existing file is unexpectedly missing: $relative"
         }
     }
 
+    $preservedRuntimeMutable = New-Object System.Collections.ArrayList
     foreach ($state in $journal.entries) {
         $relative = Normalize-RelativePath $state.path
         $target = Join-Path $Root $relative
@@ -826,21 +968,37 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
                 Copy-Atomic $original $target $state.original_sha256
             }
         }
+        elseif ($state.prior_state -eq 'runtime_mutable_preserved') {
+            $installedUnchanged = (
+                (Get-Item -LiteralPath $target).Length -eq [long]$state.installed_length -and
+                (Get-Sha256 $target) -eq $state.installed_sha256
+            )
+            if ($installedUnchanged) {
+                $original = Join-Path $originalRoot $relative
+                Copy-Atomic $original $target $state.original_sha256
+            }
+            else {
+                # The user changed the config while this installation was
+                # active. Keep that schema-valid state rather than replacing
+                # it with an older backup.
+                [void]$preservedRuntimeMutable.Add($relative)
+            }
+        }
         elseif (Test-Path -LiteralPath $target -PathType Leaf) {
             $allowedRemoval = (
                 (Get-Item -LiteralPath $target).Length -eq
                     [long]$state.installed_length -and
                 (Get-Sha256 $target) -eq $state.installed_sha256
             )
-            if (
-                -not $allowedRemoval -and
-                $mutable.ContainsKey($relative)
-            ) {
-                $allowedRemoval = Test-RuntimeMutableFile `
-                    $target `
-                    $mutable[$relative]
-            }
             if (-not $allowedRemoval) {
+                if (
+                    $mutable.ContainsKey($relative) -and
+                    (Test-RuntimeMutableFile $target $mutable[$relative])
+                ) {
+                    # A schema-valid user configuration is deliberately kept.
+                    [void]$preservedRuntimeMutable.Add($relative)
+                    continue
+                }
                 throw "Refusing to remove drifted added file: $relative"
             }
             Remove-Item -LiteralPath $target -Force
@@ -851,6 +1009,16 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
         $target = Join-Path $Root (Normalize-RelativePath $state.path)
         if ($state.prior_state -eq 'present') {
             Assert-FileHash $target ([long]$state.original_length) $state.original_sha256 'Restored original'
+        }
+        elseif ($state.prior_state -eq 'runtime_mutable_preserved') {
+            if (-not (Test-RuntimeMutableFile $target $mutable[(Normalize-RelativePath $state.path)])) {
+                throw "Preserved runtime-mutable file is invalid after restore: $($state.path)"
+            }
+        }
+        elseif ($preservedRuntimeMutable -contains (Normalize-RelativePath $state.path)) {
+            if (-not (Test-RuntimeMutableFile $target $mutable[(Normalize-RelativePath $state.path)])) {
+                throw "Preserved runtime-mutable file is invalid after restore: $($state.path)"
+            }
         }
         elseif (Test-Path -LiteralPath $target) {
             throw "Added file remains after restore: $($state.path)"
@@ -877,6 +1045,7 @@ function Restore-Patch([object]$Manifest, [string]$Root, [string]$StateRoot) {
         game_root = Get-FullPath $Root
         backup_directory = $backupDirectory
         restored_files = $journal.entries.Count
+        preserved_runtime_mutable_payload = @($preservedRuntimeMutable)
     }
 }
 

@@ -1,0 +1,810 @@
+{
+  "version": 2,
+  "project": "Fault StP LIGHTKRAVTE Korean localization",
+  "generated_at_utc": "2026-07-28T01:15:56.289170+00:00",
+  "reviewer": "Codex internal model",
+  "scope": "all 46 non-fatal candidates from the final quality pass",
+  "source_bindings": {
+    "quality_audit_json_sha256": "d08aef0b72acf4dffd73d3a943799475d83343b1570386e718577964fe479b4f",
+    "translations_tree_sha256": "22d7a58bafc62f456ee64263f941046cd19da65a62e9afb1425a166fdb3f70cd",
+    "packets_tree_sha256": "43cd303b42cf202f374e08d834ebef870a04872ff024aa4d7d5c5c81bea84e71"
+  },
+  "summary": {
+    "original_candidates_reviewed": 46,
+    "findings_corrected": 4,
+    "rows_corrected": 5,
+    "current_candidates_retained": 42,
+    "fatal_findings": 0,
+    "current_review_findings": 42
+  },
+  "corrections": [
+    {
+      "finding": "diary_date_heading_punctuation",
+      "reason": "동일한 무구두점 일기 날짜 머리말을 문맥과 무관하게 일관되게 표기하고 일본어 원문의 구두점 유무도 맞췄다.",
+      "rows": [
+        {
+          "uid": "ch01-05d:21:8a5930cb",
+          "before": "모월 모일.<br>",
+          "after": "모월 모일<br>"
+        }
+      ]
+    },
+    {
+      "finding": "diary_addressee_heading_punctuation",
+      "reason": "동일한 무구두점 일기 수신인 머리말을 문맥과 무관하게 일관되게 표기하고 일본어 원문의 구두점 유무도 맞췄다.",
+      "rows": [
+        {
+          "uid": "ch01-05d:23:d7997acb",
+          "before": "엄마에게.<br>",
+          "after": "엄마에게<br>"
+        },
+        {
+          "uid": "ch02-13:16:d7997acb",
+          "before": "엄마에게.<br>",
+          "after": "엄마에게<br>"
+        }
+      ]
+    },
+    {
+      "finding": "surprise_interjection",
+      "reason": "일본어 첫머리의 え는 긍정 대답이 아니라 놀람이므로 한국어 감탄사 '어'로 바로잡았다.",
+      "rows": [
+        {
+          "uid": "ch02-19:164:407e5860",
+          "before": "네, 아… 네, 네!",
+          "after": "어, 아… 네, 네!"
+        }
+      ]
+    },
+    {
+      "finding": "question_exclamation_order",
+      "reason": "같은 일본어 감탄문(！？)의 한국어 문장부호 순서를 다른 출현부와 같은 !?로 통일했다.",
+      "rows": [
+        {
+          "uid": "ch02-14:307:e1a7c2c9",
+          "before": "네, 네?!",
+          "after": "네, 네!?"
+        }
+      ]
+    }
+  ],
+  "retained_findings": [
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-00:33:484cdb70",
+        "segment": 0,
+        "length": 88,
+        "text": "자신들의 삶을 위협하지 않는 한, 바다 건너의 전쟁은 일어나지 않은 것이나 다름없었다. 기껏해야 술집에서 말다툼하는 아저씨들의 술안주 정도에 불과한 화제였다."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-00:34:40c1069b",
+        "segment": 0,
+        "length": 67,
+        "text": "현 루젠하이드 국왕 바라 루젠하이드가 난민을 구호하고 열세에 놓인 셰스토카린 왕국에 구제책을 베풀기로 결단하기 전까지는."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-00:41:f5710994",
+        "segment": 0,
+        "length": 76,
+        "text": "누가 입 밖에 내지 않아도, 저마다 고민과 불안을 품은 채 자신이 할 수 있는 일에 매진하며 오늘도 보잘것없는 일상이 이어지도록 애썼다."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:31:bc741263",
+        "segment": 0,
+        "length": 68,
+        "text": "제대로 된 곳에서 수련할 수 있으면 좋겠지만, 어느 정도 경험이 없는 사람은 문전박대하는 아틀리에가 많아서 이해가 안 돼…"
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:35:76745886",
+        "segment": 0,
+        "length": 65,
+        "text": "실제로 우리 과수원도 그런 모양이라, 세렌하이드 알선소를 통하지 않은 사람은 견습생이라도 기본적으로 고용하지 않는대."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:52:d0eda477",
+        "segment": 0,
+        "length": 68,
+        "text": "셰스토카린에 보낼 구호 물자를 만들려고 계절동을 완전 가동한다는데, 요즘은 여름 주기에 들어간 모양이라 엄청나게 더워졌어."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:53:a704fb3d",
+        "segment": 0,
+        "length": 66,
+        "text": "일 년이 꽉 압축된 것 같아서 무척 신기한 느낌이야. 지인 중에는 비상사태를 즐기는 사람도 있지만 나는 좀 불안하달까…"
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:115:1ccda58b",
+        "segment": 0,
+        "length": 79,
+        "text": "과수원의 수확 주기가 흐트러지기 시작해 루젠하이드 성에 보낼 배달을 잊을 뻔할 만큼 아빠는 조금 조급해 보이지만, 잘 대처하고 있는 모양이야."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-02d:116:a3a4622c",
+        "segment": 0,
+        "length": 75,
+        "text": "할당량이라고 말하지만, 아빠라면 분명 완벽하게 수확해서 낭비 없이 배분하는 데 온 힘을 쏟고 있을 거야. 옛날부터 그런 사람이었으니까."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-05d:39:35e114e2",
+        "segment": 0,
+        "length": 88,
+        "text": "세렌하이드로 사는 게 싫어진다고… 농담처럼 말했지만, 가족 사이에 무슨 일이 있었던 걸까요? (그렇다면 더더욱 나 같은 사람이 할 수 있는 일은 없겠지만요.)"
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-05d:57:198c0bea",
+        "segment": 0,
+        "length": 81,
+        "text": "조금 더 실력을 키울 방법을 누군가에게 배우고 싶지만, 아디아 씨도 자원봉사로 가르쳐 줄 뿐이니 그분에게 너무 의지하는 것도 좀 아닌 것 같아요."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch01-05d:62:244ca38a",
+        "segment": 0,
+        "length": 69,
+        "text": "하지만 분명… ‘같은 일을 반복하면서 다른 결과를 기대하는 것은 미친 짓이다’라고 어느 위인이 말했던 것 같은데… 누구였죠?"
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-05d:24:7f0be4fb",
+        "segment": 0,
+        "length": 80,
+        "text": "옛날이면 몰라도 요즘은 보통 사람 중에는 안 쓰는 사람이 더 많은 것 같아서 별로 엮이고 싶지는 않지만, 그래도 일단 공부만은 해 보려고 해요."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-05d:29:2cd52aa",
+        "segment": 0,
+        "length": 98,
+        "text": "마을 변두리 바에 바바즈바 씨라는 사람이 있는데, 그 사람 말로는 특수한 렌즈를 구하라더라고요. 그런데 왠지 정보를 아끼는(?) 것 같아서 무슨 말을 하는 건지 잘 모르겠어요…"
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-12:339:e089556b",
+        "segment": 0,
+        "length": 70,
+        "text": "순식간에 대량의 마나를 조작해야 하는 크래프트를 사용하는… 주로 전투를 생업으로 삼는 이들――배틀크래프터――가 받는 의식이다."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-12:351:83864c12",
+        "segment": 0,
+        "length": 67,
+        "text": "많은 사람이 아니면 할 수 없는 대규모 크래프트를 이루는 이들에게는 장기적이고 복잡하면서도 세심한 마나 조작이 요구된다."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-12:354:12b72a38",
+        "segment": 0,
+        "length": 82,
+        "text": "두 의식은 의식 기술이 확립된 시대부터 ‘고고한 오피아’와 ‘친목의 디비오’라 불렸으며, 이를 받은 크래프터의 특성을 크게 나타내는 요소가 되었다."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch02-12:986:8aaee71a",
+        "segment": 0,
+        "length": 89,
+        "text": "팜 링에 지급된 장치도 도난 방지를 위해 『등록된 사람 이외의 비빌리아』를 감지하는 설정과 『모든 유해 동물』을 감지하는 설정, 이렇게 두 가지가 되어 있어요."
+      }
+    },
+    {
+      "category": "long_display_segment",
+      "disposition": "retained_after_context_review",
+      "reason": "원문 의미·문체·용어를 문맥과 대조해 이상 없음. 임의 <br> 추가로 보호 토큰 구조를 바꾸지 않고, 화면 배치는 TextFitBridge와 자연 플레이 확인 항목으로 분리한다.",
+      "finding": {
+        "uid": "ch03-04:641:50c76c5",
+        "segment": 0,
+        "length": 68,
+        "text": "일반인이 받기라도 한다면 첫날이 끝나기도 전에 이 세상 것이라 생각할 수 없는 정신적 고통을 겪으며 쇠약해 죽는다고 한다."
+      }
+    },
+    {
+      "category": "introduced_latin_word",
+      "disposition": "retained_after_context_review",
+      "reason": "CLOQKS는 작품의 공식 로마자 브랜드 표기이며 오자가 아니다. 초기 출현에는 한국어 독음도 병기되어 있다.",
+      "finding": {
+        "uid": "ch01-11:575:9b4ab831",
+        "ko": "게다가 리그스 씨도 미샤 씨도<br>CLOQKS(클록스) 학생이시죠?"
+      }
+    },
+    {
+      "category": "introduced_latin_word",
+      "disposition": "retained_after_context_review",
+      "reason": "CLOQKS는 작품의 공식 로마자 브랜드 표기이며 오자가 아니다. 초기 출현에는 한국어 독음도 병기되어 있다.",
+      "finding": {
+        "uid": "ch02-01:421:90434ee8",
+        "ko": "라인바스타의 스승이라면… CLOQKS(클록스) 학원의<br>로아 리드사이드 선생님 아니에요?"
+      }
+    },
+    {
+      "category": "introduced_latin_word",
+      "disposition": "retained_after_context_review",
+      "reason": "CLOQKS는 작품의 공식 로마자 브랜드 표기이며 오자가 아니다. 초기 출현에는 한국어 독음도 병기되어 있다.",
+      "finding": {
+        "uid": "ch02-02:112:67c5900d",
+        "ko": "CLOQKS(클록스)의 교원이었다고요!"
+      }
+    },
+    {
+      "category": "introduced_latin_word",
+      "disposition": "retained_after_context_review",
+      "reason": "CLOQKS는 작품의 공식 로마자 브랜드 표기이며 오자가 아니다. 초기 출현에는 한국어 독음도 병기되어 있다.",
+      "finding": {
+        "uid": "ch03-02:206:a28605e0",
+        "ko": "그야, 나도 이래 봬도<br>CLOQKS 고등학원 학생인 모양이니까."
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "うーん…",
+        "variants": [
+          {
+            "ko": "으음…",
+            "uids": [
+              "ch01-00:161:1f902073"
+            ]
+          },
+          {
+            "ko": "음…",
+            "uids": [
+              "ch01-07:303:f5896668"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "え えええ！？",
+        "variants": [
+          {
+            "ko": "네, 네에에!?",
+            "uids": [
+              "ch01-00:300:66c5c058"
+            ]
+          },
+          {
+            "ko": "에, 에에에!?",
+            "uids": [
+              "ch01-09:210:b250959f"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "そ そうだったんですね…",
+        "variants": [
+          {
+            "ko": "그, 그랬군요…",
+            "uids": [
+              "ch01-11:520:5b7bb93b"
+            ]
+          },
+          {
+            "ko": "그, 그러셨군요…",
+            "uids": [
+              "ch01-00:321:5b7bb93b"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "flo",
+        "ja": "え？",
+        "variants": [
+          {
+            "ko": "뭐?",
+            "uids": [
+              "ch01-00:543:2c53b7d6"
+            ]
+          },
+          {
+            "ko": "어?",
+            "uids": [
+              "ch02-12:1316:2c53b7d6"
+            ]
+          },
+          {
+            "ko": "응?",
+            "uids": [
+              "ch02-12:388:2c53b7d6",
+              "ch02-12:405:2c53b7d6"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "は はあ…",
+        "variants": [
+          {
+            "ko": "아, 네…",
+            "uids": [
+              "ch01-09:203:71117789",
+              "ch02-01:229:71117789"
+            ]
+          },
+          {
+            "ko": "아, 예…",
+            "uids": [
+              "ch01-03:293:71117789"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "",
+        "ja": "間違いない",
+        "variants": [
+          {
+            "ko": "틀림없다.",
+            "uids": [
+              "ch01-03:340:aed4cdc1"
+            ]
+          },
+          {
+            "ko": "틀림없어.",
+            "uids": [
+              "ch01-09:60:aed4cdc1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "そ そうなんですか？",
+        "variants": [
+          {
+            "ko": "그, 그러세요?",
+            "uids": [
+              "ch01-11:361:e0c57889"
+            ]
+          },
+          {
+            "ko": "그, 그런가요?",
+            "uids": [
+              "ch01-03:450:e0c57889"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "",
+        "ja": "そう",
+        "variants": [
+          {
+            "ko": "그래",
+            "uids": [
+              "ch02-01:39:dc268ef9"
+            ]
+          },
+          {
+            "ko": "그래.",
+            "uids": [
+              "ch03-01:207:dc268ef9"
+            ]
+          },
+          {
+            "ko": "그렇다.",
+            "uids": [
+              "ch01-03:468:dc268ef9"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "え？",
+        "variants": [
+          {
+            "ko": "네?",
+            "uids": [
+              "ch01-04:503:19f41176",
+              "ch01-07:1023:5ffa1ad2",
+              "ch01-07:1097:5ffa1ad2",
+              "ch01-07:1264:5ffa1ad2",
+              "ch02-06:31:5ffa1ad2",
+              "ch02-12:582:19f41176",
+              "ch02-12:587:19f41176",
+              "ch02-12:671:19f41176",
+              "ch02-12:809:19f41176",
+              "ch02-12:1123:19f41176",
+              "ch02-15:60:19f41176",
+              "ch03-02:221:19f41176",
+              "ch03-02:534:19f41176"
+            ]
+          },
+          {
+            "ko": "어?",
+            "uids": [
+              "ch03-08:851:19f41176"
+            ]
+          },
+          {
+            "ko": "응?",
+            "uids": [
+              "ch01-10:192:19f41176",
+              "ch01-10:208:19f41176"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "",
+        "ja": "そうだ…",
+        "variants": [
+          {
+            "ko": "그래…",
+            "uids": [
+              "ch02-13:136:554c3c53",
+              "ch02-19:147:554c3c53",
+              "ch02-20:296:554c3c53"
+            ]
+          },
+          {
+            "ko": "그렇다…",
+            "uids": [
+              "ch01-04:560:554c3c53"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "え………",
+        "variants": [
+          {
+            "ko": "네………",
+            "uids": [
+              "ch01-04:568:ab89f7b7",
+              "ch03-04:575:7640503a"
+            ]
+          },
+          {
+            "ko": "어………",
+            "uids": [
+              "ch01-09:208:ab89f7b7",
+              "ch03-02:250:ab89f7b7"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "え…え！？",
+        "variants": [
+          {
+            "ko": "네… 네!?",
+            "uids": [
+              "ch01-11:674:92120121"
+            ]
+          },
+          {
+            "ko": "뭐… 뭐!?",
+            "uids": [
+              "ch01-07:465:d5a075ed"
+            ]
+          },
+          {
+            "ko": "어… 뭐!?",
+            "uids": [
+              "ch02-17:96:92120121"
+            ]
+          },
+          {
+            "ko": "어… 어!?",
+            "uids": [
+              "ch01-10:228:92120121"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "",
+        "ja": "――君は プロは諦めたほうがいい",
+        "variants": [
+          {
+            "ko": "――너는 프로를 포기하는 게 좋다",
+            "uids": [
+              "ch01-10:29:57ba120"
+            ]
+          },
+          {
+            "ko": "――자네는 프로가 되는 건 포기하는 게 좋아.",
+            "uids": [
+              "ch01-09:23:57ba120"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "は はあ",
+        "variants": [
+          {
+            "ko": "아, 네.",
+            "uids": [
+              "ch01-09:184:cd6ecd1a",
+              "ch02-18:153:cd6ecd1a"
+            ]
+          },
+          {
+            "ko": "아, 예.",
+            "uids": [
+              "ch02-15:42:cd6ecd1a"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "そ そうですか…",
+        "variants": [
+          {
+            "ko": "그, 그런가요…",
+            "uids": [
+              "ch02-12:1250:b407e02c"
+            ]
+          },
+          {
+            "ko": "그, 그렇군요…",
+            "uids": [
+              "ch01-11:590:b407e02c"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "",
+        "ja": "あ",
+        "variants": [
+          {
+            "ko": "아",
+            "uids": [
+              "ch02-06:148:f90d29fb"
+            ]
+          },
+          {
+            "ko": "아.",
+            "uids": [
+              "ch02-12:71:f90d29fb"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "う うわ！？",
+        "variants": [
+          {
+            "ko": "우, 우와!?",
+            "uids": [
+              "ch03-04:1102:6d98e9f0"
+            ]
+          },
+          {
+            "ko": "우, 우왓?!",
+            "uids": [
+              "ch02-12:28:baea9fbc"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "そ そんな…",
+        "variants": [
+          {
+            "ko": "그, 그런…",
+            "uids": [
+              "ch02-12:635:2e9473a4"
+            ]
+          },
+          {
+            "ko": "그, 그럴 리가…",
+            "uids": [
+              "ch03-08:552:2e9473a4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "category": "repeated_source_divergence",
+      "disposition": "retained_after_context_review",
+      "reason": "같은 짧은 일본어라도 청자·존대·독백/서술·놀람의 강도가 달라 앞뒤 문맥에 맞춘 한국어 변형을 유지한다.",
+      "finding": {
+        "speaker_id": "kaj",
+        "ja": "し しかし…",
+        "variants": [
+          {
+            "ko": "그, 그런데…",
+            "uids": [
+              "ch02-18:193:42dcbe5b"
+            ]
+          },
+          {
+            "ko": "하, 하지만…",
+            "uids": [
+              "ch03-02:594:c2d971b5"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "긴 세그먼트 19건의 번역 내용은 검토했지만 실제 화면의 최악 길이 적합성은 게임을 실행하지 않는 조건 때문에 자연 플레이 확인 대상으로 남긴다."
+  ],
+  "complete": true,
+  "status": "pass"
+}

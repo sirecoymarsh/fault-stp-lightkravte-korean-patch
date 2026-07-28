@@ -1,7 +1,7 @@
 ﻿{
     "status":  "pass",
-    "assembly":  "LightKravteKorean, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-    "sha256":  "361764BB8B1A1F637E83217C5D8358DBB4C24DEF7D608F4FEF17020DB2AC770E",
+    "assembly":  "LightKravteKorean, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+    "sha256":  "A342B84811271BF3B60392035834772F781858A2D44D92952E1BB6E47E324D2E",
     "module_kind":  "Dll",
     "architecture":  "I386",
     "runtime_coordinate":  "Naninovel.PlaybackSpot.LineIndex",
@@ -31,6 +31,13 @@
     "legacy_dynamic_font_loading":  false,
     "ugui_dynamic_os_font_loading":  true,
     "inactive_managed_provider_filter":  true,
+    "revealable_tmp_target_contract":  true,
+    "revealable_tmp_fallback_before_layout":  true,
+    "revealable_material_cache_invalidation":  true,
+    "revealable_assignment_dirty_schedule":  true,
+    "revealable_prerender_repair":  true,
+    "printer_font_writer_target_contract":  true,
+    "printer_font_writer_immediate_fallback":  true,
     "loader_versions":  {
                             "BepInEx":  "5.4.23.5",
                             "Harmony":  "2.9.0.0",
@@ -43,7 +50,11 @@
                                 "LanguageWheelSelectionPatch",
                                 "ManagedTextApplicationPatch",
                                 "ManagedTextCollectionPatch",
-                                "ManagedTextLookupPatch"
+                                "ManagedTextLookupPatch",
+                                "PrinterFontPatch",
+                                "PrinterFontSizePatch",
+                                "RevealableTmpRebuildPatch",
+                                "RevealableTmpTextPreparationPatch"
                             ],
     "references":  [
                        {
@@ -101,6 +112,10 @@
                        {
                            "name":  "System",
                            "version":  "4.0.0.0"
+                       },
+                       {
+                           "name":  "UnityEngine.TextCoreModule",
+                           "version":  "0.0.0.0"
                        },
                        {
                            "name":  "UnityEngine.AnimationModule",

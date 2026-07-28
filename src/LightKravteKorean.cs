@@ -16,15 +16,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
 
 [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
 public sealed class LightKravteKorean : BaseUnityPlugin
 {
     public const string PluginGuid = "kr.cadriaclord.lightkravte.korean";
     public const string PluginName = "Fault StP LIGHTKRAVTE Korean";
-    public const string PluginVersion = "1.0.0";
+    public const string PluginVersion = "1.0.1";
 
     internal static LightKravteKorean Instance;
     internal static ManualLogSource Log;
@@ -35,6 +35,9 @@ public sealed class LightKravteKorean : BaseUnityPlugin
     private ConfigEntry<string> translationDirectory;
     private ConfigEntry<string> fontPath;
     private ConfigEntry<float> scanInterval;
+    private ConfigEntry<bool> fitLongDialogue;
+    private ConfigEntry<float> minFontScale;
+    private ConfigEntry<bool> logTextRendering;
 
     private readonly Dictionary<PrintText, StringParameter> temporarilyReplaced =
         new Dictionary<PrintText, StringParameter>();
@@ -54,6 +57,8 @@ public sealed class LightKravteKorean : BaseUnityPlugin
 
     internal TranslationStore Translations { get; private set; }
     internal KoreanFontBridge Fonts { get; private set; }
+    internal TextFitBridge TextFit { get; private set; }
+    internal TextDiagnostics Diagnostics { get; private set; }
     internal bool KoreanActive
     {
         get { return runtimeEnabled && koreanActive != null && koreanActive.Value; }
@@ -89,6 +94,21 @@ public sealed class LightKravteKorean : BaseUnityPlugin
             "ScanIntervalSeconds",
             0.35f,
             "Interval used to attach Korean font fallbacks to newly created UI objects.");
+        fitLongDialogue = Config.Bind(
+            "Layout",
+            "FitLongDialogue",
+            true,
+            "Shrink Korean dialogue only as far as needed to keep long lines inside the authored printer area.");
+        minFontScale = Config.Bind(
+            "Layout",
+            "MinFontScale",
+            0.75f,
+            "Lower bound for dialogue auto-sizing, relative to the authored font size. Range 0.50-1.00.");
+        logTextRendering = Config.Bind(
+            "Diagnostics",
+            "LogTextRendering",
+            false,
+            "Log one line per visible Korean text object: font, Korean fallback state, sub-mesh atlas textures and any glyph the font chain cannot supply. Text rendering as boxes leaves a Warning naming the object.");
 
         string compatibilityError;
         if (!BuildGuard.VerifyTrustedBuild(strictBuildCheck.Value, out compatibilityError))
@@ -108,6 +128,10 @@ public sealed class LightKravteKorean : BaseUnityPlugin
 
             Translations = TranslationStore.Load(translationsPath, Logger);
             Fonts = new KoreanFontBridge(resolvedFontPath, Translations.AllKoreanText, Logger);
+            if (fitLongDialogue.Value)
+                TextFit = new TextFitBridge(minFontScale.Value, Logger);
+            if (logTextRendering.Value)
+                Diagnostics = new TextDiagnostics(Logger);
 
             harmony = new Harmony(PluginGuid);
             harmony.PatchAll(typeof(LightKravteKorean).Assembly);
@@ -518,6 +542,12 @@ public sealed class LightKravteKorean : BaseUnityPlugin
         {
             if (Fonts != null)
                 Fonts.Refresh(KoreanActive, Translations, force);
+            // Korean lines are wider than the authored Japanese ones, so long
+            // dialogue can spill past the bottom of a fixed printer area.
+            if (TextFit != null)
+                TextFit.Refresh(KoreanActive);
+            if (Diagnostics != null)
+                Diagnostics.Scan(KoreanActive, Fonts);
             // The Korean selector remains visible while an original locale is
             // selected, so apply its label and font after the general font
             // bridge has restored the original-language UI fonts.
@@ -539,6 +569,8 @@ public sealed class LightKravteKorean : BaseUnityPlugin
         Engine.OnDestroyed -= HandleEngineDestroyed;
         SceneManager.sceneLoaded -= HandleSceneLoaded;
 
+        if (TextFit != null)
+            TextFit.Restore();
         if (Fonts != null)
             Fonts.Dispose();
         if (harmony != null)
@@ -850,6 +882,12 @@ internal sealed class KoreanFontBridge : IDisposable
 {
     private const string HangulProbe = "가나다라마바사아자차카타파하한글힣";
 
+    // 4096 / (72 + 2 * 8) = 46 glyphs per row, so a single page holds ~2,100
+    // glyphs against a Korean closure of ~1,200.
+    private const int KoreanAtlasSize = 4096;
+    private const int KoreanAtlasSamplingSize = 72;
+    private const int KoreanAtlasPadding = 8;
+
     private static readonly string[] PreferredFontNames =
     {
         "Malgun Gothic",
@@ -877,12 +915,19 @@ internal sealed class KoreanFontBridge : IDisposable
         new Dictionary<TMP_Text, TMP_FontAsset>();
     private readonly HashSet<TMP_FontAsset> modifiedTmpFonts =
         new HashSet<TMP_FontAsset>();
+    private readonly HashSet<TMP_FontAsset> attachedThisPass =
+        new HashSet<TMP_FontAsset>();
     private readonly HashSet<TMP_FontAsset> selectorTmpFonts =
         new HashSet<TMP_FontAsset>();
+    private readonly HashSet<char> unavailableRuntimeGlyphs =
+        new HashSet<char>();
 
     private Font koreanFont;
     private Font koreanTmpSourceFont;
     private TMP_FontAsset koreanTmpFont;
+
+    internal TMP_FontAsset KoreanTmpFont { get { return koreanTmpFont; } }
+    internal Font KoreanUguiFont { get { return koreanFont; } }
     private string koreanFontSource;
     private bool warnedUnavailable;
     private bool warnedUguiUnavailable;
@@ -935,6 +980,19 @@ internal sealed class KoreanFontBridge : IDisposable
             if (!complete && !String.IsNullOrEmpty(missing))
                 logger.LogWarning(
                     "Korean TMP prewarm missing glyphs: " + Preview(missing, 80));
+
+            // More than one atlas page means the revealable printer will serve
+            // some glyphs from a page its cached materials do not cover.
+            int pages = koreanTmpFont.atlasTextureCount;
+            string atlasReport =
+                "Korean TMP atlas: pages=" + pages +
+                ", size=" + koreanTmpFont.atlasWidth + "x" + koreanTmpFont.atlasHeight +
+                ", sampling=" + koreanTmpFont.faceInfo.pointSize +
+                ", glyphs=" + koreanGlyphClosure.Length;
+            if (pages > 1)
+                logger.LogWarning(atlasReport + " (multi-page; dialogue glyphs may render as boxes)");
+            else
+                logger.LogInfo(atlasReport);
         }
 
         logger.LogInfo(
@@ -1035,7 +1093,23 @@ internal sealed class KoreanFontBridge : IDisposable
             fullPath = Path.GetFullPath(path);
             attemptedPaths.Add(fullPath);
             sourceFont = new Font(fullPath);
-            asset = TMP_FontAsset.CreateFontAsset(sourceFont);
+            // TMP's default dynamic atlas is a single 1024x1024 page rendered at
+            // 90pt, which holds only about eighty Hangul glyphs. The remaining
+            // glyphs spill onto extra atlas pages. Naninovel's revealable
+            // printer keeps its own material cache while applying the reveal
+            // effect, so a late fallback or a changed atlas/material layout can
+            // leave its cached material state out of step with TMP's rebuilt
+            // sub-meshes. One large page keeps the whole Korean closure on
+            // atlas 0 and removes the multi-page trigger.
+            asset = TMP_FontAsset.CreateFontAsset(
+                sourceFont,
+                KoreanAtlasSamplingSize,
+                KoreanAtlasPadding,
+                UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA,
+                KoreanAtlasSize,
+                KoreanAtlasSize,
+                AtlasPopulationMode.Dynamic,
+                true);
         }
         catch (Exception exception)
         {
@@ -1207,6 +1281,7 @@ internal sealed class KoreanFontBridge : IDisposable
 
         if (koreanTmpFont != null)
         {
+            attachedThisPass.Clear();
             TMP_Text[] tmpTexts = Resources.FindObjectsOfTypeAll<TMP_Text>();
             for (int index = 0; index < tmpTexts.Length; index++)
             {
@@ -1219,22 +1294,18 @@ internal sealed class KoreanFontBridge : IDisposable
                     translations.TryGetSource(text.text, out translated))
                     text.text = translated;
 
-                TMP_FontAsset primary = text.font;
-                if (primary == null || primary == koreanTmpFont)
-                    continue;
-
-                List<TMP_FontAsset> fallbacks = primary.fallbackFontAssetTable;
-                if (fallbacks == null)
-                {
-                    fallbacks = new List<TMP_FontAsset>();
-                    primary.fallbackFontAssetTable = fallbacks;
-                }
-                if (!fallbacks.Contains(koreanTmpFont))
-                {
-                    fallbacks.Add(koreanTmpFont);
-                    modifiedTmpFonts.Add(primary);
-                }
+                TMP_FontAsset primary;
+                if (AttachTmpFallback(text, out primary))
+                    attachedThisPass.Add(primary);
             }
+
+            // The engine assigns locale fonts to printers after the UI is built,
+            // so a line can be laid out while its font asset still has no Korean
+            // fallback. TMP keeps that mesh until something dirties it, which is
+            // why Hangul intermittently rendered as blank boxes. Force a rebuild
+            // of every text that uses a font asset patched on this pass.
+            if (attachedThisPass.Count > 0)
+                ForceRebuild(tmpTexts);
         }
 
         if (koreanFont == null)
@@ -1266,6 +1337,154 @@ internal sealed class KoreanFontBridge : IDisposable
                 originalUguiFonts.Add(text, text.font);
             if (text.font != koreanFont)
                 text.font = koreanFont;
+        }
+    }
+
+    // Called by the revealable-text prefix before TMP receives a Korean line.
+    // The periodic object scan remains as a fallback for components created or
+    // re-fonted by other UI paths, but dialogue layout no longer races it.
+    internal bool EnsureTmpFallback(TMP_Text text)
+    {
+        TMP_FontAsset primary;
+        AttachTmpFallback(text, out primary);
+        return primary != null &&
+            (primary == koreanTmpFont ||
+             (primary.fallbackFontAssetTable != null &&
+              primary.fallbackFontAssetTable.Contains(koreanTmpFont)));
+    }
+
+    internal bool PrepareRevealableText(
+        Naninovel.UI.RevealableTMProText text,
+        string value)
+    {
+        if (text == null ||
+            koreanTmpFont == null ||
+            !ContainsHangul(value) ||
+            !EnsureTmpFallback(text))
+            return false;
+
+        // The constructor prewarms the complete frozen translation closure.
+        // Only add genuinely new Hangul produced by a runtime variable; adding
+        // the whole Hangul block would needlessly force extra atlas pages.
+        string glyphs = ExtractKoreanGlyphs(value);
+        StringBuilder needed = new StringBuilder();
+        for (int index = 0; index < glyphs.Length; index++)
+        {
+            char character = glyphs[index];
+            if (!unavailableRuntimeGlyphs.Contains(character) &&
+                !koreanTmpFont.HasCharacter(character, false, false))
+                needed.Append(character);
+        }
+        if (needed.Length == 0)
+            return true;
+
+        string missing;
+        bool complete = koreanTmpFont.TryAddCharacters(
+            needed.ToString(),
+            out missing,
+            true);
+        if (!complete && !String.IsNullOrEmpty(missing))
+        {
+            for (int index = 0; index < missing.Length; index++)
+                unavailableRuntimeGlyphs.Add(missing[index]);
+            logger.LogWarning(
+                "Revealable TMP missing Korean glyphs: " +
+                Preview(missing, 40));
+        }
+        if (koreanTmpFont.atlasTextureCount > 1)
+        {
+            logger.LogWarning(
+                "Korean TMP runtime glyph expansion created " +
+                koreanTmpFont.atlasTextureCount +
+                " atlas pages; revealable dialogue may regress.");
+        }
+        return true;
+    }
+
+    // CustomUI.SetFont is the exact locale-font writer for Naninovel printers.
+    // Its postfix calls this before a later frame can reveal text with a newly
+    // assigned primary font that has not yet been seen by the periodic scan.
+    internal void RefreshCustomUiFont(Naninovel.UI.CustomUI ui)
+    {
+        if (ui == null || koreanTmpFont == null)
+            return;
+
+        Naninovel.UI.RevealableTMProText[] texts =
+            ui.GetComponentsInChildren<Naninovel.UI.RevealableTMProText>(true);
+        for (int index = 0; index < texts.Length; index++)
+        {
+            Naninovel.UI.RevealableTMProText text = texts[index];
+            if (text == null)
+                continue;
+
+            try
+            {
+                if (!EnsureTmpFallback(text))
+                    continue;
+                RevealableTmpMaterialRepair.Invalidate(text);
+                text.SetAllDirty();
+            }
+            catch (Exception exception)
+            {
+                logger.LogWarning(
+                    "Korean printer font refresh failed on " + text.name +
+                    ": " + exception.Message);
+            }
+        }
+    }
+
+    private bool AttachTmpFallback(TMP_Text text, out TMP_FontAsset primary)
+    {
+        primary = text == null ? null : text.font;
+        if (koreanTmpFont == null || primary == null || primary == koreanTmpFont)
+            return false;
+
+        List<TMP_FontAsset> fallbacks = primary.fallbackFontAssetTable;
+        if (fallbacks == null)
+        {
+            fallbacks = new List<TMP_FontAsset>();
+            primary.fallbackFontAssetTable = fallbacks;
+        }
+        if (fallbacks.Contains(koreanTmpFont))
+            return false;
+
+        fallbacks.Add(koreanTmpFont);
+        modifiedTmpFonts.Add(primary);
+        return true;
+    }
+
+    private void ForceRebuild(TMP_Text[] tmpTexts)
+    {
+        for (int index = 0; index < tmpTexts.Length; index++)
+        {
+            TMP_Text text = tmpTexts[index];
+            if (text == null)
+                continue;
+            TMP_FontAsset primary = text.font;
+            if (primary == null || !attachedThisPass.Contains(primary))
+                continue;
+            if (String.IsNullOrEmpty(text.text) || !ContainsHangul(text.text))
+                continue;
+
+            try
+            {
+                Naninovel.UI.RevealableTMProText revealable =
+                    text as Naninovel.UI.RevealableTMProText;
+                if (revealable != null)
+                    RevealableTmpMaterialRepair.Invalidate(revealable);
+                text.ForceMeshUpdate(true, true);
+                if (revealable != null)
+                {
+                    RevealableTmpMaterialRepair.Invalidate(revealable);
+                    revealable.SetAllDirty();
+                }
+            }
+            catch (Exception exception)
+            {
+                logger.LogWarning(
+                    "Korean fallback rebuild failed on " + text.name + ": " +
+                    exception.Message);
+            }
         }
     }
 
@@ -1363,7 +1582,7 @@ internal sealed class KoreanFontBridge : IDisposable
         koreanTmpSourceFont = null;
     }
 
-    private static bool ContainsHangul(string value)
+    internal static bool ContainsHangul(string value)
     {
         if (String.IsNullOrEmpty(value))
             return false;
@@ -1402,6 +1621,44 @@ internal sealed class KoreanFontBridge : IDisposable
         if (String.IsNullOrEmpty(value) || value.Length <= maximum)
             return value;
         return value.Substring(0, maximum) + "…";
+    }
+}
+
+internal static class RevealableTmpMaterialRepair
+{
+    private static readonly FieldInfo CachedMaterialsField =
+        AccessTools.Field(
+            typeof(Naninovel.UI.RevealableTMProText),
+            "cachedFontMaterials");
+    private static bool warnedUnavailable;
+
+    internal static Material[] Read(
+        Naninovel.UI.RevealableTMProText text)
+    {
+        if (text == null || CachedMaterialsField == null)
+            return null;
+        return CachedMaterialsField.GetValue(text) as Material[];
+    }
+
+    internal static void Invalidate(
+        Naninovel.UI.RevealableTMProText text)
+    {
+        if (text == null)
+            return;
+        if (CachedMaterialsField == null)
+        {
+            if (!warnedUnavailable)
+            {
+                warnedUnavailable = true;
+                if (LightKravteKorean.Log != null)
+                {
+                    LightKravteKorean.Log.LogWarning(
+                        "Revealable TMP material cache field was not found.");
+                }
+            }
+            return;
+        }
+        CachedMaterialsField.SetValue(text, null);
     }
 }
 
@@ -1717,7 +1974,8 @@ internal static class ManagedTextApplicationPatch
         if (plugin != null &&
             plugin.TryGetManaged(__0.Category, __0.Key, out translated))
         {
-            __0 = new ManagedTextRecord(__0.Category, __0.Key, translated);
+            // ManagedTextRecord(key, value, category), not (category, key, value).
+            __0 = new ManagedTextRecord(__0.Key, translated, __0.Category);
         }
     }
 }
@@ -1739,10 +1997,759 @@ internal static class ManagedTextCollectionPatch
         {
             string translated;
             if (plugin.TryGetManaged(record.Category, record.Key, out translated))
-                mapped.Add(new ManagedTextRecord(record.Category, record.Key, translated));
+                // ManagedTextRecord(key, value, category), not (category, key, value).
+                mapped.Add(new ManagedTextRecord(record.Key, translated, record.Category));
             else
                 mapped.Add(record);
         }
         __result = mapped;
+    }
+}
+
+// Close the other side of the timing window: Naninovel can replace a printer's
+// primary locale font after the UI object was created. Attach Korean fallback
+// immediately after that exact writer instead of waiting for the global scan.
+[HarmonyPatch(typeof(Naninovel.UI.CustomUI), "SetFont")]
+internal static class PrinterFontPatch
+{
+    [HarmonyPostfix]
+    private static void Postfix(Naninovel.UI.CustomUI __instance)
+    {
+        LightKravteKorean plugin = LightKravteKorean.Instance;
+        if (plugin == null || !plugin.KoreanActive || plugin.Fonts == null)
+            return;
+        try
+        {
+            plugin.Fonts.RefreshCustomUiFont(__instance);
+        }
+        catch (Exception exception)
+        {
+            LightKravteKorean.Log.LogWarning(
+                "Korean printer font writer repair failed: " +
+                exception.Message);
+        }
+    }
+}
+
+// Naninovel assigns the line and immediately prepares the typewriter reveal.
+// Attaching the fallback on the later periodic scan is therefore too late for
+// the first layout of a newly created or re-fonted printer. Prepare the exact
+// revealable TMP component before SetTextToReveal writes TMP_Text.text, and
+// schedule a normal Canvas rebuild even when the same string is assigned.
+[HarmonyPatch(
+    typeof(Naninovel.UI.RevealableTMProText),
+    "SetTextToReveal",
+    new Type[] { typeof(string) })]
+internal static class RevealableTmpTextPreparationPatch
+{
+    [HarmonyPrefix]
+    private static void Prefix(
+        Naninovel.UI.RevealableTMProText __instance,
+        string __0,
+        out bool __state)
+    {
+        __state = false;
+        LightKravteKorean plugin = LightKravteKorean.Instance;
+        if (plugin == null ||
+            !plugin.KoreanActive ||
+            plugin.Fonts == null)
+            return;
+
+        try
+        {
+            __state = plugin.Fonts.PrepareRevealableText(__instance, __0);
+        }
+        catch (Exception exception)
+        {
+            LightKravteKorean.Log.LogWarning(
+                "Revealable TMP assignment preparation failed: " +
+                exception.Message);
+        }
+    }
+
+    [HarmonyPostfix]
+    private static void Postfix(
+        Naninovel.UI.RevealableTMProText __instance,
+        bool __state)
+    {
+        if (!__state)
+            return;
+        try
+        {
+            RevealableTmpMaterialRepair.Invalidate(__instance);
+            __instance.SetAllDirty();
+        }
+        catch (Exception exception)
+        {
+            LightKravteKorean.Log.LogWarning(
+                "Revealable TMP assignment invalidation failed: " +
+                exception.Message);
+        }
+    }
+}
+
+// At CanvasUpdate.PreRender, the primary font and final text are both known.
+// Clear Naninovel's cache immediately before the original method builds TMP's
+// mesh and then asks the reveal behaviour to acquire its material array.
+[HarmonyPatch(
+    typeof(Naninovel.UI.RevealableTMProText),
+    "Rebuild",
+    new Type[] { typeof(CanvasUpdate) })]
+internal static class RevealableTmpRebuildPatch
+{
+    [HarmonyPrefix]
+    private static void Prefix(
+        Naninovel.UI.RevealableTMProText __instance,
+        CanvasUpdate __0)
+    {
+        if (__0 != CanvasUpdate.PreRender)
+            return;
+
+        LightKravteKorean plugin = LightKravteKorean.Instance;
+        if (plugin == null ||
+            !plugin.KoreanActive ||
+            plugin.Fonts == null)
+            return;
+        try
+        {
+            if (!plugin.Fonts.PrepareRevealableText(
+                    __instance,
+                    __instance.text))
+                return;
+            RevealableTmpMaterialRepair.Invalidate(__instance);
+        }
+        catch (Exception exception)
+        {
+            LightKravteKorean.Log.LogWarning(
+                "Revealable TMP pre-render repair failed: " +
+                exception.Message);
+        }
+    }
+}
+
+// Korean glyph runs are wider than the authored Japanese ones, so a line that
+// the original fits on one row can wrap onto two. Printer text areas have a
+// fixed height and TMP overflow is set to Overflow, so the surplus rows spill
+// past the bottom of the dialogue area. Auto-sizing shrinks each printed line
+// only as far as needed to stay inside the authored area; short lines keep the
+// original size because the maximum is pinned to it.
+internal sealed class TextFitBridge
+{
+    private sealed class TmpFitState
+    {
+        internal bool OriginalAutoSizing;
+        internal float OriginalMin;
+        internal float OriginalMax;
+        internal float OriginalSize;
+        internal float AppliedMin;
+        internal float AppliedMax;
+        internal float LastObservedSize;
+    }
+
+    private sealed class UguiFitState
+    {
+        internal bool OriginalBestFit;
+        internal int OriginalMin;
+        internal int OriginalMax;
+        internal int AppliedMin;
+        internal int AppliedMax;
+        internal int LastObservedSize;
+    }
+
+    private readonly Dictionary<Naninovel.UI.RevealableTMProText, TmpFitState> tmpStates =
+        new Dictionary<Naninovel.UI.RevealableTMProText, TmpFitState>();
+    private readonly Dictionary<Naninovel.UI.RevealableUIText, UguiFitState> uguiStates =
+        new Dictionary<Naninovel.UI.RevealableUIText, UguiFitState>();
+    private readonly ManualLogSource logger;
+    private readonly float minScale;
+
+    internal TextFitBridge(float scale, ManualLogSource log)
+    {
+        logger = log;
+        if (scale < 0.5f)
+            scale = 0.5f;
+        if (scale > 1f)
+            scale = 1f;
+        minScale = scale;
+    }
+
+    internal void Refresh(bool active)
+    {
+        if (!active)
+        {
+            Restore();
+            return;
+        }
+
+        Naninovel.UI.RevealableTMProText[] tmpTexts =
+            Resources.FindObjectsOfTypeAll<Naninovel.UI.RevealableTMProText>();
+        for (int index = 0; index < tmpTexts.Length; index++)
+            TrackTmp(tmpTexts[index]);
+
+        Naninovel.UI.RevealableUIText[] uguiTexts =
+            Resources.FindObjectsOfTypeAll<Naninovel.UI.RevealableUIText>();
+        for (int index = 0; index < uguiTexts.Length; index++)
+            TrackUgui(uguiTexts[index]);
+    }
+
+    private void TrackTmp(Naninovel.UI.RevealableTMProText text)
+    {
+        if (text == null)
+            return;
+
+        TmpFitState known;
+        if (tmpStates.TryGetValue(text, out known))
+        {
+            // Remember what auto-sizing settled on so the font size hook can
+            // tell an engine-driven change apart from our own shrinking.
+            known.LastObservedSize = text.fontSize;
+            return;
+        }
+
+        // Resources.FindObjectsOfTypeAll also returns prefab assets; only the
+        // instantiated printers belong to a loaded scene.
+        if (!text.gameObject.scene.IsValid())
+            return;
+
+        RectTransform rect = text.rectTransform;
+        if (rect == null)
+            return;
+
+        float baseSize = text.fontSize;
+        float height = rect.rect.height;
+        // A degenerate rect would collapse auto-sizing straight to the floor.
+        // Skip without recording state so a later scan can retry.
+        if (baseSize <= 1f || height < baseSize * 1.5f)
+            return;
+
+        TmpFitState state = new TmpFitState();
+        state.OriginalAutoSizing = text.enableAutoSizing;
+        state.OriginalMin = text.fontSizeMin;
+        state.OriginalMax = text.fontSizeMax;
+        state.OriginalSize = baseSize;
+        ConfigureTmp(text, state, baseSize);
+        tmpStates.Add(text, state);
+
+        if (logger != null)
+            logger.LogInfo(
+                "Dialogue fit attached: " + DescribePath(text.transform) +
+                " base=" + baseSize.ToString("0.#") +
+                " rect=" + rect.rect.width.ToString("0") + "x" + height.ToString("0") +
+                " range=" + state.AppliedMin.ToString("0.#") +
+                "-" + state.AppliedMax.ToString("0.#"));
+    }
+
+    private void ConfigureTmp(
+        Naninovel.UI.RevealableTMProText text,
+        TmpFitState state,
+        float baseSize)
+    {
+        state.AppliedMax = baseSize;
+        state.AppliedMin = baseSize * minScale;
+        state.LastObservedSize = baseSize;
+        text.fontSizeMax = state.AppliedMax;
+        text.fontSizeMin = state.AppliedMin;
+        text.enableAutoSizing = true;
+    }
+
+    private void TrackUgui(Naninovel.UI.RevealableUIText text)
+    {
+        if (text == null)
+            return;
+
+        UguiFitState known;
+        if (uguiStates.TryGetValue(text, out known))
+        {
+            known.LastObservedSize = text.fontSize;
+            return;
+        }
+
+        if (!text.gameObject.scene.IsValid())
+            return;
+
+        RectTransform rect = text.rectTransform;
+        if (rect == null)
+            return;
+
+        int baseSize = text.fontSize;
+        float height = rect.rect.height;
+        if (baseSize <= 1 || height < baseSize * 1.5f)
+            return;
+
+        UguiFitState state = new UguiFitState();
+        state.OriginalBestFit = text.resizeTextForBestFit;
+        state.OriginalMin = text.resizeTextMinSize;
+        state.OriginalMax = text.resizeTextMaxSize;
+        ConfigureUgui(text, state, baseSize);
+        uguiStates.Add(text, state);
+
+        if (logger != null)
+            logger.LogInfo(
+                "Dialogue fit attached: " + DescribePath(text.transform) +
+                " base=" + baseSize +
+                " rect=" + rect.rect.width.ToString("0") + "x" + height.ToString("0") +
+                " range=" + state.AppliedMin + "-" + state.AppliedMax);
+    }
+
+    private void ConfigureUgui(
+        Naninovel.UI.RevealableUIText text,
+        UguiFitState state,
+        int baseSize)
+    {
+        int floor = Mathf.RoundToInt(baseSize * minScale);
+        if (floor < 1)
+            floor = 1;
+        state.AppliedMax = baseSize;
+        state.AppliedMin = floor;
+        state.LastObservedSize = baseSize;
+        text.resizeTextMaxSize = state.AppliedMax;
+        text.resizeTextMinSize = state.AppliedMin;
+        text.resizeTextForBestFit = true;
+    }
+
+    // Naninovel applies the player's font size option through CustomUI.SetFontSize.
+    // Re-pin the authored maximum to whatever the engine just requested, so the
+    // in-game text size setting keeps working while Korean mode is on.
+    internal void Rebaseline(Naninovel.UI.CustomUI ui)
+    {
+        if (ui == null)
+            return;
+
+        Naninovel.UI.RevealableTMProText[] tmpTexts =
+            ui.GetComponentsInChildren<Naninovel.UI.RevealableTMProText>(true);
+        for (int index = 0; index < tmpTexts.Length; index++)
+        {
+            Naninovel.UI.RevealableTMProText text = tmpTexts[index];
+            TmpFitState state;
+            if (text == null || !tmpStates.TryGetValue(text, out state))
+                continue;
+            float requested = text.fontSize;
+            // Unchanged means this component is not driven by the option; the
+            // value we see is only what auto-sizing produced.
+            if (Mathf.Approximately(requested, state.LastObservedSize))
+                continue;
+            if (requested <= 1f)
+                continue;
+            ConfigureTmp(text, state, requested);
+        }
+
+        Naninovel.UI.RevealableUIText[] uguiTexts =
+            ui.GetComponentsInChildren<Naninovel.UI.RevealableUIText>(true);
+        for (int index = 0; index < uguiTexts.Length; index++)
+        {
+            Naninovel.UI.RevealableUIText text = uguiTexts[index];
+            UguiFitState state;
+            if (text == null || !uguiStates.TryGetValue(text, out state))
+                continue;
+            int requested = text.fontSize;
+            if (requested == state.LastObservedSize || requested <= 1)
+                continue;
+            ConfigureUgui(text, state, requested);
+        }
+    }
+
+    internal void Restore()
+    {
+        foreach (KeyValuePair<Naninovel.UI.RevealableTMProText, TmpFitState> pair in tmpStates)
+        {
+            Naninovel.UI.RevealableTMProText text = pair.Key;
+            if (text == null)
+                continue;
+            TmpFitState state = pair.Value;
+            text.enableAutoSizing = state.OriginalAutoSizing;
+            text.fontSizeMin = state.OriginalMin;
+            text.fontSizeMax = state.OriginalMax;
+            text.fontSize = state.OriginalSize;
+        }
+        tmpStates.Clear();
+
+        foreach (KeyValuePair<Naninovel.UI.RevealableUIText, UguiFitState> pair in uguiStates)
+        {
+            Naninovel.UI.RevealableUIText text = pair.Key;
+            if (text == null)
+                continue;
+            UguiFitState state = pair.Value;
+            text.resizeTextForBestFit = state.OriginalBestFit;
+            text.resizeTextMinSize = state.OriginalMin;
+            text.resizeTextMaxSize = state.OriginalMax;
+        }
+        uguiStates.Clear();
+    }
+
+    private static string DescribePath(Transform transform)
+    {
+        if (transform == null)
+            return "<null>";
+
+        string path = transform.name;
+        Transform current = transform.parent;
+        for (int depth = 0; depth < 3 && current != null; depth++)
+        {
+            path = current.name + "/" + path;
+            current = current.parent;
+        }
+        return path;
+    }
+}
+
+// Reports, once per component, what a visible Korean text is actually rendering
+// with: its font asset, whether the Korean fallback is attached, which glyphs
+// the font chain cannot supply, and the atlas texture behind every sub-mesh.
+// Text that shows up as empty boxes leaves a Warning line naming the object.
+internal sealed class TextDiagnostics
+{
+    private const int InfoBudget = 300;
+    private const int WarningBudget = 400;
+    private const int SeenLimit = 4000;
+
+    private readonly ManualLogSource logger;
+    // The reported symptom is intermittent, so a component that once rendered
+    // correctly must be re-examined whenever its text, font, fallback, atlas,
+    // TMP sub-mesh material or Naninovel reveal-material cache changes.
+    private readonly Dictionary<int, string> lastSeen = new Dictionary<int, string>();
+    private readonly HashSet<string> reportedFailures =
+        new HashSet<string>(StringComparer.Ordinal);
+    private int infoLeft = InfoBudget;
+    private int warningLeft = WarningBudget;
+
+    internal TextDiagnostics(ManualLogSource log)
+    {
+        logger = log;
+    }
+
+    internal void Scan(bool active, KoreanFontBridge fonts)
+    {
+        // Warnings keep their own budget so routine Info lines can never crowd
+        // out the failure this log exists to capture.
+        if (!active || fonts == null || warningLeft <= 0)
+            return;
+        if (lastSeen.Count > SeenLimit)
+            lastSeen.Clear();
+
+        TMP_FontAsset koreanTmp = fonts.KoreanTmpFont;
+        TMP_Text[] tmpTexts = Resources.FindObjectsOfTypeAll<TMP_Text>();
+        for (int index = 0; index < tmpTexts.Length; index++)
+            InspectTmp(tmpTexts[index], koreanTmp);
+
+        Font koreanUgui = fonts.KoreanUguiFont;
+        Text[] uguiTexts = Resources.FindObjectsOfTypeAll<Text>();
+        for (int index = 0; index < uguiTexts.Length; index++)
+            InspectUgui(uguiTexts[index], koreanUgui);
+    }
+
+    // Returns false only when every rendering-relevant value represented by the
+    // caller-provided signature is unchanged.
+    private bool Changed(int id, string signature)
+    {
+        string previous;
+        if (lastSeen.TryGetValue(id, out previous) && previous == signature)
+            return false;
+        lastSeen[id] = signature;
+        return true;
+    }
+
+    private void Report(int id, string missing, string line)
+    {
+        if (missing.Length > 0)
+        {
+            if (!reportedFailures.Add(id + ":" + missing) || warningLeft <= 0)
+                return;
+            warningLeft--;
+            logger.LogWarning(line);
+            return;
+        }
+        if (infoLeft <= 0)
+            return;
+        infoLeft--;
+        logger.LogInfo(line);
+    }
+
+    private void InspectTmp(TMP_Text text, TMP_FontAsset koreanTmp)
+    {
+        if (!Eligible(text, text == null ? null : text.text))
+            return;
+
+        TMP_FontAsset font = text.font;
+        bool fallback = font != null && koreanTmp != null &&
+            font.fallbackFontAssetTable != null &&
+            font.fallbackFontAssetTable.Contains(koreanTmp);
+        bool cacheMismatch;
+        string renderState = DescribeTmpRenderState(text, out cacheMismatch);
+        string signature =
+            (font == null
+                ? "-"
+                : font.name + "#" + font.GetInstanceID()) +
+            "" + fallback +
+            "" + (koreanTmp == null ? 0 : koreanTmp.atlasTextureCount) +
+            "" + renderState +
+            "" + text.text;
+        if (!Changed(text.GetInstanceID(), signature))
+            return;
+
+        string missing = MissingTmpGlyphs(font, text.text);
+
+        string line =
+            "[glyph] TMP " + DescribePath(text.transform) +
+            " font=" + (font == null ? "<null>" : font.name) +
+            " koFallback=" + fallback +
+            " koPages=" + (koreanTmp == null ? 0 : koreanTmp.atlasTextureCount) +
+            " " + renderState +
+            " missing=" + (missing.Length == 0 ? "-" : missing) +
+            " text=" + Preview(text.text);
+
+        string failure =
+            missing.Length > 0
+                ? "glyph:" + missing
+                : (cacheMismatch ? "reveal-material-cache" : String.Empty);
+        Report(text.GetInstanceID(), failure, line);
+    }
+
+    private void InspectUgui(Text text, Font koreanUgui)
+    {
+        if (!Eligible(text, text == null ? null : text.text))
+            return;
+
+        Font font = text.font;
+        string signature =
+            (font == null
+                ? "-"
+                : font.name + "#" + font.GetInstanceID()) +
+            "" + (font != null && font == koreanUgui) +
+            "" + (font != null && font.dynamic) +
+            "" + text.text;
+        if (!Changed(text.GetInstanceID(), signature))
+            return;
+
+        string missing = MissingUguiGlyphs(font, text.text);
+
+        string line =
+            "[glyph] UGUI " + DescribePath(text.transform) +
+            " font=" + (font == null ? "<null>" : font.name) +
+            " isKoreanFont=" + (font != null && font == koreanUgui) +
+            " dynamic=" + (font != null && font.dynamic) +
+            " missing=" + (missing.Length == 0 ? "-" : missing) +
+            " text=" + Preview(text.text);
+
+        Report(text.GetInstanceID(), missing, line);
+    }
+
+    private static bool Eligible(Component component, string value)
+    {
+        if (component == null || String.IsNullOrEmpty(value))
+            return false;
+        // Resources.FindObjectsOfTypeAll also returns prefab assets and hidden
+        // objects; only report what a player can actually be looking at.
+        if (!component.gameObject.scene.IsValid())
+            return false;
+        Behaviour behaviour = component as Behaviour;
+        if (behaviour != null && !behaviour.isActiveAndEnabled)
+            return false;
+        return HasHangul(value);
+    }
+
+    private static bool HasHangul(string value)
+    {
+        for (int index = 0; index < value.Length; index++)
+            if (IsHangul(value[index]))
+                return true;
+        return false;
+    }
+
+    private static bool IsHangul(char character)
+    {
+        return (character >= 'ᄀ' && character <= 'ᇿ') ||
+            (character >= '㄰' && character <= '㆏') ||
+            (character >= '가' && character <= '힣');
+    }
+
+    private static string MissingTmpGlyphs(TMP_FontAsset font, string value)
+    {
+        if (font == null)
+            return "<no font>";
+        StringBuilder builder = new StringBuilder();
+        HashSet<char> seen = new HashSet<char>();
+        for (int index = 0; index < value.Length && builder.Length < 12; index++)
+        {
+            char character = value[index];
+            if (!IsHangul(character) || !seen.Add(character))
+                continue;
+            bool present;
+            try
+            {
+                present = font.HasCharacter(character, true, false);
+            }
+            catch (Exception)
+            {
+                present = true;
+            }
+            if (!present)
+                builder.Append(character);
+        }
+        return builder.ToString();
+    }
+
+    private static string MissingUguiGlyphs(Font font, string value)
+    {
+        if (font == null)
+            return "<no font>";
+        StringBuilder builder = new StringBuilder();
+        HashSet<char> seen = new HashSet<char>();
+        for (int index = 0; index < value.Length && builder.Length < 12; index++)
+        {
+            char character = value[index];
+            if (!IsHangul(character) || !seen.Add(character))
+                continue;
+            bool present;
+            try
+            {
+                present = font.HasCharacter(character);
+            }
+            catch (Exception)
+            {
+                present = true;
+            }
+            if (!present)
+                builder.Append(character);
+        }
+        return builder.ToString();
+    }
+
+    // Korean glyphs arrive through a fallback sub-mesh. Record object identity,
+    // not just names and dimensions: two material arrays can look identical in
+    // a terse log while one still references an obsolete atlas/material object.
+    private static string DescribeTmpRenderState(
+        TMP_Text text,
+        out bool cacheMismatch)
+    {
+        cacheMismatch = false;
+        try
+        {
+            TMP_TextInfo info = text.textInfo;
+            if (info == null)
+                return "materials=?";
+
+            Material[] shared = text.fontSharedMaterials;
+            StringBuilder builder = new StringBuilder();
+            builder.Append("materials=").Append(info.materialCount);
+            AppendMaterials(builder, "shared", shared, info.materialCount);
+
+            int meshLimit = info.meshInfo == null ? 0 : info.meshInfo.Length;
+            builder.Append(" mesh=").Append(meshLimit);
+            int reportedMesh = Math.Min(info.materialCount, meshLimit);
+            for (int index = 0; index < reportedMesh && index < 8; index++)
+            {
+                Material material = info.meshInfo[index].material;
+                builder.Append('|').Append(DescribeMaterial(material));
+            }
+
+            Naninovel.UI.RevealableTMProText revealable =
+                text as Naninovel.UI.RevealableTMProText;
+            if (revealable != null)
+            {
+                Material[] cached =
+                    RevealableTmpMaterialRepair.Read(revealable);
+                AppendMaterials(builder, "revealCache", cached, -1);
+                if (cached != null)
+                {
+                    int expectedCount = info.materialCount;
+                    cacheMismatch =
+                        shared == null ||
+                        cached.Length != expectedCount ||
+                        shared.Length < expectedCount;
+                    if (!cacheMismatch)
+                    {
+                        for (int index = 0; index < expectedCount; index++)
+                        {
+                            if (cached[index] != shared[index])
+                            {
+                                cacheMismatch = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                builder.Append(" cacheMatch=")
+                    .Append(cached == null ? "uninitialized" :
+                        (cacheMismatch ? "false" : "true"));
+            }
+            return builder.ToString();
+        }
+        catch (Exception)
+        {
+            return "materials=<error>";
+        }
+    }
+
+    private static void AppendMaterials(
+        StringBuilder builder,
+        string label,
+        Material[] materials,
+        int logicalCount)
+    {
+        builder.Append(' ').Append(label).Append('=');
+        if (materials == null)
+        {
+            builder.Append("<null>");
+            return;
+        }
+
+        builder.Append(materials.Length);
+        int count = logicalCount < 0
+            ? materials.Length
+            : Math.Min(logicalCount, materials.Length);
+        for (int index = 0; index < count && index < 8; index++)
+            builder.Append('|').Append(DescribeMaterial(materials[index]));
+    }
+
+    private static string DescribeMaterial(Material material)
+    {
+        if (material == null)
+            return "<null>";
+        Texture atlas = material.mainTexture;
+        StringBuilder builder = new StringBuilder();
+        builder.Append(material.name)
+            .Append('#').Append(material.GetInstanceID());
+        if (atlas == null)
+            return builder.Append("/<noTex>").ToString();
+        return builder.Append('/')
+            .Append(atlas.name).Append('#').Append(atlas.GetInstanceID())
+            .Append('(').Append(atlas.width)
+            .Append('x').Append(atlas.height).Append(')')
+            .ToString();
+    }
+
+    private static string Preview(string value)
+    {
+        string flat = value.Replace("\n", " ").Replace("\r", " ");
+        if (flat.Length > 34)
+            flat = flat.Substring(0, 34) + "…";
+        return flat;
+    }
+
+    private static string DescribePath(Transform transform)
+    {
+        if (transform == null)
+            return "<null>";
+        string path = transform.name;
+        Transform current = transform.parent;
+        for (int depth = 0; depth < 4 && current != null; depth++)
+        {
+            path = current.name + "/" + path;
+            current = current.parent;
+        }
+        return path;
+    }
+}
+
+[HarmonyPatch(typeof(Naninovel.UI.CustomUI), "SetFontSize")]
+internal static class PrinterFontSizePatch
+{
+    [HarmonyPostfix]
+    private static void Postfix(Naninovel.UI.CustomUI __instance)
+    {
+        LightKravteKorean plugin = LightKravteKorean.Instance;
+        if (plugin == null || !plugin.KoreanActive || plugin.TextFit == null)
+            return;
+        plugin.TextFit.Rebaseline(__instance);
     }
 }

@@ -1,5 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
+  "ruby_policy": {
+    "report": "reports/ruby_localization.json",
+    "reviewed_tag_removal_uids": 16
+  },
   "chapters": [
     "ch01",
     "ch02",
@@ -12,6 +16,24 @@
   "complete": true,
   "issues": {},
   "warnings": {
+    "intentional_ruby_tag_removals": [
+      "ch01-00:59:207f192",
+      "ch01-00:199:60ee8e3a",
+      "ch01-01:344:7695bc83",
+      "ch01-03:365:6db24022",
+      "ch01-04:120:4778c26",
+      "ch02-02:43:52d6dc03",
+      "ch02-02:88:14e0912f",
+      "ch02-12:613:8517a892",
+      "ch02-12:633:3b4ca1b1",
+      "ch02-13:59:46c2cfd",
+      "ch02-20:125:86d8bba3",
+      "ch02-20:188:49e3d90d",
+      "ch03-00:47:33eab712",
+      "ch03-01:301:cc1f2573",
+      "ch03-04:642:25cc68aa",
+      "ch03-08:101:f1405ffd"
+    ],
     "source_copied": [
       "ch01-00:115:2ea4e70a",
       "ch01-00:145:46d36042",

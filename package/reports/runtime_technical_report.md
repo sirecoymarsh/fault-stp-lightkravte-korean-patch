@@ -8,8 +8,12 @@
 - 관리 텍스트: UI·인물명·로케일명·Tips 등 425개
 - 언어 계약: `zh-TW` 선택 슬롯만 한국어로 사용하며 `ja`, `en`, `zh-CN`은 보존
 - 번역 모델: Codex 내부 모델만 사용
+- 플러그인 버전: `1.0.1`
 - 플러그인: .NET Framework `csc.exe`로 재빌드 및 Mono.Cecil 정적 감사 통과
 - 스테이징: 원본 게임과 분리된 순수 오버레이
+- v1.0.1 대사 렌더링 보강은 소스 계약·컴파일·어셈블리 감사 대상으로
+  확인한다. 이 변경 뒤 게임을 직접 실행한 자연 플레이 검증은 아직
+  완료로 간주하지 않는다.
 
 ## 신뢰 대상 빌드
 
@@ -222,6 +226,81 @@ primary font가 담당하며, 정적 합집합 coverage로 확인했다. UGUI
 Windows 한글 fallback과 원래 게임 글꼴의 합집합을 검사했고 누락은
 0개였다. 이 중 1,073개 한글 code point는 Malgun Gothic에서 확인했다.
 
+### TMP atlas와 대사 reveal 경로
+
+초기 TMP 동적 asset의 기본 1024×1024, 90pt 구성은 번역 closure를 여러
+atlas page로 분산시켰다. Naninovel의 실시간 대사 component인
+`RevealableTMProText`는 타자 효과를 적용하기 위해 별도의
+`cachedFontMaterials`를 유지하므로, fallback 연결이나 atlas/material
+구성이 늦게 바뀌면 TMP sub-mesh와 reveal용 material 상태가 어긋날 수
+있다. 백로그는 같은 문자열을 별도 UI에서 새로 layout하므로 정상인데
+실시간 대사창만 `□□□□`가 될 수 있다는 관찰과 일치하는 경로다. 다만
+이 관찰만으로 단일 내부 원인을 확정한 것은 아니다.
+
+v1.0.1은 file-backed 한글 TMP asset을 다음 값으로 명시 생성한다.
+
+| 항목 | 값 |
+| --- | --- |
+| atlas | `4096 × 4096` |
+| sampling size | `72` |
+| padding | `8` |
+| render mode | `SDFAA` |
+| population | `AtlasPopulationMode.Dynamic` |
+
+최종 번역에서 실제로 필요한 한글·자모 closure를 시작 시 미리 넣어 한
+페이지에 유지하고, runtime 변수에서 처음 나타난 한글만 추가한다.
+runtime 추가 뒤 `atlasTextureCount > 1`이 되면 회귀 가능성을 Warning으로
+남긴다. 전체 한글 블록을 무조건 추가하지 않는다.
+
+주기적 0.35초 UI scan만으로는 최초 대사 layout보다 fallback 연결이
+늦을 수 있으므로 다음 세 writer/render 경계를 정확히 후킹한다.
+
+1. private
+   `RevealableTMProText.SetTextToReveal(string)` prefix는
+   `TMP_Text.text`가 쓰이기 전에 현재 primary font에 한글 fallback을
+   연결하고, runtime 신규 글리프를 준비한다. postfix는
+   `cachedFontMaterials`를 비우고 `SetAllDirty()`를 호출해 같은 문자열이
+   재지정되어 TMP setter가 조기 반환하는 경우에도 정상 Canvas rebuild를
+   예약한다.
+2. `CustomUI.SetFont(Font, TMP_FontAsset)` postfix는 Naninovel이 locale
+   primary font를 교체한 직후 해당 UI 아래의
+   `RevealableTMProText`들에 fallback을 다시 연결하고 reveal material
+   cache를 무효화한다. 이로써 텍스트 준비와 locale font 쓰기의 어느
+   쪽이 먼저 와도 scan 주기를 기다리지 않는다.
+3. `RevealableTMProText.Rebuild(CanvasUpdate)` prefix는
+   `CanvasUpdate.PreRender`에서만 최종 텍스트와 최종 primary font를 다시
+   확인하고 cache를 비운다. 이어지는 원래 Naninovel 메서드는 먼저 TMP
+   mesh/material을 생성한 뒤 reveal behaviour가 material 배열을 다시
+   취득하므로, cache 무효화가 실제 render barrier에 맞춰진다.
+
+`cachedFontMaterials`는 Harmony `AccessTools.Field`로 찾은 정확한 private
+field만 null로 만들며, 찾지 못하면 한 번만 Warning을 남기고 원래
+Naninovel 실행을 막지 않는다. 기존 주기 scan이 fallback을 뒤늦게
+연결한 경우에도 reveal cache를 `ForceMeshUpdate` 전후로 비우고
+`SetAllDirty()`를 예약하는 복구 경로를 유지한다. `Render()` 매 프레임
+cache를 없애거나 `ShouldInvalidateMaterials()`를 항상 true로 바꾸지는
+않는다.
+
+### 렌더링 진단
+
+`Diagnostics.LogTextRendering=true`일 때 활성 scene에서 실제로 보이는
+한글 TMP/uGUI component만 주기적으로 기록한다. v1.0.1의 TMP signature는
+텍스트와 font 이름뿐 아니라 다음 렌더링 상태를 포함하므로, 같은
+문장·같은 font 이름에서 material만 바뀌는 간헐 상태도 다시 검사한다.
+
+- primary font 이름과 instance ID
+- 한글 fallback 연결 여부와 한글 atlas page 수
+- `textInfo.materialCount` 및 mesh 수
+- `fontSharedMaterials`, 각 mesh material, Naninovel reveal cache의
+  material instance ID
+- 각 material의 main texture instance ID, 이름, 크기
+- reveal cache와 현재 shared material 배열의 길이·참조 일치 여부
+
+글리프 chain 누락뿐 아니라 reveal cache 불일치도 별도
+`reveal-material-cache` Warning으로 기록한다. `HasCharacter` 성공은
+글리프 존재만 뜻하고 올바른 atlas/material binding까지 증명하지
+않으므로 두 진단을 구분한다.
+
 ## 데이터 및 실패 동작
 
 - 입력: 재귀적 UTF-8 JSONL
@@ -231,8 +310,20 @@ Windows 한글 fallback과 원래 게임 글꼴의 합집합을 검사했고 누
 - 알 수 없는 부가 필드: 무시
 - 누락 레코드: 원문 유지 후 위치를 한 번만 debug 로그에 기록
 
-태그, 선택지, 루비 구조를 보존하며, 발음용 루비 40개는 한국어 독음으로
-현지화했다. 강조용 `<ruby="・">`는 구조적 표식이므로 유지한다.
+태그와 선택지 구조는 보존한다. 루비는 용도를 먼저 판정한 뒤 처리한다.
+
+1. 발음 표기용(아랫말 한자의 읽는 법) 루비는 태그를 제거하고 아랫말만
+   남긴다. 한글은 이미 소리글자라 독음을 옮기면 아랫말과 같은 글자가
+   위아래로 겹칠 뿐이다.
+2. 아랫말과 뜻이 다른 의미 루비는 두 층을 모두 옮긴다.
+3. 강조용 `<ruby="・">`는 구조적 표식이므로 유지한다.
+
+초기 판본은 40개 전체에 "루비 구조 보존 + 안의 읽기만 현지화"를 일괄
+적용해, 발음 표기용 16개가 아랫말과 겹치거나 원문에 없던 구분을
+만들어 냈다. 재분류 후 루비 스팬은 46개에서 30개가 되었다.
+`ch01-11:206`과 `ch03-02:91`은 원문에 있던 두 층을 복원했고,
+`ch02-12:880`은 아랫말을 다시 뭉갠 발화로 되돌려 다음 줄의 해독
+개그가 성립하게 했다. 상세 내역은 `ruby_localization.json` v2에 있다.
 
 ## 가역 설치
 
@@ -259,6 +350,18 @@ manifest에 두 상태의 길이와 SHA-256을 별도로 고정한다. 설치 �
 파일도 설치 당시 해시와 정확히 같을 때만 제거하며, 기존 세 로더
 파일은 백업 해시 검증 후 원상 복구한다.
 
+정적 runtime contract 검증은 스테이징의
+`BepInEx/plugins/LightKravteKorean/LightKravteKorean.dll` SHA-256이
+루트 `plugin_assembly_audit.json`의 `sha256`과 정확히 같을 때만
+통과한다. 따라서 새 DLL을 감사한 뒤 스테이징 복사를 갱신하지 않은
+혼합 상태는 릴리스 계약에서 거부된다. 출력
+`runtime_contract_test.json`은 후속 package-state gate가 현재 파일들을
+다시 결속할 수 있도록 `source_plugin_sha256`(C# 소스),
+`staged_plugin_sha256`, `plugin_assembly_audit_sha256`,
+`staging_manifest_sha256`를 기록한다. 추가 필드인
+`build_plugin_sha256`은 감사 대상 빌드 DLL과 스테이징 DLL의 동등성까지
+교차 확인한다.
+
 ## 검증 산출물
 
 - `build/LightKravteKorean.dll`
@@ -284,3 +387,18 @@ refresh한다.
 스모크 도구는 실그래픽 실행을 기본값으로 사용하고, 정확히 자신이
 시작한 process만 종료하며 BepInEx 로그의 생성 시각과 hash freshness를
 검증한다.
+
+위 스모크 기록은 이전 문제 발견과 도구 검증의 근거이지, v1.0.1의
+`□□□□` 복구가 자연 플레이 전체에서 완료되었다는 증거는 아니다.
+현재 자동 로그에도 실제 실시간 대사 TMP가 포함되어야 해당 경로를
+검증할 수 있다. 다음 자연 플레이에서는 게임을 인위적으로 자동
+조작하지 않고 다음을 확인한다.
+
+1. 실제 대사에서 `[glyph] TMP` 기록이 생성되는지
+2. `koFallback=true`, 단일 atlas page, `cacheMatch=true`,
+   `missing=-`인지
+3. 실시간 대사 `□□□□`가 재발하는 경우 즉시 해당 로그와 같은 대사의
+   백로그 표시를 함께 보존하는지
+
+이 수동 확인이 끝나기 전에는 v1.0.1의 게임 내 렌더링 검증을
+완료 상태로 표기하지 않는다.

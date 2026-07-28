@@ -6,7 +6,7 @@
   "korean_fallback_font": {
     "path": "C:\\Windows\\Fonts\\malgun.ttf",
     "bytes": 13459196,
-    "required_codepoints_supported": 1172
+    "required_codepoints_supported": 1174
   },
   "shipped_primary_fonts": [
     {
@@ -25,8 +25,8 @@
       "required_codepoints_supported": 93
     }
   ],
-  "required_codepoints": 1174,
-  "required_hangul_codepoints": 1073,
+  "required_codepoints": 1176,
+  "required_hangul_codepoints": 1075,
   "missing_hangul_from_korean_fallback": [],
   "missing_codepoints": [],
   "complete": true
